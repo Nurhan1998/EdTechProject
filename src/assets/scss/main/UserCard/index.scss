@@ -1,0 +1,84 @@
+.user-card{
+  &_wrapper{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: $bsBoxShadow;
+    border-radius: $border-radius-sm;
+    color: #7c8798;
+    &:not(:last-child){
+      margin-bottom: 15px;
+    }
+    > * {
+      padding: 0 15px;
+    }
+  }
+
+  &_avatar{
+    flex: 0 0 auto;
+    span {
+      display: inline-block;
+      border-radius: $border-radius-circle;
+      overflow: hidden;
+      width: 46px;
+      height: 46px;
+    }
+    img{
+      max-width: 100%;
+      filter: blur(2px);
+    }
+  }
+
+  &_info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_status{
+    &__wrapper{
+      position: relative;
+      width: 100%;
+      display: flex;
+      background-color: #f2f2f2;
+      border-radius: $border-radius-sm;
+      height: 16px;
+      overflow: hidden;
+      color: $textColorWhite;
+      font-weight: 700;
+    }
+    &__inner-wrapper{
+      height: 100%;
+      background-color: $primaryColor;
+    }
+    &__text{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 10px;
+    }
+  }
+
+  &_skill{
+    width: 20%;
+    flex: 0 0 auto;
+    .user-card_status{
+      &__wrapper{
+        font-size: $font-size-sm;
+      }
+    }
+  }
+
+  &_actions{
+    button{
+      background-color: $secondaryColor;
+      box-shadow: none;
+      border: none;
+      border-radius: $border-radius-bs;
+      color: $textColorWhite;
+      padding: 10px;
+      font-size: $font-size-sm;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.home-page{
+  &_actions{
+    &__wrapper{
+      display: flex;
+      margin: 20px 0;
+    }
+    &__item{
+      &:not(:last-child){
+        margin-right: 15px;
+      }
+    }
+  }
+}
