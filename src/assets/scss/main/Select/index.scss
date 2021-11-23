@@ -1,0 +1,33 @@
+.select{
+  &_wrapper{
+    display: flex;
+    flex-direction: column;
+  }
+  &_label{
+    color: #9eabc0;
+    font-size: $font-size-xs;
+    margin-bottom: 5px;
+  }
+  &_field{
+    padding: 13px 43px 13px 28px;
+    color: $textColorGrey;
+    display: inline-block;
+    line-height: 13px;
+    box-shadow: $bsBoxShadow;
+    border-radius: $border-radius-round;
+    cursor: pointer;
+    transition: $bsTransition;
+    border: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(../../../images/png/custom-select.png) right 1.1rem center no-repeat;
+    background-size: auto;
+    &:hover{
+      box-shadow: $bsBoxShadowHover;
+    }
+    &::-ms-expand {
+      display: none;
+    }
+  }
+}

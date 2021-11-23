@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: $blackSqueeze;
+  font-family: $primaryFontRegular;
+}
+
+a {
+  transition: $bsTransition;
+  text-decoration: none;
+}
