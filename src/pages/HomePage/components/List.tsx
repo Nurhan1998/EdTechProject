@@ -1,11 +1,11 @@
-import {userListBaseExample} from "assets/consts/baseExample";
+import { userListBaseExample } from 'assets/consts/baseExample';
 
-import { IUserCard } from "../types";
+import { IUserCard } from '../types';
 
-import UserCard from "./UserCard";
+import UserCard from './UserCard';
 
 
-const List = ():JSX.Element => (
+const List = (): JSX.Element => (
   <div className="home-page_list__wrapper">
     <div className="home-page_list__item">
       {userListBaseExample.map((item:IUserCard) => (

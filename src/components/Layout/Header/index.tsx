@@ -1,6 +1,6 @@
-import {useEffect, useRef} from 'react';
+import { useEffect, useRef } from 'react';
 import cn from 'classnames';
-import {langBaseExample} from 'assets/consts/baseExample';
+import { langBaseExample } from 'assets/consts/baseExample';
 
 import Select from 'components/Select';
 
@@ -18,8 +18,8 @@ const Header = ({ className, setHeaderHeight, sidebarWidth }: IHeader):JSX.Eleme
   return (
     <div
       ref={headerRef}
-      className={cn("header_wrapper", className)}
-      style={{left: sidebarWidth}}
+      className={cn('header_wrapper', className)}
+      style={{ left: sidebarWidth }}
     >
       <div className="header_inner-wrapper">
         <div className="header_action__wrapper">

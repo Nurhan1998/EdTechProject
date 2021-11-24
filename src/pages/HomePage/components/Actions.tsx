@@ -1,4 +1,4 @@
-import {langBaseExample, locationBaseExample, socialBaseExample} from 'assets/consts/baseExample';
+import { langBaseExample, locationBaseExample, socialBaseExample } from 'assets/consts/baseExample';
 
 import Select from 'components/Select';
 

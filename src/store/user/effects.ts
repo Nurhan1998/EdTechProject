@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects';
 
-function* Saga(): Generator {
+function* Saga (): Generator {
   yield all([
 
   ]);

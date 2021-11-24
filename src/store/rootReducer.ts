@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 import { IApplicationState } from './types';
 import users from './user/reducer';

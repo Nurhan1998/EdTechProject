@@ -1,6 +1,6 @@
-import { IPayloadAction, THandlers, THandler } from "store/types";
+import { IPayloadAction, THandlers, THandler } from 'store/types';
 
-import combineChanges from "./combineChanges";
+import combineChanges from './combineChanges';
 
 const applyHandler = <T, S = never>(handlers: THandlers<T, S>, action: IPayloadAction<S>, state: T): T =>
   handlers.hasOwnProperty(action.type)

@@ -5,6 +5,11 @@
   "engines": {
     "node": ">=14.17.3"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:types && npm run lint && git add ."
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -43,14 +48,17 @@
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
-    "tslint-eslint-rules": "^5.4.0"
+    "tslint-eslint-rules": "^5.4.0",
+    "husky": "^7.0.4"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix --ext .ts,.tsx -c ./.eslintrc ./src",
+    "lint:types": "tsc -p . --noEmit"
   },
   "eslintConfig": {
     "extends": [

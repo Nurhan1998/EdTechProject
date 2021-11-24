@@ -1,13 +1,13 @@
-import {FC, useRef, useEffect} from 'react';
+import { FC, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import {HOME_PAGE} from 'assets/consts/paths';
+import { HOME_PAGE } from 'assets/consts/paths';
 
-import {IconMainLogo} from 'components/Icons';
+import { IconMainLogo } from 'components/Icons';
 
 import { ISidebar } from './types';
 
 
-const Sidebar:FC<ISidebar> = ({setSidebarWidth}):JSX.Element => {
+const Sidebar:FC<ISidebar> = ({ setSidebarWidth }):JSX.Element => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (sidebarRef?.current?.clientWidth) {

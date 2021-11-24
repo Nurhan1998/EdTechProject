@@ -1,8 +1,8 @@
 import { createWrapper } from 'next-redux-wrapper';
 import { createStore, applyMiddleware, compose, CombinedState, Store } from 'redux';
-import createSagaMiddleware from "redux-saga";
-import { fromJS } from "immutable";
-import assign from "lodash/assign";
+import createSagaMiddleware from 'redux-saga';
+import { fromJS } from 'immutable';
+import assign from 'lodash/assign';
 
 import { IWithSagaTaskStore, IApplicationState, IPayloadAction } from './types';
 import rootReducer from './rootReducer';
@@ -15,10 +15,10 @@ export const configureStore = <T extends object = never>(initialState: T): IWith
   const enhancers = [applyMiddleware(...middlewares)];
 
   const composeEnhancers =
-    process.env.NODE_ENV !== "production" &&
-    typeof window === "object" &&
-    window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__" as keyof Window]
-      ? window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__" as keyof Window]({
+    process.env.NODE_ENV !== 'production' &&
+    typeof window === 'object' &&
+    window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__' as keyof Window]
+      ? window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__' as keyof Window]({
         shouldHotReload: false,
       })
       : compose;

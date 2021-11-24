@@ -1,4 +1,4 @@
-import {FC, useState, useEffect} from 'react';
+import { FC, useState, useEffect } from 'react';
 import cn from 'classnames';
 
 import Sidebar from './Sidebar';
@@ -19,17 +19,17 @@ const Layout: FC<ILayout> = ({
   });
 
   useEffect(() => {
-    setLayoutSpaceParams({top: headerHeight, left: sidebarWidth});
+    setLayoutSpaceParams({ top: headerHeight, left: sidebarWidth });
   }, [sidebarWidth, headerHeight]);
 
   return (
     <div
-      className={cn("layout_wrapper", layoutClassName)}
-      style={{paddingTop: layoutSpaceParams.top, paddingLeft: layoutSpaceParams.left}}
+      className={cn('layout_wrapper', layoutClassName)}
+      style={{ paddingTop: layoutSpaceParams.top, paddingLeft: layoutSpaceParams.left }}
     >
       <Header setHeaderHeight={setHeaderHeight} sidebarWidth={sidebarWidth}/>
       <Sidebar setSidebarWidth={setSidebarWidth}/>
-      <div className={cn("layout_inner-wrapper", pageClassName)}>
+      <div className={cn('layout_inner-wrapper', pageClassName)}>
         {children}
       </div>
     </div>

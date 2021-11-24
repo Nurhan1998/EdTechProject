@@ -1,4 +1,4 @@
-import { RecordOf } from "immutable";
+import { RecordOf } from 'immutable';
 
 export interface IUserStore {
   token?: string;
