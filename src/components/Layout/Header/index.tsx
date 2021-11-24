@@ -18,7 +18,7 @@ const Header = ({ className, setHeaderHeight, sidebarWidth }: IHeader):JSX.Eleme
   return (
     <div
       ref={headerRef}
-      className={cn("header_wrapper", className)}
+      className={cn('header_wrapper', className)}
       style={{left: sidebarWidth}}
     >
       <div className="header_inner-wrapper">

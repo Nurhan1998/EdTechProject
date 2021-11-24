@@ -3,7 +3,7 @@ import cn from 'classnames';
 import {ISelect, TSelectItem} from './types';
 
 const Select = ({ className, options, label }:ISelect):JSX.Element => (
-  <div className={cn("select_wrapper", className)}>
+  <div className={cn('select_wrapper', className)}>
     {label && (
       <label className="select_label">{label}</label>
     )}

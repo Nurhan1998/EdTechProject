@@ -1,4 +1,4 @@
-import { IUserCard } from "../types";
+import { IUserCard } from '../types';
 
 
 const UserCard = ({
