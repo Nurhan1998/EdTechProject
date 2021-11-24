@@ -1,6 +1,7 @@
-import {IUserCard} from 'components/../../pages/HomePage/types';
+import { TSelectItem } from 'components/Select/types';
 
-import {TSelectItem} from 'components/Select/types';
+import { IUserCard } from 'pages/HomePage/types';
+
 
 export const langBaseExample: TSelectItem[] = [
   {

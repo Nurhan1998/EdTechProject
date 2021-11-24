@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import {ISelect, TSelectItem} from './types';
+import { ISelect, TSelectItem } from './types';
 
 const Select = ({ className, options, label }:ISelect):JSX.Element => (
   <div className={cn('select_wrapper', className)}>

@@ -1,4 +1,4 @@
-import {IIcon} from 'components/Icons/types';
+import { IIcon } from 'components/Icons/types';
 
 
 const IconMainLogo = ({ }:IIcon):JSX.Element => (

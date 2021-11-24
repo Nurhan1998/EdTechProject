@@ -30,7 +30,7 @@ const Profile = ():JSX.Element => {
   // });
 
   const dropdownMenu = (
-    <div className={cn('dropdown-menu_wrapper', {visible: visible})} ref={dropdownRef}>
+    <div className={cn('dropdown-menu_wrapper', { visible: visible })} ref={dropdownRef}>
       <div className="dropdown-menu_item">
         <Link href={HOME_PAGE}>
           <a>Company Profile</a>

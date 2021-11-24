@@ -26,7 +26,7 @@ const UserCard = ({
         <span className="user-card_status__text">
           {statusHardSkill} / 100
         </span>
-        <span className="user-card_status__inner-wrapper" style={{width: `${statusHardSkill}0%`}} />
+        <span className="user-card_status__inner-wrapper" style={{ width: `${statusHardSkill}0%` }} />
       </div>
     </div>
     <div className="user-card_skill">
@@ -37,7 +37,7 @@ const UserCard = ({
         <span className="user-card_status__text">
           {statusSoftSkill} / 100
         </span>
-        <span className="user-card_status__inner-wrapper" style={{width: `${statusSoftSkill}%`}} />
+        <span className="user-card_status__inner-wrapper" style={{ width: `${statusSoftSkill}%` }} />
       </div>
     </div>
     <div className="user-card_actions">
