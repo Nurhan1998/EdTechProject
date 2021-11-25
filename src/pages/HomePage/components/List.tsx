@@ -8,7 +8,7 @@ import UserCard from './UserCard';
 const List = (): JSX.Element => (
   <div className="home-page_list__wrapper">
     <div className="home-page_list__item">
-      {userListBaseExample.map((item:IUserCard) => (
+      {userListBaseExample.map((item: IUserCard) => (
         <UserCard
           key={item.id}
           id={item.id}

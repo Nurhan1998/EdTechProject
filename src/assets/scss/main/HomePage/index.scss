@@ -1,13 +1,209 @@
-.home-page{
-  &_actions{
-    &__wrapper{
+.home-page {
+  &_banner {
+    &_displayBlock {
+      display: block;
+    }
+    position: relative;
+    width: 100%;
+
+    &__flex {
+      display: flex;
+    }
+
+    &__none {
+      display: none;
+    }
+
+    &__close-button {
+      font-size: 30px;
+      background-color: white;
+      border: none;
+      opacity: 0.3;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      top: 100px;
+      right: 32px;
+      cursor: pointer;
+
+      &::after {
+        display: inline-block;
+        content: "\00d7";
+      }
+    }
+
+    &__cards-wrapper {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+
+      li:nth-child(1) {
+        animation: slide-up 1s ease;
+        z-index: 3;
+      }
+      li:nth-child(2){
+      animation: slide-up 2s ease;
+      z-index: 2;
+      }
+      li:nth-child(3){
+        animation: slide-up 3s ease;
+        z-index: 1;
+      }
+    }
+
+    &__card {
+      padding: 10px;
+      -webkit-box-shadow: 0 8px 6px -6px black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: -19px;
+        right: 0;
+        left: 100%;
+        content: "";
+        height: 0;
+        width: 0;
+        z-index: 3;
+        border: 24px solid transparent;
+        border-right-width: 0;
+        border-left-width: 20px;
+        border-left-color: inherit;
+      }
+
+      &-wrapper {
+        list-style: none;
+        position: relative;
+        margin: 4px 4px 4px 0;
+        width: 31%;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 100%;
+          height: 0;
+          width: 0;
+          z-index: 2;
+          border: 24px solid transparent;
+          border-right-width: 0;
+          border-left-width: 20px;
+          transform: translateX(4px);
+          border-left-color: #fff;
+        }
+
+        &:last-child {
+          .home-page_banner__card {
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &-headerText {
+        align-self: flex-end;
+        font-size: 1.2rem;
+        color: white;
+      }
+
+      &-centerText {
+        align-self: center;
+        transform: rotate(-10deg);
+        font-weight: 700;
+        font-size: 2.5rem;
+        margin: 40px 0 55px 0;
+        padding: 0 10px;
+        color: white;
+        -webkit-box-reflect: below -15px -webkit-linear-gradient(bottom, rgba(255, 255, 255, .3) 0, transparent 70%, transparent 100%);
+      }
+
+      &-contentWrapper {
+        text-align: center;
+        color: white;
+        width: 100%;
+        height: 100%;
+
+        &_content {
+          letter-spacing: 1.5px;
+          white-space: nowrap;
+          font-weight: 700;
+          line-height: 25px;
+          color: #ffeb3b;
+          border-bottom: 2px dashed #fff;
+          padding-bottom: 2px
+        }
+
+      }
+
+      &-footerBlocksWrapper {
+        margin-top: 15px;
+        height: 20px;
+        width: 90px;
+        display: flex;
+        justify-content: space-between;
+
+        &_block {
+          background-color: white;
+          width: 25px;
+          height: 10px;
+          border-radius: 3px;
+        }
+
+        &_checkedBlock {
+          background-color: black;
+          width: 25px;
+          height: 10px;
+          border-radius: 3px;
+        }
+      }
+
+      &-violette {
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        height: 330px;
+        background: linear-gradient(to right top, rgba(34, 73, 73, 1) 0%, rgba(95, 118, 232, 1) 100%);
+        border-color: #5f76e8;
+      }
+
+      &-blue {
+        height: 330px;
+        background: linear-gradient(rgba(30, 50, 68, 1), rgba(80, 190, 177, 1));
+        border-color: #223f4f;
+      }
+
+      &-green {
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        background: linear-gradient(to left top, rgba(32, 93, 43, 1) 0%, rgba(68, 178, 97, 1) 100%)
+      }
+    }
+  }
+
+  &_actions {
+    &__wrapper {
       display: flex;
       margin: 20px 0;
     }
-    &__item{
-      &:not(:last-child){
+
+    &__item {
+      &:not(:last-child) {
         margin-right: 15px;
       }
     }
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
