@@ -1,3 +1,5 @@
+import { ProgressBar } from 'components/ProgressBar';
+
 import { IUserCard } from '../types';
 
 
@@ -22,23 +24,13 @@ const UserCard = ({
       <span>
         Hard Skill: {hardSkill}
       </span>
-      <div className="user-card_status__wrapper">
-        <span className="user-card_status__text">
-          {statusHardSkill} / 100
-        </span>
-        <span className="user-card_status__inner-wrapper" style={{ width: `${statusHardSkill}0%` }} />
-      </div>
+      <ProgressBar max={10} current={statusHardSkill}/>
     </div>
     <div className="user-card_skill">
       <span>
         Soft Skill: {softSkill}
       </span>
-      <div className="user-card_status__wrapper">
-        <span className="user-card_status__text">
-          {statusSoftSkill} / 100
-        </span>
-        <span className="user-card_status__inner-wrapper" style={{ width: `${statusSoftSkill}%` }} />
-      </div>
+      <ProgressBar max={100} current={statusSoftSkill}/>
     </div>
     <div className="user-card_actions">
       <button>

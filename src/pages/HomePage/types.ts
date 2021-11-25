@@ -8,3 +8,16 @@ export interface IUserCard {
   softSkill: string;
   statusSoftSkill: number;
 }
+
+export type TBannerCardProps = {
+  color: string;
+  headerText: string;
+  centerText: string;
+  content: JSX.Element;
+}
+
+export enum ECardColors {
+  VIOLETTE = 'violette',
+  GREEN = 'green',
+  BLUE = 'blue',
+}
