@@ -18,7 +18,7 @@ export type TBannerCardProps = {
 }
 
 export enum ECardColors {
-  VIOLETTE = "violette",
-  GREEN = "green",
-  BLUE = "blue",
+  VIOLETTE = 'violette',
+  GREEN = 'green',
+  BLUE = 'blue',
 }
