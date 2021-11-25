@@ -11,7 +11,6 @@ export interface IUserCard {
 
 export type TBannerCardProps = {
   color: string;
-  classPrefix: string;
   headerText: string;
   centerText: string;
   content: JSX.Element;

@@ -1,16 +1,16 @@
 .home-page {
   &_banner {
-    &_displayBlock {
-      display: block;
-    }
     position: relative;
     width: 100%;
 
-    &__flex {
+    &_flex {
+      .displayBlock {
+        display: block;
+      }
       display: flex;
     }
 
-    &__none {
+    &_none {
       display: none;
     }
 
@@ -121,7 +121,7 @@
         -webkit-box-reflect: below -15px -webkit-linear-gradient(bottom, rgba(255, 255, 255, .3) 0, transparent 70%, transparent 100%);
       }
 
-      &-contentWrapper {
+      &-cw {
         text-align: center;
         color: white;
         width: 100%;
@@ -139,7 +139,7 @@
 
       }
 
-      &-footerBlocksWrapper {
+      &-footerW {
         margin-top: 15px;
         height: 20px;
         width: 90px;
@@ -153,7 +153,7 @@
           border-radius: 3px;
         }
 
-        &_checkedBlock {
+        &_checked {
           background-color: black;
           width: 25px;
           height: 10px;
