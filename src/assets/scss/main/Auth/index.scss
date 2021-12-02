@@ -1,10 +1,11 @@
 .auth {
-  height: 100vw;
+  width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("../../../img/png/auth-background.png");
+  background: url("../../../img/png/auth-background.png") no-repeat;
+  background-size: cover;
 
   &-container {
     padding: 40px;

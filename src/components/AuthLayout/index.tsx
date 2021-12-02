@@ -1,18 +1,20 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 
+import { SIGN_UP, RESET } from 'configuration/urls';
+
 import { Logo } from 'components/Icons/Logo/Logo';
 
 
-export const AuthContainer: FC = ({ children }) => {
+const AuthLayout: FC = ({ children }) => {
   const router = useRouter();
 
   const handleClickAsStudent = (): void => {
-    router.push('/sign-up');
+    router.push(SIGN_UP);
   };
 
   const handleClickReset = (): void => {
-    router.push('/reset');
+    router.push(RESET);
   };
 
   return (
@@ -27,7 +29,8 @@ export const AuthContainer: FC = ({ children }) => {
         </div>
         <div className="auth-container_footer">
           <span>Don't have an account?</span>
-          <span>Sign Up as a&#160;
+          <span>
+            Sign Up as a&#160;
             <span onClick={handleClickAsStudent} className="dedicated">Student</span>
             &#160;or&#160;
             <span className="dedicated" onClick={handleClickReset}>Reset</span>
@@ -38,3 +41,5 @@ export const AuthContainer: FC = ({ children }) => {
     </div>
   );
 };
+
+export default AuthLayout;

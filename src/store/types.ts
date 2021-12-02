@@ -2,10 +2,12 @@ import { Store } from 'redux';
 import { Task } from 'redux-saga';
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-import { TSignInStateProps } from './users/types';
+import { TFormState } from 'store/form/types';
+import { TRecordOfUser } from 'store/users/types';
 
 export interface IApplicationState {
-  users?: TSignInStateProps
+  users?: TRecordOfUser
+  form?: TFormState
 }
 
 export interface IWithSagaTaskStore extends Store<IApplicationState> {
@@ -34,7 +36,7 @@ export declare type THandlers<T, S = void> = {
 
 export type ResponseGenericType<T, E = Record<string, unknown>> = {
   fetching: boolean;
-  data: T;
+  data: T | null;
   error: AxiosError<E> | null;
   submitting?: boolean;
 };

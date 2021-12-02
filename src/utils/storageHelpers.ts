@@ -2,17 +2,17 @@ export enum EStorageKeys {
   TOKEN = 'token'
 }
 
-export function getStorageData<T> (key: EStorageKeys | string): T | undefined {
-  try {
-    if (localStorage.getItem(key) !== null) {
-      return JSON.parse(localStorage.getItem(key) || '{}') as T;
-    }
-  } catch (err) {
-    // tslint:disable-next-line:no-console
-    console.error(err);
-  }
-}
+export const getStorageData = (key: EStorageKeys | string): string | null => {
+  if (typeof localStorage === 'undefined') return null;
+  return localStorage.getItem(key);
+};
 
-export function setStorageData (key: EStorageKeys | string, value: string): void {
-  localStorage.setItem(key, value);
-}
+export const hasStorageData = (key: EStorageKeys): boolean => {
+  if (typeof localStorage === 'undefined') return false;
+  return !!localStorage.getItem(key);
+};
+
+export const setStorageData = async (key: EStorageKeys | string, value: string): Promise<void> => {
+  if (typeof localStorage === 'undefined') return;
+  await localStorage.setItem(key, value);
+};

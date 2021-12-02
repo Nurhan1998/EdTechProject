@@ -1,18 +1,16 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import cn from 'classnames';
 
-import { IInputProps } from 'components/Input/types';
+import { TInputProps } from 'components/Input/types';
 
-const Input: FC<IInputProps> = ({
-  onChange,
-  value,
-  placeholder,
+const Input = ({
   error,
   errorMessage,
   label,
   type = 'text',
-  className
-}) => {
+  className,
+  ...props
+}: TInputProps): JSX.Element => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [fieldType, setFieldType] = useState<string>(type);
 
@@ -29,9 +27,9 @@ const Input: FC<IInputProps> = ({
     <div className="input-wrapper">
       <p className="input-wrapper_label"> {label}</p>
       <input
-        value={value} onChange={onChange}
+        {...props}
         className={cn('input-wrapper_input', className)}
-        placeholder={placeholder} type={fieldType}
+        type={fieldType}
       />
       {type === 'password' && (
         <span

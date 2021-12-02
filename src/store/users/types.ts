@@ -1,7 +1,8 @@
 import { RecordOf } from 'immutable';
 import { AxiosResponse } from 'axios';
+import { GetParamsFromSelectors, OutputSelector, SelectorResultArray } from 'reselect';
 
-import { ResponseGenericType, TResponseType } from 'store/types';
+import { IApplicationState, ResponseGenericType, THandler } from 'store/types';
 
 
 export type TSignUpModel = {
@@ -16,7 +17,7 @@ export type THSkillModel = {
   value: string;
 }
 
-export type TProgileModel = {
+export type TProfileModel = {
   address: string;
   city: string;
   country: string;
@@ -49,22 +50,32 @@ export type TProgileModel = {
   timezone: string;
 }
 
-export type TSignInPesponseData = {
+export type TSignInResponseData = {
   created: number;
   expired: number;
   id: string;
   now: number;
   refresh: number;
   token: string;
-  profile: TProgileModel
+  profile: TProfileModel
 }
 
-export type TSignInState = {
-  signIn: ResponseGenericType<TSignInPesponseData>;
-};
+export type TRecordOfSignInResponseData = RecordOf<TSignInResponseData>;
 
-export type TUserRecordOf = RecordOf<TSignInState>;
+export interface IUserState {
+  signIn: ResponseGenericType<TRecordOfSignInResponseData>;
+  token: string | null;
+  profile: ResponseGenericType<RecordOf<TProfileModel>>;
+}
+export type TRecordOfUser = RecordOf<IUserState>;
+export type TSignInResponse = AxiosResponse<TSignInResponseData>
 
-export type TSignInStateProps = Readonly<TSignInState> & TUserRecordOf | undefined;
+export type TSelectorReturnType<T> = OutputSelector<
+  [((state: IApplicationState) => TRecordOfUser)],
+  T,
+  (...args: SelectorResultArray<[((state: IApplicationState) => TRecordOfUser)]>) => T,
+  GetParamsFromSelectors<[((state: IApplicationState) => TRecordOfUser)]>
+>;
 
-export type TSignInResponse = AxiosResponse<TResponseType<TSignInPesponseData>>
+export type TUserStoreHandler<T> = THandler<TRecordOfUser, T>;
+

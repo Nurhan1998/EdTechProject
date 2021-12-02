@@ -1,17 +1,10 @@
-import { Control } from 'react-hook-form';
+import { InputHTMLAttributes } from 'react';
 
-export type IInputProps = {
+export interface IAdditionalInputProps {
   label?: string;
-  className?: string;
-  type?: string;
   error?: boolean;
   errorMessage?: string;
-  placeholder?: string;
-  value?: any;
-  onChange?: (e: any) => void;
 }
 
-export type TCustomControllerProps = {
-  name: string;
-  control?: Control;
-} & IInputProps
+export type TInputProps = InputHTMLAttributes<HTMLInputElement> & IAdditionalInputProps
+

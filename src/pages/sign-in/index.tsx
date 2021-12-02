@@ -1,54 +1,56 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-
-
-import { HOME_PAGE } from 'configuration/urls';
 
 import { Button } from 'components/Button';
-import { AuthContainer } from 'components/AuthContainer/AuthContainer';
-import Input from 'components/Input';
+import AuthLayout from 'components/AuthLayout';
+import Form from 'components/Form';
 
+import { makeSelectSignInFetching } from 'store/users/selectors';
+import { initForm, removeForm } from 'store/form/actions';
+import { selectFormValues } from 'store/form/selectors';
 import { signInRequest } from 'store/users/actions';
-import { signInSelectData, signInSelectFetching } from 'store/users/selectors';
+
+import { SIGN_IN_FORM } from './form/constants';
+import config from './form/config';
 
 
 const SignIn = (): JSX.Element => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const singInData = useSelector(signInSelectData);
-  const signInFetching = useSelector(signInSelectFetching);
+  const signInFetching = useSelector(makeSelectSignInFetching);
+  const formValues = useSelector(selectFormValues(SIGN_IN_FORM));
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const signIn = (): void => {
+    const email = formValues.email as string;
+    const password = formValues.password as string;
     dispatch(signInRequest({ email, password }));
   };
-  useEffect(() => {
-    if (singInData) {
-      router.push(HOME_PAGE);
-    }
-  }, [singInData, router]);
 
-  return (
-    <AuthContainer>
-      <Input
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        label="Email"
-        placeholder="email"
-        type="text"
-      />
-      <Input
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        label="Password"
-        placeholder="password"
-        type="password"
-      />
-      <Button disabled={!!signInFetching} onClick={signIn} text="Sign in"/>
-    </AuthContainer>
+  useEffect(
+    () => {
+      dispatch(initForm({ form: SIGN_IN_FORM, config }));
+      return () => {
+        dispatch(removeForm({ form: SIGN_IN_FORM }));
+      };
+    },
+    // Need to call this effect only once at mount
+    // eslint-disable-next-line
+    []
   );
 
+
+  return (
+    <AuthLayout>
+      <Form
+        name={SIGN_IN_FORM}
+        config={config}
+      />
+      <Button
+        disabled={signInFetching}
+        onClick={signIn}
+        text="Sign in"
+      />
+    </AuthLayout>
+  );
 };
+
 export default SignIn;
