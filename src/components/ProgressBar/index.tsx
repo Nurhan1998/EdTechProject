@@ -1,9 +1,7 @@
-import { FC } from 'react';
-
 import { IProgressBarProps } from 'components/ProgressBar/types';
 
 
-export const ProgressBar: FC<IProgressBarProps> = ({ current, max }): JSX.Element => (
+export const ProgressBar = ({ current, max }: IProgressBarProps): JSX.Element => (
   <div className="user-card_status__wrapper">
     <span className="user-card_status__text">
       {current} / {max}

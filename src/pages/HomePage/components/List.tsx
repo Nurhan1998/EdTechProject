@@ -1,4 +1,4 @@
-import { userListBaseExample } from 'assets/consts/baseExample';
+import { userListBaseExample } from '../../../mocks/baseExample';
 
 import { IUserCard } from '../types';
 

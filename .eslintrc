@@ -10,7 +10,11 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react-hooks", "import"],
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks",
+    "import"
+  ],
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -24,47 +28,112 @@
     "complexity": 0,
     "no-plusplus": 0,
     "no-continue": "off",
-    "no-console": ["error", { "allow": ["warn", "error"] }],
-    "indent": ["error", 2],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "indent": [
+      "error",
+      2
+    ],
     "guard-for-in": "off",
     "linebreak-style": "off",
     "no-restricted-syntax": "off",
-    "no-param-reassign": "off", //Bad code style.
+    "no-param-reassign": "off",
+    //Bad code style.
     "no-shadow": "off",
     "no-else-return": "off",
     "no-restricted-globals": "off",
-    "func-names": "off", //Need refactoring memoize
+    "func-names": "off",
+    //Need refactoring memoize
     "no-return-assign": "off",
     "no-nested-ternary": "off",
     "consistent-return": "off",
     "class-methods-use-this": "off",
     "getter-return": "off",
-    "prefer-destructuring": ["error", { "object": true, "array": false }],
-    "prefer-const": ["error", { "destructuring": "all" }],
-    "camelcase": 0, ///It seems you need to think about the style to use or its lipo underline for naming variables.
-    "max-nested-callbacks": ["error", 3],
-    "max-depth": ["error", 3],
+    "prefer-destructuring": [
+      "error",
+      {
+        "object": true,
+        "array": false
+      }
+    ],
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "all"
+      }
+    ],
+    "camelcase": 0,
+    ///It seems you need to think about the style to use or its lipo underline for naming variables.
+    "max-nested-callbacks": [
+      "error",
+      3
+    ],
+    "max-depth": [
+      "error",
+      3
+    ],
     "react/no-array-index-key": 0,
     "react/prefer-stateless-function": 0,
     "prefer-spread": 0,
-    "react/jsx-indent": ["error", 2],
+    "react/jsx-indent": [
+      "error",
+      2
+    ],
     "react/no-children-prop": 0,
-    "react/jsx-indent-props": ["error", 2],
+    "react/jsx-indent-props": [
+      "error",
+      2
+    ],
     "react/jsx-props-no-multi-spaces": "off",
     "react/no-multi-comp": 0,
     "react/require-default-props": 0,
     "react/forbid-prop-types": 0,
-    "react/no-unescaped-entities": ["warn", {"forbid": [">", "}"]}],
-    "react/destructuring-assignment": [0],
-    "react/display-name": [0],
-    "react/no-did-update-set-state": [0],
+    "react/no-unescaped-entities": [
+      "warn",
+      {
+        "forbid": [
+          ">",
+          "}"
+        ]
+      }
+    ],
+    "react/destructuring-assignment": [
+      0
+    ],
+    "react/display-name": [
+      0
+    ],
+    "react/no-did-update-set-state": [
+      0
+    ],
     "no-prototype-builtins": "off",
-    "semi": [2, "always"],
+    "semi": [
+      2,
+      "always"
+    ],
     "arrow-body-style": "warn",
-    "max-len": ["error", 120],
+    "max-len": [
+      "error",
+      120
+    ],
     "no-unused-expressions": 0,
-    "arrow-parens": ["error", "as-needed"],
-    "object-curly-newline": ["off", { "multiline": true }],
+    "arrow-parens": [
+      "error",
+      "as-needed"
+    ],
+    "object-curly-newline": [
+      "off",
+      {
+        "multiline": true
+      }
+    ],
     "no-underscore-dangle": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-cycle": "off",
@@ -78,7 +147,14 @@
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
         "pathGroups": [
           {
             "pattern": "api/**",
@@ -91,7 +167,7 @@
             "position": "after"
           },
           {
-            "pattern": "configuration/**",
+            "pattern": "configuration/*",
             "group": "internal",
             "position": "after"
           },
@@ -136,20 +212,43 @@
             "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["builtin"],
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
         "newlines-between": "always"
       }
     ],
     "react/react-in-jsx-scope": "off",
-    "quotes": ["error", "single", { "avoidEscape": true }],
-    "computed-property-spacing": ["error", "never"],
-    "object-curly-spacing": ["error", "always"],
-    "func-call-spacing": ["error", "never"],
-    "space-before-function-paren": ["error", {
-      "anonymous": "never",
-      "named": "always",
-      "asyncArrow": "always"
-    }],
-    "jsx-quotes": ["error", "prefer-double"]
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "computed-property-spacing": [
+      "error",
+      "never"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "func-call-spacing": [
+      "error",
+      "never"
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "never",
+        "named": "always",
+        "asyncArrow": "always"
+      }
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ]
   }
 }

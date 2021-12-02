@@ -1,6 +1,6 @@
-import { fork, all } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 
-import users from './user/effects';
+import users from './users/effects';
 
 function* rootSaga (): Generator {
   yield all([

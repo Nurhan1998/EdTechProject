@@ -1,5 +1,5 @@
-@import './main/variables';
-@import './main/global';
+@import 'variables';
+@import 'global';
 
 // Blocks
 @import './main/Layout';
@@ -8,7 +8,10 @@
 
 // Pages
 @import './main/HomePage';
+@import "./main/Auth";
 
-// Components
-@import './main/Select';
-@import './main/UserCard';
+// components
+@import 'сomponents/Select';
+@import 'сomponents/UserCard';
+@import 'сomponents/Input';
+@import 'сomponents/Button';

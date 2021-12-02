@@ -1,15 +1,17 @@
-import { FC, useRef, useEffect } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { HOME_PAGE, CHAT_PAGE } from 'assets/consts/paths';
 import cn from 'classnames';
 
-import { IconMainLogo } from 'components/Icons';
+
+import { Logo } from 'components/Icons/components/Logo';
+
+import { CHAT_PAGE, HOME_PAGE } from '../../../configuration/urls';
 
 import { ISidebar } from './types';
 
 
-const Sidebar:FC<ISidebar> = ({ setSidebarWidth }):JSX.Element => {
+const Sidebar: FC<ISidebar> = ({ setSidebarWidth }): JSX.Element => {
   const router = useRouter();
   const sidebarRef = useRef<HTMLDivElement>(null);
 
@@ -26,7 +28,7 @@ const Sidebar:FC<ISidebar> = ({ setSidebarWidth }):JSX.Element => {
       <div className="sidebar_logo__wrapper">
         <Link href={HOME_PAGE}>
           <a>
-            <IconMainLogo />
+            <Logo/>
           </a>
         </Link>
       </div>

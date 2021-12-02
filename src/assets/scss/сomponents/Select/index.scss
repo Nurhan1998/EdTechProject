@@ -1,14 +1,16 @@
-.select{
-  &_wrapper{
+.select {
+  &_wrapper {
     display: flex;
     flex-direction: column;
   }
-  &_label{
+
+  &_label {
     color: #9eabc0;
     font-size: $font-size-xs;
     margin-bottom: 5px;
   }
-  &_field{
+
+  &_field {
     padding: 13px 43px 13px 28px;
     color: $textColorGrey;
     display: inline-block;
@@ -21,11 +23,13 @@
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url(../../../images/png/custom-select.png) right 1.1rem center no-repeat;
+    background: url(../../../img/png/custom-select.png) right 1.1rem center no-repeat;
     background-size: auto;
-    &:hover{
+
+    &:hover {
       box-shadow: $bsBoxShadowHover;
     }
+
     &::-ms-expand {
       display: none;
     }

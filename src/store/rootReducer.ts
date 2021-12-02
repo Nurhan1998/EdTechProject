@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { IApplicationState } from './types';
-import users from './user/reducer';
+import users from './users/reducer';
 
 
 const rootReducer = combineReducers<IApplicationState>({

@@ -1,0 +1,57 @@
+.auth {
+  height: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../../img/png/auth-background.png");
+
+  &-container {
+    padding: 40px;
+    width: 360px;
+    min-height: 390px;
+    border-radius: 8px;
+    background-color: rgba(35, 35, 35, 0.8);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &_header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &_image {
+      background: url("../../../img/svg/logo.svg");
+    }
+
+    &_title {
+      font-size: 20px;
+      color: white;
+      font-weight: bold;
+    }
+
+    &_body {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-self: center;
+      flex-direction: column;
+    }
+
+    &_footer {
+      margin-top: 15px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: $white;
+
+      .dedicated {
+        cursor: pointer;
+        color: $lightGreen;
+      }
+    }
+  }
+}
