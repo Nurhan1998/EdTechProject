@@ -14,18 +14,18 @@ const Profile = (): JSX.Element => {
   const imagePath = undefined;
 
   // const handleClickOutside = (e: MouseEvent) => {
-  //   if (dropdownRef.current && dropdownRef.current.contains(e.target)){
+  //   if (dropdownRef.current && dropdownRef.current.contains(e.target)) {
   //     setVisible(false);
   //   }
   // };
   //
   // useEffect(() => {
-  //   if(visible){
-  //     document.addEventListener("mousedown", handleClickOutside);
+  //   if (visible) {
+  //     document.addEventListener('mousedown', handleClickOutside);
   //   }
   //   return () => {
-  //     if(visible){
-  //       document.removeEventListener("mousedown", handleClickOutside);
+  //     if (visible) {
+  //       document.removeEventListener('mousedown', handleClickOutside);
   //     }
   //   };
   // });

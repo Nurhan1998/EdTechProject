@@ -2,14 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
+
+import { HOME_PAGE } from 'configuration/urls';
+
 import { Button } from 'components/Button';
 import { AuthContainer } from 'components/AuthContainer/AuthContainer';
 import Input from 'components/Input';
 
 import { signInRequest } from 'store/users/actions';
 import { signInSelectData, signInSelectFetching } from 'store/users/selectors';
-
-import { HOME_PAGE } from '../../configuration/urls';
 
 
 const SignIn = (): JSX.Element => {
@@ -27,7 +28,7 @@ const SignIn = (): JSX.Element => {
     if (singInData) {
       router.push(HOME_PAGE);
     }
-  }, singInData);
+  }, [singInData, router]);
 
   return (
     <AuthContainer>

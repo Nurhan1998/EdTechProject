@@ -1,7 +1,7 @@
 /*eslint-disable max-len*/
 import { FC } from 'react';
 
-import { IIcon } from 'components/Icons/types';
+import { IIcon } from 'components/Icons/Logo/types';
 
 export const Logo: FC<IIcon> = ({ width = 1055, height = 368, color = '#06a34e' }) => (
 

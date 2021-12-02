@@ -4,9 +4,10 @@ import Link from 'next/link';
 import cn from 'classnames';
 
 
-import { Logo } from 'components/Icons/components/Logo';
+import { CHAT_PAGE, HOME_PAGE } from 'configuration/urls';
 
-import { CHAT_PAGE, HOME_PAGE } from '../../../configuration/urls';
+import { Logo } from 'components/Icons/Logo/Logo';
+
 
 import { ISidebar } from './types';
 

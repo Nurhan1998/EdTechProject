@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 
-import { Logo } from 'components/Icons/components/Logo';
+import { Logo } from 'components/Icons/Logo/Logo';
 
 
 export const AuthContainer: FC = ({ children }) => {

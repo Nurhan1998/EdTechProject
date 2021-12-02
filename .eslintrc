@@ -167,7 +167,7 @@
             "position": "after"
           },
           {
-            "pattern": "configuration/*",
+            "pattern": "configuration/**",
             "group": "internal",
             "position": "after"
           },
