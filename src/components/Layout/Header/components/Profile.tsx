@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
-import { HOME_PAGE } from 'assets/consts/paths';
+
+import { HOME_PAGE } from '../../../../configuration/urls';
 
 
-const Profile = ():JSX.Element => {
+const Profile = (): JSX.Element => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -13,18 +14,18 @@ const Profile = ():JSX.Element => {
   const imagePath = undefined;
 
   // const handleClickOutside = (e: MouseEvent) => {
-  //   if (dropdownRef.current && dropdownRef.current.contains(e.target)){
+  //   if (dropdownRef.current && dropdownRef.current.contains(e.target)) {
   //     setVisible(false);
   //   }
   // };
   //
   // useEffect(() => {
-  //   if(visible){
-  //     document.addEventListener("mousedown", handleClickOutside);
+  //   if (visible) {
+  //     document.addEventListener('mousedown', handleClickOutside);
   //   }
   //   return () => {
-  //     if(visible){
-  //       document.removeEventListener("mousedown", handleClickOutside);
+  //     if (visible) {
+  //       document.removeEventListener('mousedown', handleClickOutside);
   //     }
   //   };
   // });
@@ -47,7 +48,7 @@ const Profile = ():JSX.Element => {
   return (
     <div className="header_profile__inner-wrapper" onClick={() => setVisible(!visible)}>
       <div className="header_profile__icon">
-        {imagePath ? <img src={imagePath} alt="avatar" /> : (
+        {imagePath ? <img src={imagePath} alt="avatar"/> : (
           <>
             {name.substr(0, 1).toUpperCase()}
             {surName.substr(0, 1).toUpperCase()}

@@ -1,9 +1,10 @@
-import { langBaseExample, locationBaseExample, socialBaseExample } from 'assets/consts/baseExample';
-
 import Select from 'components/Select';
 
+import { langBaseExample, locationBaseExample, socialBaseExample } from '../../../mocks/baseExample';
 
-const Actions = ():JSX.Element => (
+
+
+const Actions = (): JSX.Element => (
   <div className="home-page_actions__wrapper">
     <Select
       options={socialBaseExample}

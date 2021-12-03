@@ -8,6 +8,7 @@ const Banner = (): JSX.Element => {
   const [bannersState, setBannersState] = useState<string>('flex');
   const handleClose = (): void => setBannersState('none');
 
+
   return (
     <div className={`home-page_banner_${bannersState}`}>
       <button className="home-page_banner__close-button" onClick={handleClose}/>

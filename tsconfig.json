@@ -47,6 +47,9 @@
       ],
       "assets/*": [
         "./src/assets/*"
+      ],
+      "configuration/*": [
+        "./src/configuration/*"
       ]
     },
     "forceConsistentCasingInFileNames": true,

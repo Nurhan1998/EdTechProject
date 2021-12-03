@@ -1,14 +1,16 @@
 import { useEffect, useRef } from 'react';
 import cn from 'classnames';
-import { langBaseExample } from 'assets/consts/baseExample';
 
 import Select from 'components/Select';
+
+import { langBaseExample } from '../../../mocks/baseExample';
+
 
 import Profile from './components/Profile';
 import { IHeader } from './types';
 
 
-const Header = ({ className, setHeaderHeight, sidebarWidth }: IHeader):JSX.Element => {
+const Header = ({ className, setHeaderHeight, sidebarWidth }: IHeader): JSX.Element => {
   const headerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (headerRef?.current?.clientHeight) {
@@ -23,10 +25,10 @@ const Header = ({ className, setHeaderHeight, sidebarWidth }: IHeader):JSX.Eleme
     >
       <div className="header_inner-wrapper">
         <div className="header_action__wrapper">
-          <Select options={langBaseExample} />
+          <Select options={langBaseExample}/>
         </div>
         <div className="header_profile__wrapper">
-          <Profile />
+          <Profile/>
         </div>
       </div>
     </div>
