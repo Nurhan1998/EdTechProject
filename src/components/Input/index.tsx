@@ -36,11 +36,13 @@ const Input = ({
           className={cn('eye-password', {
             invisible: !isPasswordVisible,
             visible: isPasswordVisible,
+            dirty: error,
+            clean: !error,
           })}
           onClick={passwordToggleType}
         />
       )}
-      {error && <p className="error">{errorMessage}</p>}
+      {error && <p className="error">{Array.isArray(errorMessage) ? errorMessage[0] : errorMessage}</p>}
     </div>
   );
 };

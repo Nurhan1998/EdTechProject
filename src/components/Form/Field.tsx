@@ -1,11 +1,13 @@
 import { Fragment, memo } from 'react';
 
-import { IConfig, EFieldType } from 'components/Form/types';
+import { EFieldType, IConfig } from 'components/Form/types';
 import Input from 'components/Input';
 
 import { TFieldValue } from 'store/form/types';
 
 export interface IFieldProps {
+  error?: boolean;
+  errorMessage?: string | string[];
   field: IConfig;
   onChange: (e: TFieldValue) => void;
   value: TFieldValue;
@@ -13,7 +15,7 @@ export interface IFieldProps {
 }
 
 const Field = (props: IFieldProps): JSX.Element => {
-  const { field, onChange, value, disabled } = props;
+  const { field, onChange, value, disabled, error, errorMessage } = props;
   const {
     type,
     inputType,
@@ -24,18 +26,22 @@ const Field = (props: IFieldProps): JSX.Element => {
   } = field;
 
   switch (type) {
-  case EFieldType.TEXT: return (
-    <Input
-      type={inputType}
-      label={label}
-      placeholder={placeholder}
-      onChange={e => onChange(e.target.value)}
-      value={value || ''}
-      disabled={disabled || fieldDisabled}
-      className={className}
-    />
-  );
-  default: return <Fragment />;
+  case EFieldType.TEXT:
+    return (
+      <Input
+        errorMessage={errorMessage}
+        error={error}
+        type={inputType}
+        label={label}
+        placeholder={placeholder}
+        onChange={e => onChange(e.target.value)}
+        value={value || ''}
+        disabled={disabled || fieldDisabled}
+        className={className}
+      />
+    );
+  default:
+    return <Fragment/>;
   }
 };
 

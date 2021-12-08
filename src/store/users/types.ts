@@ -5,16 +5,36 @@ import { GetParamsFromSelectors, OutputSelector, SelectorResultArray } from 'res
 import { IApplicationState, ResponseGenericType, THandler } from 'store/types';
 
 
-export type TSignUpModel = {
+export type TSignInModel = {
   email: string;
   password: string;
-  confirm_password?: string;
 };
+
+export type TSignUpModel = TSignInModel & {
+  firstname: string;
+  lastname: string;
+  phone: string;
+  country?: string;
+  city?: string;
+}
 
 export type THSkillModel = {
   hskillid: string;
   name: string;
   value: string;
+}
+export type TLanguageModel = {
+  id: string;
+  name: string;
+}
+
+export interface IToken {
+  id: string;
+  token: string;
+  created: number;
+  expired: number;
+  refresh: number;
+  now: number;
 }
 
 export type TProfileModel = {
@@ -50,13 +70,13 @@ export type TProfileModel = {
   timezone: string;
 }
 
-export type TSignInResponseData = {
-  created: number;
-  expired: number;
-  id: string;
-  now: number;
-  refresh: number;
-  token: string;
+export type TSignUpResponseData = Omit<TProfileModel, 'is_admin' | 'notes'> & {
+  lastname: string;
+  languages: TLanguageModel[];
+  token: IToken
+}
+
+export type TSignInResponseData = IToken & {
   profile: TProfileModel
 }
 
@@ -66,16 +86,17 @@ export interface IUserState {
   signIn: ResponseGenericType<TRecordOfSignInResponseData>;
   token: string | null;
   profile: ResponseGenericType<RecordOf<TProfileModel>>;
+  signUp: ResponseGenericType<Record<string, string>>;// пока хз куда стучаться
 }
+
 export type TRecordOfUser = RecordOf<IUserState>;
 export type TSignInResponse = AxiosResponse<TSignInResponseData>
+export type TSignUpResponse = AxiosResponse<TSignUpResponseData>
 
-export type TSelectorReturnType<T> = OutputSelector<
-  [((state: IApplicationState) => TRecordOfUser)],
+export type TSelectorReturnType<T> = OutputSelector<[((state: IApplicationState) => TRecordOfUser)],
   T,
   (...args: SelectorResultArray<[((state: IApplicationState) => TRecordOfUser)]>) => T,
-  GetParamsFromSelectors<[((state: IApplicationState) => TRecordOfUser)]>
->;
+  GetParamsFromSelectors<[((state: IApplicationState) => TRecordOfUser)]>>;
 
 export type TUserStoreHandler<T> = THandler<TRecordOfUser, T>;
 

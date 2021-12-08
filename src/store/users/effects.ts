@@ -7,21 +7,24 @@ import request from 'api/index';
 import { HOME_PAGE } from 'configuration/urls';
 
 import {
-  SIGN_IN_REQUEST,
   GET_PROFILE_REQUEST,
+  getProfileFailure,
+  getProfileSuccess,
+  SIGN_IN_REQUEST,
+  SIGN_UP_REQUEST,
   signInFailure,
   signInSuccess,
-  getProfileSuccess,
-  getProfileFailure,
+  signUpFailure,
+  signUpSuccess,
 } from 'store/users/actions';
-import { TSignInResponse, TSignUpModel } from 'store/users/types';
+import { TSignInModel, TSignInResponse, TSignUpModel, TSignUpResponse, } from 'store/users/types';
 import { IPayloadAction } from 'store/types';
 
 import buildFormData from 'utils/formData';
 import { EStorageKeys, setStorageData } from 'utils/storageHelpers';
 
 
-function* SingIn(action: IPayloadAction<TSignUpModel>): Generator {
+function* SingIn(action: IPayloadAction<TSignInModel>): Generator {
   const form = buildFormData(action.payload);
   try {
     const response = yield call(
@@ -36,6 +39,26 @@ function* SingIn(action: IPayloadAction<TSignUpModel>): Generator {
     yield call(Router.push, HOME_PAGE);
   } catch (error) {
     yield put(signInFailure(error as AxiosError));
+  }
+}
+
+function* SignUp(action: IPayloadAction<TSignUpModel>): Generator {
+  const geo = { country: 'KG', city: 'Bishkek' };
+  const dataWithGeo = Object.assign(action.payload, geo);
+  const form = buildFormData(dataWithGeo);
+
+  try {
+    const response = yield call(
+      request.post,
+      '/user/',
+      form,
+    );
+    const { data } = response as TSignUpResponse;
+    yield call(setStorageData, EStorageKeys.TOKEN, data.token.token);
+    yield put(signUpSuccess(data));
+    yield call(Router.push, HOME_PAGE);
+  } catch (error) {
+    yield put(signUpFailure(error as AxiosError));
   }
 }
 
@@ -57,7 +80,8 @@ function* GetProfile(): Generator {
 function* Saga(): Generator {
   yield all([
     takeLatest(SIGN_IN_REQUEST, SingIn),
-    takeLatest(GET_PROFILE_REQUEST, GetProfile)
+    takeLatest(GET_PROFILE_REQUEST, GetProfile),
+    takeLatest(SIGN_UP_REQUEST, SignUp)
   ]);
 }
 

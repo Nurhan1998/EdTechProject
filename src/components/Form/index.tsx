@@ -2,7 +2,7 @@ import { FormEvent, FormEventHandler, memo, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
-import { IFormProps, EFormOrientation, IConfig } from 'components/Form/types';
+import { EFormOrientation, IConfig, IFormProps } from 'components/Form/types';
 
 import { selectFormValues } from 'store/form/selectors';
 import { setFormValue } from 'store/form/actions';
@@ -15,6 +15,7 @@ const Form = (props: IFormProps): JSX.Element => {
   const {
     name,
     loading,
+    errors,
     config,
     orientation = EFormOrientation.VERTICAL,
     className,
@@ -53,9 +54,11 @@ const Form = (props: IFormProps): JSX.Element => {
         const disabled = typeof item.disabledIf === 'function'
           ? item.disabledIf(formValues)
           : false;
-
+        const error = errors?.[item.name];
         return (
           <Field
+            error={!!error}
+            errorMessage={error}
             key={key}
             field={item}
             onChange={handleFieldChange(item.name)}

@@ -1,7 +1,10 @@
 import * as yup from 'yup';
 import { ObjectShape } from 'yup/lib/object';
 
+import { TFormValues } from 'store/form/types';
+
 import { stringRequiredWithEmail, stringYup, stringYupPassword } from 'utils/validation/index';
+import { getValidationErrors } from 'utils/getValidationErrors';
 
 const authValidation = (isSignUp: boolean): ObjectShape => {
   const schema: ObjectShape = {
@@ -14,4 +17,7 @@ const authValidation = (isSignUp: boolean): ObjectShape => {
   return schema;
 };
 
-export const schemaAuth = (isSignUp: boolean): unknown => yup.object().shape(authValidation(isSignUp));
+export const authValidate = (isSignUp: boolean, values: TFormValues): Promise<Record<string, string>> =>
+  yup.object().shape(authValidation(isSignUp)).validate(values, { abortEarly: false })
+    .then(res => res)
+    .catch(errors => getValidationErrors(errors));
