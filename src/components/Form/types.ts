@@ -30,14 +30,11 @@ export interface IConfig {
   className?: string;
 }
 
-export type TFormErrors = Record<string, string | string[]>
-
 export interface IFormProps {
   name: string;
   config: Array<IConfig>;
   className?: string;
   loading?: boolean;
-  errors: TFormErrors;
   orientation?: EFormOrientation;
   actionsAnchor?: HTMLElement;
 }

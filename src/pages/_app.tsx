@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { AppPropsType } from 'next/dist/shared/lib/utils';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { SIGN_IN, HOME_PAGE } from 'configuration/urls';
+import { HOME_PAGE, SIGN_IN } from 'configuration/urls';
 
 import { wrapper } from 'store/index';
 import { makeSelectToken } from 'store/users/selectors';
@@ -32,7 +32,7 @@ const App: NextPage<AppPropsType> = props => {
         }
         dispatch(getProfileRequest());
       } else {
-        router.push(SIGN_IN);
+        // router.push(SIGN_IN);
       }
     },
     // Need to call this effect only once at render

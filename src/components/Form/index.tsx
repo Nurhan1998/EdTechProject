@@ -1,12 +1,14 @@
-import { FormEvent, FormEventHandler, memo, useMemo } from 'react';
+import { FormEvent, FormEventHandler, memo, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
 import { EFormOrientation, IConfig, IFormProps } from 'components/Form/types';
 
-import { selectFormValues } from 'store/form/selectors';
-import { setFormValue } from 'store/form/actions';
+import { makeSelectFormError, makeSelectFormValues } from 'store/form/selectors';
+import { setFormError, setFormValue } from 'store/form/actions';
 import { TFieldValue } from 'store/form/types';
+
+import { signInValidate } from 'utils/validation/signIn';
 
 import Field from './Field';
 
@@ -15,13 +17,13 @@ const Form = (props: IFormProps): JSX.Element => {
   const {
     name,
     loading,
-    errors,
     config,
     orientation = EFormOrientation.VERTICAL,
     className,
   } = props;
   const dispatch = useDispatch();
-  const formValues = useSelector(selectFormValues(name));
+  const formErrors = useSelector(makeSelectFormError(name));
+  const formValues = useSelector(makeSelectFormValues(name));
 
   const handleSubmit = (e: FormEventHandler<HTMLFormElement> & FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,6 +45,21 @@ const Form = (props: IFormProps): JSX.Element => {
     [config, formValues],
   );
 
+  useEffect(
+    () => {
+      const error = signInValidate(formValues) ? {} : signInValidate(formValues);
+      if (!error || formValues) {
+        dispatch(setFormError({
+          form: name,
+          error,
+        }));
+      }
+    },
+    // We should re-validate only when formValues changes
+    // eslint-disable-next-line
+    [formValues],
+  );
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -54,7 +71,7 @@ const Form = (props: IFormProps): JSX.Element => {
         const disabled = typeof item.disabledIf === 'function'
           ? item.disabledIf(formValues)
           : false;
-        const error = errors?.[item.name];
+        const error = formErrors?.[item.name];
         return (
           <Field
             error={!!error}
@@ -70,5 +87,6 @@ const Form = (props: IFormProps): JSX.Element => {
     </form>
   );
 };
+
 
 export default memo(Form);

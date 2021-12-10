@@ -1,6 +1,6 @@
 type TBuildFormData = (value: Record<string, string | File | undefined>) => FormData;
 
-const buildFormData: TBuildFormData = values => {
+const buildFormData: TBuildFormData = (values: Record<string, string | File | undefined>) => {
   const formData = new FormData();
   for (const key of Object.keys(values)) {
     const value = values[key];

@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { EColors } from 'configuration/Colors';
+
 import { Button } from 'components/Button';
-import AuthLayout from 'components/AuthLayout';
 import Form from 'components/Form';
+import AuthLayout from 'components/Layout/Auth';
 
 import { makeSelectSignInFetching } from 'store/users/selectors';
 import { initForm, removeForm } from 'store/form/actions';
-import { selectFormValues } from 'store/form/selectors';
+import { makeSelectFormValues } from 'store/form/selectors';
 import { signInRequest } from 'store/users/actions';
 
-import { authValidate } from 'utils/validation/authValidation';
+import { signInValidate } from 'utils/validation/signIn';
 
 import { SIGN_IN_FORM } from './form/constants';
 import config from './form/config';
@@ -19,8 +21,8 @@ import config from './form/config';
 const SignIn = (): JSX.Element => {
   const dispatch = useDispatch();
   const signInFetching = useSelector(makeSelectSignInFetching);
-  const formValues = useSelector(selectFormValues(SIGN_IN_FORM));
-  const [errors, setErrors] = useState({});
+  const formValues = useSelector(makeSelectFormValues(SIGN_IN_FORM));
+  const [isStudent] = useState<boolean>(true);
 
   const signIn = (): void => {
     const email = formValues.email as string;
@@ -29,8 +31,9 @@ const SignIn = (): JSX.Element => {
   };
 
   useEffect(() => {
-    authValidate(false, formValues).then(res => setErrors(res));
-  }, []);
+    signInValidate(formValues);
+  }, [formValues]);
+
 
   useEffect(
     () => {
@@ -44,15 +47,14 @@ const SignIn = (): JSX.Element => {
     []
   );
 
-
   return (
-    <AuthLayout>
+    <AuthLayout isStudent={isStudent}>
       <Form
-        errors={errors}
         name={SIGN_IN_FORM}
         config={config}
       />
       <Button
+        style={{ backgroundColor: isStudent ? EColors.MOST_GREEN : EColors.MOST_BLUE }}
         disabled={signInFetching}
         onClick={signIn}
         text="Sign in"
@@ -60,5 +62,6 @@ const SignIn = (): JSX.Element => {
     </AuthLayout>
   );
 };
+
 
 export default SignIn;

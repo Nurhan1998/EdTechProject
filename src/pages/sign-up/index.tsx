@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { isEmpty } from 'lodash';
+
+import { EColors } from 'configuration/Colors';
 
 import { Button } from 'components/Button';
-import AuthLayout from 'components/AuthLayout';
 import Form from 'components/Form';
-
+import AuthLayout from 'components/Layout/Auth';
 
 import { makeSelectSignInFetching } from 'store/users/selectors';
 import { initForm, removeForm } from 'store/form/actions';
-import { selectFormValues } from 'store/form/selectors';
 import { signUpRequest } from 'store/users/actions';
-import { TSignUpModel } from 'store/users/types';
-
-import { authValidate } from 'utils/validation/authValidation';
+import { TSignUp } from 'store/users/types';
+import { makeSelectFormValues } from 'store/form/selectors';
 
 import { SIGN_UP_FORM } from './form/constants';
 import config from './form/config';
@@ -22,18 +20,13 @@ import config from './form/config';
 const SignUp = (): JSX.Element => {
   const dispatch = useDispatch();
   const signInFetching = useSelector(makeSelectSignInFetching);
-  const formValues = useSelector(selectFormValues(SIGN_UP_FORM));
-  const [errors, setErrors] = useState({});
-  const signUp = (): void => {
-    if (!isEmpty(errors)) {
-      delete formValues.confirm_password;
-      dispatch(signUpRequest(formValues as TSignUpModel));
-    }
-  };
+  const formValues = useSelector(makeSelectFormValues(SIGN_UP_FORM));
+  const [isStudent] = useState<boolean>(false);
 
-  useEffect(() => {
-    authValidate(true, formValues).then(res => setErrors(res));
-  }, []);
+  const signUp = (): void => {
+    delete formValues.confirm_password;
+    dispatch(signUpRequest(formValues as unknown as TSignUp));
+  };
 
   useEffect(
     () => {
@@ -49,13 +42,13 @@ const SignUp = (): JSX.Element => {
 
 
   return (
-    <AuthLayout>
+    <AuthLayout isStudent={isStudent}>
       <Form
-        errors={errors}
         name={SIGN_UP_FORM}
         config={config}
       />
       <Button
+        style={{ backgroundColor: isStudent ? EColors.MOST_GREEN : EColors.MOST_BLUE }}
         disabled={signInFetching}
         onClick={signUp}
         text="Sign up"

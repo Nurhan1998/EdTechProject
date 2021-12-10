@@ -2,7 +2,14 @@ import { fromJS } from 'immutable';
 
 import { IConfig } from 'components/Form/types';
 
-import { CLEAR_FORM, INIT_FORM, REMOVE_FORM, SET_FORM_INITIAL_VALUES, SET_FORM_VALUE } from 'store/form/actions';
+import {
+  CLEAR_FORM,
+  INIT_FORM,
+  REMOVE_FORM,
+  SET_FORM_ERROR,
+  SET_FORM_INITIAL_VALUES,
+  SET_FORM_VALUE
+} from 'store/form/actions';
 
 import createReducer from 'utils/createReducer';
 import normalizeFormFields from 'utils/normalizeFormFields';
@@ -11,10 +18,11 @@ import {
   IFormMeta,
   IFormPayload,
   IInitFormAction,
+  ISetFieldErrorAction,
   ISetFieldValueAction,
   ISetInitValuesFormAction,
   TFormState,
-  TFormStateHandler
+  TFormStateHandler,
 } from './types';
 
 const initialState: TFormState = fromJS({});
@@ -24,7 +32,8 @@ const initForm: TFormStateHandler<IInitFormAction> = (state, action) => {
   if (state.has(form)) return state;
   return state.set(form, fromJS({
     _META: { config },
-    values: normalizeFormFields(config)
+    values: normalizeFormFields(config),
+    errors: {},
   }));
 };
 
@@ -68,10 +77,18 @@ const setFormInitialValues: TFormStateHandler<ISetInitValuesFormAction> = (state
   }));
 };
 
+const setFieldError: TFormStateHandler<ISetFieldErrorAction> = (state, action) => {
+  const { form, error } = action.payload;
+  if (!state.has(form)) return state;
+  return state.setIn([form, 'errors'], fromJS(error));
+};
+
+
 export default createReducer<TFormState>(initialState, {
   [INIT_FORM]: initForm,
   [SET_FORM_VALUE]: setFieldValue,
   [CLEAR_FORM]: clearForm,
   [REMOVE_FORM]: removeForm,
-  [SET_FORM_INITIAL_VALUES]: setFormInitialValues
+  [SET_FORM_INITIAL_VALUES]: setFormInitialValues,
+  [SET_FORM_ERROR]: setFieldError,
 });
