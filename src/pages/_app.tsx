@@ -28,7 +28,7 @@ const App: NextPage<AppPropsType> = props => {
     () => {
       if (token) {
         if (router.pathname === SIGN_IN) {
-          // router.push(HOME_PAGE);
+          router.push(HOME_PAGE);
         }
         dispatch(getProfileRequest());
       } else {
