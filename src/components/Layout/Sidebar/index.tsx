@@ -1,6 +1,5 @@
 import { FC, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import cn from 'classnames';
 import { useRouter } from 'next/router';
 
 import { CHAT_PAGE, HOME_PAGE } from 'configuration/urls';
@@ -35,15 +34,17 @@ const Sidebar: FC<ISidebar> = ({ setSidebarWidth }): JSX.Element => {
           </Link>
         </div>
         <div className="sidebar_links__wrapper">
-          <div className={cn('sidebar_links__item', { active: isMenuActive(HOME_PAGE) })}>
-            <Link href={HOME_PAGE}>
-              <a>
-                Dashboard
-              </a>
-            </Link>
-          </div>
-          <LinkItem name="Chat" path={CHAT_PAGE} iconName="dashboard" isActive={isMenuActive(CHAT_PAGE)}/>
-          
+          <LinkItem path={HOME_PAGE} isActive={isMenuActive(HOME_PAGE)} iconName="home" name="Dashboard"/>
+          {/*<div className={cn('sidebar_links__item', { active: isMenuActive(HOME_PAGE) })}>*/}
+          {/*  <Link href={HOME_PAGE}>*/}
+          {/*    <a>*/}
+          {/*      Dashboard*/}
+          {/*    </a>*/}
+          {/*  </Link>*/}
+          {/*</div>*/}
+
+
+          <LinkItem name="Chat" path={CHAT_PAGE} iconName="Dashboard" isActive={isMenuActive(CHAT_PAGE)}/>
         </div>
       </div>
     </div>

@@ -1,11 +1,9 @@
 import { Fragment, memo } from 'react';
-import { useSelector } from 'react-redux';
 
 import { EFieldType, IConfig } from 'components/Form/types';
 import Input from 'components/Input';
 
 import { TFieldValue } from 'store/form/types';
-import { makeSelectFormFieldError } from 'store/form/selectors';
 
 export interface IFieldProps {
   form: string;
@@ -16,7 +14,7 @@ export interface IFieldProps {
 }
 
 const Field = (props: IFieldProps): JSX.Element => {
-  const { form, field, onChange, value, disabled } = props;
+  const { field, onChange, value, disabled } = props;
   const {
     type,
     inputType,
@@ -24,10 +22,8 @@ const Field = (props: IFieldProps): JSX.Element => {
     placeholder,
     disabled: fieldDisabled,
     className,
-    name,
   } = field;
 
-  const error: string | string[] | undefined = useSelector(makeSelectFormFieldError(form, name));
 
   switch (type) {
   case EFieldType.TEXT:
