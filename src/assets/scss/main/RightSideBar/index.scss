@@ -1,0 +1,19 @@
+.right-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 320px;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
+
+  &_inner {
+    height: 100%;
+    width: 300px;
+    border-radius: $border-radius-bs;
+    background-color: $alabaster;
+    box-shadow: $bsBoxShadow;
+    z-index: $zIndexSidebar;
+  }
+}

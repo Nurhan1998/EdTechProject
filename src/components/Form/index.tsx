@@ -4,11 +4,9 @@ import cn from 'classnames';
 
 import { EFormOrientation, IConfig, IFormProps } from 'components/Form/types';
 
-import { makeSelectFormError, makeSelectFormValues } from 'store/form/selectors';
+import { makeSelectFormValues } from 'store/form/selectors';
 import { setFormError, setFormValue } from 'store/form/actions';
 import { TFieldValue } from 'store/form/types';
-
-import { signInValidate } from 'utils/validation/signIn';
 
 import Field from './Field';
 
@@ -20,9 +18,9 @@ const Form = (props: IFormProps): JSX.Element => {
     config,
     orientation = EFormOrientation.VERTICAL,
     className,
+    validateFn
   } = props;
   const dispatch = useDispatch();
-  const formErrors = useSelector(makeSelectFormError(name));
   const formValues = useSelector(makeSelectFormValues(name));
 
   const handleSubmit = (e: FormEventHandler<HTMLFormElement> & FormEvent<HTMLFormElement>) => {
@@ -47,11 +45,10 @@ const Form = (props: IFormProps): JSX.Element => {
 
   useEffect(
     () => {
-      const error = signInValidate(formValues) ? {} : signInValidate(formValues);
-      if (!error || formValues) {
+      if (validateFn) {
         dispatch(setFormError({
           form: name,
-          error,
+          error: validateFn(formValues),
         }));
       }
     },
@@ -71,11 +68,9 @@ const Form = (props: IFormProps): JSX.Element => {
         const disabled = typeof item.disabledIf === 'function'
           ? item.disabledIf(formValues)
           : false;
-        const error = formErrors?.[item.name];
         return (
           <Field
-            error={!!error}
-            errorMessage={error}
+            form={name}
             key={key}
             field={item}
             onChange={handleFieldChange(item.name)}

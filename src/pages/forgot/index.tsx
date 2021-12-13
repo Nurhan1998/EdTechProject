@@ -21,7 +21,7 @@ const ForgotPassword = (): JSX.Element => {
   const dispatch = useDispatch();
   const forgotPasswordFetching = useSelector(makeSelectForgotPasswordFetching);
   const formValues = useSelector(makeSelectFormValues(FORGOT_PASSWORD_FORM));
-  const [isStudent] = useState(true);
+  const [isStudent] = useState(false);
 
   const getPassword = () => {
     const email = formValues.email as string;

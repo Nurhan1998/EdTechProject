@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import cn from 'classnames';
 
-import { TInputProps } from 'components/Input/types';
+import { IMostInputProps } from 'components/Input/types';
 
 const Input = ({
   error,
-  errorMessage,
   label,
-  type = 'text',
-  className,
-  ...props
-}: TInputProps): JSX.Element => {
+  inputProps,
+}: IMostInputProps): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { type, className } = inputProps;
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const [fieldType, setFieldType] = useState<string>(type);
+  const [fieldType, setFieldType] = useState<string>(type || 'text');
 
   const passwordToggleType = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -26,23 +26,24 @@ const Input = ({
   return (
     <div className="input-wrapper">
       <p className="input-wrapper_label"> {label}</p>
-      <input
-        {...props}
-        className={cn('input-wrapper_input', className)}
-        type={fieldType}
-      />
+      {type === 'search' ? (<div>test</div>) : (
+        <input
+          {...inputProps}
+          className={cn('input-wrapper_input', className)}
+          type={fieldType}
+        />)}
       {type === 'password' && (
         <span
           className={cn('eye-password', {
             invisible: !isPasswordVisible,
             visible: isPasswordVisible,
-            dirty: error,
+            dirty: !!error,
             clean: !error,
           })}
           onClick={passwordToggleType}
         />
       )}
-      {error && <p className="error">{Array.isArray(errorMessage) ? errorMessage[0] : errorMessage}</p>}
+      {error && <p className="error">{Array.isArray(error) ? error[0] : error}</p>}
     </div>
   );
 };

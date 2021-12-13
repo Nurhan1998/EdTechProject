@@ -2,6 +2,8 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 
+import MostBell from 'components/Icons/MostBell';
+
 import { HOME_PAGE } from '../../../../configuration/urls';
 
 
@@ -56,10 +58,11 @@ const Profile = (): JSX.Element => {
         )}
       </div>
       <div className="header_profile__title">
-        <span>Hello,{' '}</span>
-        {name}{' '}
+        <span>Hello,&nbsp;</span>
+        {name}&nbsp;
         {surName}
       </div>
+      <MostBell/>
       {visible && dropdownMenu}
     </div>
   );

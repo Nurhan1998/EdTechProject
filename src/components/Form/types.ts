@@ -37,4 +37,5 @@ export interface IFormProps {
   loading?: boolean;
   orientation?: EFormOrientation;
   actionsAnchor?: HTMLElement;
+  validateFn?: (values: TFormValues) => Record<string, string>;
 }
