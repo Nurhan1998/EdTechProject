@@ -34,7 +34,7 @@ export interface ISetFieldValueAction extends IFormPayload {
 }
 
 export interface ISetFieldErrorAction extends IFormPayload {
-  error: Record<string, string | string[]> | boolean;
+  error: Record<string, string | string[]>;
 }
 
 export interface ISetInitValuesFormAction extends IFormPayload {

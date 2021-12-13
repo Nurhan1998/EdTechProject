@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import cn from 'classnames';
 
-import { TInputProps } from 'components/Input/types';
+import { IInputProps } from 'components/Input/types';
 
 const Input = ({
   error,
-  errorMessage,
   label,
-  type = 'text',
-  className,
-  ...props
-}: TInputProps): JSX.Element => {
+  inputProps
+}: IInputProps): JSX.Element => {
+  const { className, type } = inputProps;
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const [fieldType, setFieldType] = useState<string>(type);
+  const [fieldType, setFieldType] = useState<string>(type || 'text');
 
   const passwordToggleType = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -27,7 +25,7 @@ const Input = ({
     <div className="input-wrapper">
       <p className="input-wrapper_label"> {label}</p>
       <input
-        {...props}
+        {...inputProps}
         className={cn('input-wrapper_input', className)}
         type={fieldType}
       />
@@ -42,7 +40,7 @@ const Input = ({
           onClick={passwordToggleType}
         />
       )}
-      {error && <p className="error">{Array.isArray(errorMessage) ? errorMessage[0] : errorMessage}</p>}
+      {error && <p className="error">{Array.isArray(error) ? error[0] : error}</p>}
     </div>
   );
 };

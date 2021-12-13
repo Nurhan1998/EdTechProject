@@ -13,10 +13,10 @@ const schema: ObjectShape = {
 };
 
 
-export const signInValidate = (values: TFormValues): Record<string, string | string[]> | boolean => {
+export const signInValidate = (values: TFormValues): Record<string, string | string[]> => {
   try {
     yup.object().shape(schema).validateSync(values, { abortEarly: false });
-    return true;
+    return {};
   } catch (error) {
     return getValidationErrors(error as ValidationError);
   }

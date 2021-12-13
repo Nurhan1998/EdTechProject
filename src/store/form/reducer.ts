@@ -33,7 +33,7 @@ const initForm: TFormStateHandler<IInitFormAction> = (state, action) => {
   return state.set(form, fromJS({
     _META: { config },
     values: normalizeFormFields(config),
-    errors: {},
+    errors: null,
   }));
 };
 

@@ -1,14 +1,13 @@
 import { FormEvent, FormEventHandler, memo, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import isEmpty from 'lodash/isEmpty';
 import cn from 'classnames';
 
 import { EFormOrientation, IConfig, IFormProps } from 'components/Form/types';
 
-import { makeSelectFormError, makeSelectFormValues } from 'store/form/selectors';
+import { makeSelectFormValues } from 'store/form/selectors';
 import { setFormError, setFormValue } from 'store/form/actions';
 import { TFieldValue } from 'store/form/types';
-
-import { signInValidate } from 'utils/validation/signIn';
 
 import Field from './Field';
 
@@ -20,9 +19,9 @@ const Form = (props: IFormProps): JSX.Element => {
     config,
     orientation = EFormOrientation.VERTICAL,
     className,
+    validateFn,
   } = props;
   const dispatch = useDispatch();
-  const formErrors = useSelector(makeSelectFormError(name));
   const formValues = useSelector(makeSelectFormValues(name));
 
   const handleSubmit = (e: FormEventHandler<HTMLFormElement> & FormEvent<HTMLFormElement>) => {
@@ -47,17 +46,18 @@ const Form = (props: IFormProps): JSX.Element => {
 
   useEffect(
     () => {
-      const error = signInValidate(formValues) ? {} : signInValidate(formValues);
-      if (!error || formValues) {
+      if (validateFn && !isEmpty(formValues)) {
+        const error = validateFn(formValues);
         dispatch(setFormError({
           form: name,
           error,
         }));
       }
     },
+    // there should be 'formValues' in deps
     // We should re-validate only when formValues changes
     // eslint-disable-next-line
-    [formValues],
+    [],
   );
 
   return (
@@ -71,11 +71,9 @@ const Form = (props: IFormProps): JSX.Element => {
         const disabled = typeof item.disabledIf === 'function'
           ? item.disabledIf(formValues)
           : false;
-        const error = formErrors?.[item.name];
         return (
           <Field
-            error={!!error}
-            errorMessage={error}
+            form={name}
             key={key}
             field={item}
             onChange={handleFieldChange(item.name)}

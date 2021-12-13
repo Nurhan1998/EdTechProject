@@ -50,6 +50,7 @@ const SignIn = (): JSX.Element => {
   return (
     <AuthLayout isStudent={isStudent}>
       <Form
+        validateFn={signInValidate}
         name={SIGN_IN_FORM}
         config={config}
       />

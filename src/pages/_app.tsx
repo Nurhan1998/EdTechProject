@@ -28,11 +28,11 @@ const App: NextPage<AppPropsType> = props => {
     () => {
       if (token) {
         if (router.pathname === SIGN_IN) {
-          router.push(HOME_PAGE);
+          // router.push(HOME_PAGE);
         }
         dispatch(getProfileRequest());
       } else {
-        // router.push(SIGN_IN);
+        router.push(SIGN_IN);
       }
     },
     // Need to call this effect only once at render
