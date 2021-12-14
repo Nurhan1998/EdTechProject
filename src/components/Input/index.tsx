@@ -2,6 +2,7 @@ import { useState } from 'react';
 import cn from 'classnames';
 
 import { IMostInputProps } from 'components/Input/types';
+import Search from 'components/Icons/Search';
 
 const Input = ({
   error,
@@ -26,21 +27,37 @@ const Input = ({
   return (
     <div className="input-wrapper">
       <p className="input-wrapper_label"> {label}</p>
-      {type === 'search' ? (<div>test</div>) : (
+      {type === 'search' ? (
+        <>
+          <span className="search-icon"><Search/></span>
+          <input
+            {...inputProps}
+            className={cn('input-wrapper_search', className)}
+            type={fieldType}
+          />
+        </>
+      ) : type === 'password' ? (
+        <>
+          <input
+            {...inputProps}
+            className={cn('input-wrapper_input', className)}
+            type={fieldType}
+          />
+          <span
+            className={cn('eye-password', {
+              invisible: !isPasswordVisible,
+              visible: isPasswordVisible,
+              dirty: !!error,
+              clean: !error,
+            })}
+            onClick={passwordToggleType}
+          />
+        </>
+      ) : (
         <input
           {...inputProps}
           className={cn('input-wrapper_input', className)}
           type={fieldType}
-        />)}
-      {type === 'password' && (
-        <span
-          className={cn('eye-password', {
-            invisible: !isPasswordVisible,
-            visible: isPasswordVisible,
-            dirty: !!error,
-            clean: !error,
-          })}
-          onClick={passwordToggleType}
         />
       )}
       {error && <p className="error">{Array.isArray(error) ? error[0] : error}</p>}

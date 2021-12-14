@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
 
-import MostBell from 'components/Icons/MostBell';
+import MostBell from 'components/Icons/Header/MostBell';
 
 import { HOME_PAGE } from '../../../../configuration/urls';
 

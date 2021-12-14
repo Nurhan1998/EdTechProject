@@ -16,7 +16,6 @@ const schema: ObjectShape = {
 export const signInValidate = (values: TFormValues): Record<string, string | string[]> | boolean => {
   try {
     yup.object().shape(schema).validateSync(values, { abortEarly: false });
-    console.log(yup.object().shape(schema).validateSync(values, { abortEarly: false }));
     return true;
   } catch (error) {
     return getValidationErrors(error as ValidationError);

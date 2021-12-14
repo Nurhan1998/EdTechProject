@@ -1,17 +1,20 @@
-import { FC, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { CHAT_PAGE, HOME_PAGE } from 'configuration/urls';
+import { HOME_PAGE } from 'configuration/urls';
 
 
-import SidebarLogo from 'components/Icons/SidebarLogo';
+import SidebarLogo from 'components/Icons/Sidebar/SidebarLogo';
 import LinkItem from 'components/Layout/Sidebar/components/LinkItem';
+import Input from 'components/Input';
+
+import { SidebarList } from '../../../mocks/sidebarRoutes';
 
 import { ISidebar } from './types';
 
 
-const Sidebar: FC<ISidebar> = ({ setSidebarWidth }): JSX.Element => {
+const Sidebar = ({ setSidebarWidth }: ISidebar): JSX.Element => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -33,18 +36,19 @@ const Sidebar: FC<ISidebar> = ({ setSidebarWidth }): JSX.Element => {
             </a>
           </Link>
         </div>
+        <div className="sidebar_search-wrapper">
+          <Input inputProps={{ type: 'search', placeholder: 'Search' }}/>
+        </div>
         <div className="sidebar_links__wrapper">
-          <LinkItem path={HOME_PAGE} isActive={isMenuActive(HOME_PAGE)} iconName="home" name="Dashboard"/>
-          {/*<div className={cn('sidebar_links__item', { active: isMenuActive(HOME_PAGE) })}>*/}
-          {/*  <Link href={HOME_PAGE}>*/}
-          {/*    <a>*/}
-          {/*      Dashboard*/}
-          {/*    </a>*/}
-          {/*  </Link>*/}
-          {/*</div>*/}
-
-
-          <LinkItem name="Chat" path={CHAT_PAGE} iconName="Dashboard" isActive={isMenuActive(CHAT_PAGE)}/>
+          {SidebarList.map(({ path, name, icon }, idx) => (
+            <LinkItem
+              key={`${path}_${idx}`}
+              path={path}
+              isActive={isMenuActive(path)}
+              icon={icon}
+              name={name}
+            />
+          ))}
         </div>
       </div>
     </div>
