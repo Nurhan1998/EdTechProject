@@ -7,7 +7,7 @@ import { TFormValues } from 'store/form/types';
 import { stringRequiredWithEmail, stringYupPassword } from 'utils/validation/index';
 import { getValidationErrors } from 'utils/getValidationErrors';
 
-const schema: ObjectShape = {
+export const schema: ObjectShape = {
   email: stringRequiredWithEmail,
   password: stringYupPassword,
 };

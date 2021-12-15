@@ -26,8 +26,8 @@ const Field = (props: IFieldProps): JSX.Element => {
     disabled: fieldDisabled,
     className,
   } = field;
-
   const error = useSelector(makeSelectFormFieldError(form, name));
+
   switch (type) {
   case EFieldType.TEXT:
     return (

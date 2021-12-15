@@ -2,7 +2,7 @@ import { InputHTMLAttributes } from 'react';
 
 export interface IInputProps {
   label?: string;
-  error?: string | string[] | undefined;
+  error?: string[];
   inputProps: InputHTMLAttributes<HTMLInputElement>
 }
 

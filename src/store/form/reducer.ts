@@ -15,7 +15,6 @@ import createReducer from 'utils/createReducer';
 import normalizeFormFields from 'utils/normalizeFormFields';
 
 import {
-  IFormMeta,
   IFormPayload,
   IInitFormAction,
   ISetFieldErrorAction,
@@ -59,28 +58,19 @@ const removeForm: TFormStateHandler<IFormPayload> = (state, action) => {
 const setFormInitialValues: TFormStateHandler<ISetInitValuesFormAction> = (state, action) => {
   const { form, instance } = action.payload;
   if (!state.has(form)) return state;
-  const _form = state.get(form).toJS();
-  const { config }: IFormMeta = _form._META;
-
-  const data = config.reduce(
-    (memo, curr) => {
-      const value = instance[curr.name];
-      if (!value) return memo;
-      return Object.assign(memo, { [curr.name]: value });
-    },
-    {}
+  return state.updateIn(
+    [form, 'values'],
+    prevState => ({
+      ...prevState,
+      ...instance,
+    })
   );
-
-  return state.set(form, fromJS({
-    _META: _form._META,
-    ...data
-  }));
 };
 
 const setFieldError: TFormStateHandler<ISetFieldErrorAction> = (state, action) => {
   const { form, error } = action.payload;
   if (!state.has(form)) return state;
-  return state.setIn([form, 'errors'], fromJS(error));
+  return state.setIn([form, 'errors'], error);
 };
 
 

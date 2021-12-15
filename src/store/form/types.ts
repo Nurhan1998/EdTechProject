@@ -1,5 +1,6 @@
 import { RecordOf } from 'immutable';
 import { GetParamsFromSelectors, OutputSelector, SelectorResultArray } from 'reselect';
+import { ObjectShape } from 'yup/lib/object';
 
 import { IConfig } from 'components/Form/types';
 
@@ -31,6 +32,7 @@ export interface IInitFormAction extends IFormPayload {
 export interface ISetFieldValueAction extends IFormPayload {
   field: string;
   value: TFieldValue;
+  validateSchema?: ObjectShape;
 }
 
 export interface ISetFieldErrorAction extends IFormPayload {

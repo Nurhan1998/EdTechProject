@@ -8,7 +8,7 @@ const Input = ({
   label,
   inputProps
 }: IInputProps): JSX.Element => {
-  const { className, type } = inputProps;
+  const { className, type, value } = inputProps;
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [fieldType, setFieldType] = useState<string>(type || 'text');
 
@@ -23,7 +23,7 @@ const Input = ({
 
   return (
     <div className="input-wrapper">
-      <p className="input-wrapper_label"> {label}</p>
+      <p className="input-wrapper_label">{label}</p>
       <input
         {...inputProps}
         className={cn('input-wrapper_input', className)}
@@ -40,7 +40,9 @@ const Input = ({
           onClick={passwordToggleType}
         />
       )}
-      {error && <p className="error">{Array.isArray(error) ? error[0] : error}</p>}
+      {(error && value) && error.map((item, idx) => (
+        <p className="error" key={idx}>{item}</p>
+      ))}
     </div>
   );
 };

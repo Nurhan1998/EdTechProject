@@ -12,7 +12,7 @@ import { initForm, removeForm } from 'store/form/actions';
 import { makeSelectFormValues } from 'store/form/selectors';
 import { signInRequest } from 'store/users/actions';
 
-import { signInValidate } from 'utils/validation/signIn';
+import { schema } from 'utils/validation/signIn';
 
 import { SIGN_IN_FORM } from './form/constants';
 import config from './form/config';
@@ -30,11 +30,6 @@ const SignIn = (): JSX.Element => {
     dispatch(signInRequest({ email, password }));
   };
 
-  useEffect(() => {
-    signInValidate(formValues);
-  }, [formValues]);
-
-
   useEffect(
     () => {
       dispatch(initForm({ form: SIGN_IN_FORM, config }));
@@ -50,7 +45,7 @@ const SignIn = (): JSX.Element => {
   return (
     <AuthLayout isStudent={isStudent}>
       <Form
-        validateFn={signInValidate}
+        validateSchema={schema}
         name={SIGN_IN_FORM}
         config={config}
       />
