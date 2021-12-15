@@ -1,24 +1,29 @@
 import Select from 'components/Select';
 
-import { langBaseExample, locationBaseExample, socialBaseExample } from '../../../mocks/baseExample';
+import { langBaseExample, locationBaseExample, professions, socialBaseExample } from '../../../mocks/baseExample';
 
 
 
 const Actions = (): JSX.Element => (
   <div className="home-page_actions__wrapper">
     <Select
+      label="Profession"
+      options={professions}
+      className="home-page_actions__item"
+    />
+    <Select
       options={socialBaseExample}
-      label="Search by hard skill"
+      label="Hard skill"
       className="home-page_actions__item"
     />
     <Select
       options={locationBaseExample}
-      label="Search by location"
+      label="Location"
       className="home-page_actions__item"
     />
     <Select
       options={langBaseExample}
-      label="Search by language"
+      label="Language"
       className="home-page_actions__item"
     />
   </div>

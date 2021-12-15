@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { AppPropsType } from 'next/dist/shared/lib/utils';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { SIGN_IN } from 'configuration/urls';
+import { HOME_PAGE, SIGN_IN } from 'configuration/urls';
 
 import { wrapper } from 'store/index';
 import { makeSelectToken } from 'store/users/selectors';

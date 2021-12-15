@@ -3,10 +3,11 @@ export interface IUserCard {
   avatar: string;
   name: string;
   surName: string;
-  hardSkill: string;
-  statusHardSkill: number;
-  softSkill: string;
-  statusSoftSkill: number;
+  hardSkill: number;
+  softSkill: number;
+  likesCount: number;
+  skillName: string;
+  progressbarColor?: string;
 }
 
 export type TBannerCardProps = {
