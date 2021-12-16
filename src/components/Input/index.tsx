@@ -2,7 +2,7 @@ import { useState } from 'react';
 import cn from 'classnames';
 
 import { IMostInputProps } from 'components/Input/types';
-import Search from 'components/Icons/Search';
+import { SearchInput } from 'components/Input/components/SearchInput';
 
 const Input = ({
   error,
@@ -28,14 +28,7 @@ const Input = ({
     <div className="input-wrapper">
       <p className="input-wrapper_label"> {label}</p>
       {type === 'search' ? (
-        <>
-          <span className="search-icon"><Search/></span>
-          <input
-            {...inputProps}
-            className={cn('input-wrapper_search', className)}
-            type={fieldType}
-          />
-        </>
+        <SearchInput {...inputProps}/>
       ) : type === 'password' ? (
         <>
           <input

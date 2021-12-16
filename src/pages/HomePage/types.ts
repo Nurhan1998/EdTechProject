@@ -10,10 +10,9 @@ export interface IUserCard {
   progressbarColor?: string;
 }
 
-export type TBannerCardProps = {
-  color: string;
-  headerText: string;
-  centerText: string;
+export interface IBannerCardProps {
+  text: string;
+  count: number;
   content: JSX.Element;
 }
 

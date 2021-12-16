@@ -14,6 +14,10 @@ const RightSideBar: FC<IRightSidebar> = ({ setRightSidebarWidth }) => {
     }
   }, [rightSidebarRef, setRightSidebarWidth]);
 
+  const handleClick = (): void => {
+    //some logic
+  };
+
   const number = 15;
   return (
     <div className="right-sidebar" ref={rightSidebarRef}>
@@ -23,8 +27,8 @@ const RightSideBar: FC<IRightSidebar> = ({ setRightSidebarWidth }) => {
           <p className="title">Favorite Candidates</p>
         </div>
         <div className="subtitle-wrapper">
-          <p className="subtitle">{`Social Media Marketing (${number})`}</p>
-          <span onClick={e => console.log(e)}><RightArrows/></span>
+          <p>{`Social Media Marketing (${number})`}</p>
+          <span onClick={handleClick}><RightArrows/></span>
         </div>
         <div>
           <FavoriteUserCard avatar="https://i.pravatar.cc/300?img=11" name={'Catrina'} hskill={10} sskill={10} />

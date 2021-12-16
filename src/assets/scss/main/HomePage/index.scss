@@ -22,7 +22,7 @@
       border-radius: $border-radius-bs;
       margin-bottom: 14px;
       background-color: $alabaster;
-      padding: 15px 45px 15px 100px;
+      padding: 15px 90px 15px 55px;
 
       .hide-button {
         position: absolute;
@@ -35,7 +35,66 @@
         justify-content: space-between;
 
         .card {
+          text-align: center;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          &:nth-child(1){
+            &:before{
+              position: absolute;
+              content: '';
+              left: 97%;
+              top: 12px;
+              height: 1px;
+              border-bottom: 1px dashed black;
+              width: 187%;
+            }
+          }
 
+          &:nth-child(2){
+            &:before{
+              position: absolute;
+              content: '';
+              left: 83%;
+              top: 12px;
+              height: 1px;
+              border-bottom: 1px dashed black;
+              width: 160%;
+            }
+          }
+
+          .d-block {
+            display: block;
+            white-space: nowrap;
+          }
+
+          .count {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: $border-radius-circle;
+            background-color: $black;
+            margin-right: 5px;
+            flex: 0 0 auto;
+            width: 28px;
+            height: 28px;
+            color: $textColorWhite;
+          }
+
+          .text {
+            font-size: $font-size-md;
+            color: $black;
+          }
+
+          .dedicated {
+            color: $primaryColor;
+            display: inline;
+          }
+
+          &-body{
+            font-size: 12px;
+            max-width: 160px;
+          }
         }
       }
     }
@@ -58,7 +117,7 @@
         justify-content: space-between;
         align-items: center;
         &_text {
-          margin: 5px 0px;
+          margin: 5px 0;
           font-size: $font-size-md;
           color: black;
         }
@@ -67,21 +126,13 @@
           font-size: $font-size-sm;
           color: $textColorLightGrey;
         }
-        .title-left_side, title-right_side {
+        .title-left_side, {
           width: 200px;
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
       }
-      &-left_side {
-        display: flex;
-      }
-    }
-  }
-  &_list {
-    &__wrapper {
-
     }
   }
 }
