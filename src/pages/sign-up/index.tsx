@@ -13,6 +13,8 @@ import { signUpRequest } from 'store/users/actions';
 import { TSignUp } from 'store/users/types';
 import { makeSelectFormValues } from 'store/form/selectors';
 
+import { schema } from 'utils/validation/signUp';
+
 import { SIGN_UP_FORM } from './form/constants';
 import config from './form/config';
 
@@ -44,6 +46,7 @@ const SignUp = (): JSX.Element => {
   return (
     <AuthLayout isStudent={isStudent}>
       <Form
+        validateSchema={schema}
         name={SIGN_UP_FORM}
         config={config}
       />

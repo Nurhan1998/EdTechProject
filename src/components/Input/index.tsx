@@ -1,17 +1,15 @@
 import { useState } from 'react';
 import cn from 'classnames';
 
-import { IMostInputProps } from 'components/Input/types';
+import { IInputProps } from 'components/Input/types';
 import { SearchInput } from 'components/Input/components/SearchInput';
 
 const Input = ({
   error,
   label,
   inputProps,
-}: IMostInputProps): JSX.Element => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const { type, className } = inputProps;
+}: IInputProps): JSX.Element => {
+  const { className, type, value } = inputProps;
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [fieldType, setFieldType] = useState<string>(type || 'text');
 
@@ -53,8 +51,9 @@ const Input = ({
           type={fieldType}
         />
       )}
-      {error && <p className="error">{Array.isArray(error) ? error[0] : error}</p>}
-    </div>
+      {(error && value) && error.map((item, idx) => (
+        <p className="error" key={idx}>{item}</p>
+      ))}    </div>
   );
 };
 

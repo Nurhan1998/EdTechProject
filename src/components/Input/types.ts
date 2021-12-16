@@ -1,9 +1,9 @@
 import { InputHTMLAttributes } from 'react';
 
-export interface IMostInputProps {
+export interface IInputProps {
   label?: string;
-  error?:  string | string[];
-  inputProps?: InputHTMLAttributes<HTMLInputElement>;
+  error?: string[];
+  inputProps: InputHTMLAttributes<HTMLInputElement>
 }
 
 

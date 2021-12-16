@@ -3,8 +3,6 @@ import { langBaseExample, locationBaseExample, professions, socialBaseExample } 
 import Select from 'components/Select';
 
 
-
-
 const Actions = (): JSX.Element => (
   <div className="home-page_actions__wrapper">
     <Select

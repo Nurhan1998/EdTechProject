@@ -1,4 +1,7 @@
+import { ObjectShape } from 'yup/lib/object';
+
 import { TFormValues } from 'store/form/types';
+
 
 export enum EFieldType {
   TEXT,
@@ -37,5 +40,5 @@ export interface IFormProps {
   loading?: boolean;
   orientation?: EFormOrientation;
   actionsAnchor?: HTMLElement;
-  validateFn?: (values: TFormValues) => Record<string, string>;
+  validateSchema?: ObjectShape
 }

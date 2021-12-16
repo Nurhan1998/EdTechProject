@@ -12,6 +12,8 @@ import { initForm, removeForm } from 'store/form/actions';
 import { makeSelectFormValues } from 'store/form/selectors';
 import { signInRequest } from 'store/users/actions';
 
+import { schema } from 'utils/validation/signIn';
+
 import { SIGN_IN_FORM } from './form/constants';
 import config from './form/config';
 
@@ -43,6 +45,7 @@ const SignIn = (): JSX.Element => {
   return (
     <AuthLayout isStudent={isStudent}>
       <Form
+        validateSchema={schema}
         name={SIGN_IN_FORM}
         config={config}
       />
