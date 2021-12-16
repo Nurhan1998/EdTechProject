@@ -15,4 +15,3 @@ export const makeSelectFormFieldError = (
   field: string
 ): TSelectorReturnType<string[]> =>
   createSelector(selectState, (state?: TFormState) => state?.getIn([form, 'errors', field]));
-

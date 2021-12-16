@@ -1,28 +1,32 @@
-.header{
-  &_wrapper{
+.header {
+  &_wrapper {
     position: fixed;
-    top: 0;
+    top: 10px;
     right: 0;
     padding: 8px 25px;
-    background-color: $blackSqueeze;
+    background-color: $alabaster;
     box-shadow: $bsBoxShadow;
     border-bottom: 1px solid $borderColor;
     z-index: $zIndexHeader;
     height: 80px;
+    border-radius: $border-radius-bs;
   }
-  &_inner-wrapper{
+
+  &_inner-wrapper {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: space-between;
     align-items: center;
   }
-  &_profile{
-    &__wrapper{
+
+  &_profile {
+    &__wrapper {
       position: relative;
       height: 100%;
-      .dropdown-menu{
-        &_wrapper{
+
+      .dropdown-menu {
+        &_wrapper {
           position: absolute;
           top: calc(100% + 10px);
           opacity: 0;
@@ -31,43 +35,51 @@
           background-color: $white;
           box-shadow: $bsBoxShadow;
           padding: 10px 0;
-          &.visible{
+
+          &.visible {
             opacity: 1;
           }
         }
-        &_item{
+
+        &_item {
           padding: 10px 20px;
           color: $textColorGrey;
           transition: $bsTransition;
-          &:not(:last-child){
-           margin-bottom: 10px;
+
+          &:not(:last-child) {
+            margin-bottom: 10px;
           }
-          &:hover{
+
+          &:hover {
             background-color: $alabaster;
           }
         }
       }
     }
-    &__inner-wrapper{
+
+    &__inner-wrapper {
       display: flex;
       align-items: center;
       cursor: pointer;
       transition: $bsTransition;
       height: 100%;
-      &:hover{
-        .header_profile__title{
-          span{
+
+      &:hover {
+        .header_profile__title {
+          span {
             color: $textColorDark;
           }
         }
       }
+
       > * {
-        &:not(:first-child){
+        &:not(:first-child) {
           margin-left: 10px;
         }
       }
     }
-    &__icon{
+
+    &__icon {
       flex: 0 0 auto;
       display: inline-flex;
       align-items: center;
@@ -78,12 +90,28 @@
       overflow: hidden;
       border: 1px solid $borderColor;
     }
-    &__title{
+
+    &__title {
       color: $textColorDark;
-      span{
+
+      span {
         transition: $bsTransition;
         color: #b8c3d5;
       }
+    }
+  }
+
+  &_action__wrapper {
+    display: flex;
+    align-self: center;
+
+    .action {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
     }
   }
 }

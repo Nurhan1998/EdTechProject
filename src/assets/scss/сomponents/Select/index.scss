@@ -14,7 +14,7 @@
     padding: 13px 43px 13px 28px;
     color: $textColorGrey;
     display: inline-block;
-    line-height: 13px;
+    line-height: 17px;
     box-shadow: $bsBoxShadow;
     border-radius: $border-radius-round;
     cursor: pointer;
@@ -25,7 +25,9 @@
     -moz-appearance: none;
     background: url(../../../img/png/custom-select.png) right 1.1rem center no-repeat;
     background-size: auto;
-
+    option {
+      line-height: 1rem;
+    }
     &:hover {
       box-shadow: $bsBoxShadowHover;
     }

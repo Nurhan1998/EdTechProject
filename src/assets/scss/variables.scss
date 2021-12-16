@@ -2,11 +2,13 @@
 $white: #ffffff;
 $black: #000000;
 $alabaster: #fafafa;
+$superLightGrey: #f3f3f3;
 $blackSqueeze: #f9fbfd;
 $dark: #1c2d41;
 $lightGreen: #49A057;
 $lightGrey: #b8c3d5;
 $darkGrey: #A5A5A5;
+$activeSideBar: #EFEFEF;
 
 
 $primaryColor: #22ca80;
@@ -17,6 +19,7 @@ $borderColor: #edf2f9;
 // Text Colors.ts
 $textGreyPlaceholder: #D2D2D2;
 $textColorGrey: #818181;
+$textColorLightGrey: #85888B;
 $textColorWhite: $white;
 $textColorDark: $dark;
 $textColorPrimary: $primaryColor;
@@ -32,6 +35,10 @@ $font-size-xl: 1.5rem;
 
 // Fonts
 $primaryFontRegular: "Rubik";
+
+// Font-weights
+$bold: 700;
+$semiBold: 500;
 
 
 // Box-shadow

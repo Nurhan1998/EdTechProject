@@ -1,62 +1,97 @@
-.sidebar{
-  &_wrapper{
+.sidebar {
+  &_wrapper {
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     width: 260px;
+    margin: 10px 0 10px 8px;
+  }
+
+  &-inner_wrapper {
+    height: 100%;
+    width: 240px;
     background-color: $alabaster;
+    border-radius: $border-radius-bs;
     box-shadow: $bsBoxShadow;
     z-index: $zIndexSidebar;
   }
-  &_logo{
-    &__wrapper{
+
+  &_logo {
+    &__wrapper {
       height: 80px;
+      border-radius: $border-radius-bs;
       background: $alabaster;
       margin-bottom: 20px;
-      a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
         display: block;
         padding: 15px;
       }
-      img, svg{
+
+      img, svg {
         max-width: 100%;
         height: 60px;
       }
     }
   }
-  &_links{
-    &__wrapper{
+
+  &_links {
+    &__wrapper {
       display: flex;
       flex-direction: column;
     }
-    &__item{
-      &:not(:last-child){
+
+    &__item {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      &:not(:last-child) {
         margin-bottom: 5px;
       }
-      a{
+
+      &-icon {
+        position: absolute;
+        top: 27%;
+        left: 25px;
+        width: 20px;
+        height: 20px;
+      }
+
+      a {
         display: flex;
         align-items: center;
         width: 90%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        padding: 15px 30px;
+        padding: 15px 30px 15px 50px;
         font-size: $font-size-bs;
         border-radius: 0 $border-radius-round $border-radius-round 0;
         color: $textColorGrey;
-        span{
+
+        span {
           flex: 0 0 auto;
           margin-right: 5px;
         }
-        &:hover{
+
+        &:hover {
           box-shadow: $bsBoxShadow;
+          border-radius: $border-radius-bs;
         }
       }
-      &.active{
-        a{
-          background: linear-gradient(to right,#00d461,#2fb36c,#1db562,#1caf5e,#52ab7b);
+
+      &.active {
+        a {
+          border-radius: $border-radius-bs;
+          background: $activeSideBar;
           box-shadow: $bsBoxShadow;
-          color: $textColorWhite
+          color: $lightGreen
         }
       }
     }
