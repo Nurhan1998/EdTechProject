@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
-
-
-import { Languages } from '../../../mocks/languages';
+import { Languages } from 'mocks/languages';
 
 import Profile from './components/Profile';
 import { IHeader } from './types';

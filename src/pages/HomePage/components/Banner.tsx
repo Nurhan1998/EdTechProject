@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { bannerCards } from 'mocks/bannerCards';
 
 import CrossLines from 'components/Icons/CrossLines';
 
 import { BannerCard } from 'pages/HomePage/components/BanerCard';
 
-import { bannerCards } from '../../../mocks/bannerCards';
 
 const Banner = (): JSX.Element => {
   const [visible, setVisible] = useState(true);

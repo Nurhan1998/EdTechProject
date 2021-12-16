@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { SidebarList } from 'mocks/sidebarRoutes';
 
 import { HOME_PAGE } from 'configuration/urls';
 
@@ -9,7 +10,6 @@ import SidebarLogo from 'components/Icons/Sidebar/SidebarLogo';
 import LinkItem from 'components/Layout/Sidebar/components/LinkItem';
 import Input from 'components/Input';
 
-import { SidebarList } from '../../../mocks/sidebarRoutes';
 
 import { ISidebar } from './types';
 

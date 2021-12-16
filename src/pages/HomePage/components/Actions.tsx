@@ -1,6 +1,7 @@
+import { langBaseExample, locationBaseExample, professions, socialBaseExample } from 'mocks/baseExample';
+
 import Select from 'components/Select';
 
-import { langBaseExample, locationBaseExample, professions, socialBaseExample } from '../../../mocks/baseExample';
 
 
 

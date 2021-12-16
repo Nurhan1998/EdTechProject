@@ -1,4 +1,4 @@
-import { userListBaseExample } from '../../../mocks/baseExample';
+import { userListBaseExample } from 'mocks/baseExample';
 
 import { IUserCard } from '../types';
 
