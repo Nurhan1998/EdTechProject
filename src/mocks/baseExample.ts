@@ -18,6 +18,17 @@ export const langBaseExample: TSelectItem[] = [
   }
 ];
 
+export const professions: TSelectItem[] = [
+  {
+    value: 'smm',
+    label: 'Social Media Marketing'
+  },
+  {
+    value: 'seo',
+    label: 'Search Engine Optimization'
+  }
+];
+
 export const socialBaseExample: TSelectItem[] = [
   {
     value: 'facebook',
@@ -55,39 +66,85 @@ export const userListBaseExample: IUserCard[] = [
     avatar: 'https://i.pravatar.cc/300?img=11',
     name: 'Lorem',
     surName: 'Random',
-    hardSkill: 'hardSefekill',
-    statusHardSkill: 7,
-    softSkill: 'softfeefSkill',
-    statusSoftSkill: 98,
+    hardSkill: 7,
+    softSkill: 7,
+    likesCount: 2,
+    skillName: 'confidence',
   },
   {
     id: '2',
     avatar: 'https://i.pravatar.cc/300?img=12',
     name: 'aafLorem123',
     surName: 'fefeRandom',
-    hardSkill: 'hardSefkill',
-    statusHardSkill: 1,
-    softSkill: 'softSfekill',
-    statusSoftSkill: 50,
+    hardSkill: 6,
+    softSkill: 3,
+    likesCount: 2,
+    skillName: 'Creative thinking',
+    progressbarColor: '#FFCD54'
   },
   {
     id: '3',
     avatar: 'https://i.pravatar.cc/300?img=13',
     name: 'aefaefLorem',
     surName: 'aefaefRandom',
-    hardSkill: 'aefaefaef',
-    statusHardSkill: 3,
-    softSkill: 'soaefaefftSkill',
-    statusSoftSkill: 14,
+    hardSkill: 8,
+    softSkill: 8,
+    likesCount: 23,
+    skillName: 'Stress tolerance',
+    progressbarColor: '#FFCD54'
   },
   {
     id: '4',
     avatar: 'https://i.pravatar.cc/300?img=14',
     name: 'aefafLorem',
     surName: 'aefRandom',
-    hardSkill: 'aefhardSkill',
-    statusHardSkill: 10,
-    softSkill: 'aefsoftSkill',
-    statusSoftSkill: 100,
+    hardSkill: 10,
+    softSkill: 10,
+    likesCount: 12,
+    skillName: 'Stress tolerance',
+    progressbarColor: '#8DC152'
+  },
+  {
+    id: '1',
+    avatar: 'https://i.pravatar.cc/300?img=11',
+    name: 'Lorem',
+    surName: 'Random',
+    hardSkill: 7,
+    softSkill: 7,
+    likesCount: 2,
+    skillName: 'confidence',
+  },
+  {
+    id: '2',
+    avatar: 'https://i.pravatar.cc/300?img=12',
+    name: 'aafLorem123',
+    surName: 'fefeRandom',
+    hardSkill: 6,
+    softSkill: 3,
+    likesCount: 2,
+    skillName: 'Creative thinking',
+    progressbarColor: '#FFCD54'
+  },
+  {
+    id: '3',
+    avatar: 'https://i.pravatar.cc/300?img=13',
+    name: 'aefaefLorem',
+    surName: 'aefaefRandom',
+    hardSkill: 8,
+    softSkill: 8,
+    likesCount: 23,
+    skillName: 'Stress tolerance',
+    progressbarColor: '#FFCD54'
+  },
+  {
+    id: '4',
+    avatar: 'https://i.pravatar.cc/300?img=14',
+    name: 'aefafLorem',
+    surName: 'aefRandom',
+    hardSkill: 10,
+    softSkill: 10,
+    likesCount: 12,
+    skillName: 'Stress tolerance',
+    progressbarColor: '#8DC152'
   },
 ];

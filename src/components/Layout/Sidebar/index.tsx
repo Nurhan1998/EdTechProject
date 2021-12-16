@@ -1,20 +1,22 @@
-import { FC, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import cn from 'classnames';
+import { useRouter } from 'next/router';
+import { SidebarList } from 'mocks/sidebarRoutes';
+
+import { HOME_PAGE } from 'configuration/urls';
 
 
-import { CHAT_PAGE, HOME_PAGE } from 'configuration/urls';
-
-import { Logo } from 'components/Icons/Logo/Logo';
+import SidebarLogo from 'components/Icons/Sidebar/SidebarLogo';
+import LinkItem from 'components/Layout/Sidebar/components/LinkItem';
+import Input from 'components/Input';
 
 
 import { ISidebar } from './types';
 
 
-const Sidebar: FC<ISidebar> = ({ setSidebarWidth }): JSX.Element => {
-  const router = useRouter();
+const Sidebar = ({ setSidebarWidth }: ISidebar): JSX.Element => {
   const sidebarRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (sidebarRef.current?.clientWidth) {
@@ -22,33 +24,31 @@ const Sidebar: FC<ISidebar> = ({ setSidebarWidth }): JSX.Element => {
     }
   }, [sidebarRef, setSidebarWidth]);
 
-  const isMenuActive = (path: string): boolean => router?.pathname === path;
+  const isMenuActive = (path: string): boolean => router.pathname === path;
 
   return (
     <div className="sidebar_wrapper" ref={sidebarRef}>
-      <div className="sidebar_logo__wrapper">
-        <Link href={HOME_PAGE}>
-          <a>
-            <Logo/>
-          </a>
-        </Link>
-      </div>
-      <div className="sidebar_links__wrapper">
-        <div className={cn('sidebar_links__item', { active: isMenuActive(HOME_PAGE) })}>
+      <div className="sidebar-inner_wrapper">
+        <div className="sidebar_logo__wrapper">
           <Link href={HOME_PAGE}>
             <a>
-              <span>ic</span>
-              Dashboard
+              <SidebarLogo/>
             </a>
           </Link>
         </div>
-        <div className={cn('sidebar_links__item', { active: isMenuActive(CHAT_PAGE) })}>
-          <Link href={CHAT_PAGE}>
-            <a>
-              <span>ic</span>
-              Chat
-            </a>
-          </Link>
+        <div className="sidebar_search-wrapper">
+          <Input inputProps={{ type: 'search', placeholder: 'Search' }}/>
+        </div>
+        <div className="sidebar_links__wrapper">
+          {SidebarList.map(({ path, name, icon }, idx) => (
+            <LinkItem
+              key={`${path}_${idx}`}
+              path={path}
+              isActive={isMenuActive(path)}
+              icon={icon}
+              name={name}
+            />
+          ))}
         </div>
       </div>
     </div>

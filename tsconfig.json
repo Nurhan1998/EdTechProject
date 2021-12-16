@@ -50,6 +50,9 @@
       ],
       "configuration/*": [
         "./src/configuration/*"
+      ],
+      "mocks/*": [
+        "./src/mocks/*"
       ]
     },
     "forceConsistentCasingInFileNames": true,

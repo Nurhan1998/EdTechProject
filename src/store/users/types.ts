@@ -5,19 +5,40 @@ import { GetParamsFromSelectors, OutputSelector, SelectorResultArray } from 'res
 import { IApplicationState, ResponseGenericType, THandler } from 'store/types';
 
 
-export type TSignUpModel = {
+export type TSignIn = {
   email: string;
   password: string;
-  confirm_password?: string;
-};
+}
 
-export type THSkillModel = {
+export type TSignUp = TSignIn & {
+  firstname: string;
+  lastname: string;
+  phone: string;
+  country?: string;
+  city?: string;
+}
+
+export interface IHSkillModel {
   hskillid: string;
   name: string;
   value: string;
 }
 
-export type TProfileModel = {
+export interface ILanguageModel {
+  id: string;
+  name: string;
+}
+
+export interface IToken {
+  id: string;
+  token: string;
+  created: number;
+  expired: number;
+  refresh: number;
+  now: number;
+}
+
+export interface IProfileModel {
   address: string;
   city: string;
   country: string;
@@ -26,7 +47,7 @@ export type TProfileModel = {
   description: string;
   email: string;
   firstname: string;
-  hskill: THSkillModel[];
+  hskill: IHSkillModel[];
   id: string;
   is_active: string;
   is_admin: string;
@@ -45,37 +66,45 @@ export type TProfileModel = {
   phone: string;
   photo: string;
   postautomat: string;
-  skills: THSkillModel[];
+  skills: IHSkillModel[];
   skip_guide: string;
   timezone: string;
 }
 
-export type TSignInResponseData = {
-  created: number;
-  expired: number;
-  id: string;
-  now: number;
-  refresh: number;
-  token: string;
-  profile: TProfileModel
+
+export interface TSignInResponseData extends IToken {
+  profile: IProfileModel;
+}
+
+export type TSignUpResponseData = Omit<IProfileModel, 'is_admin' | 'notes'> & {
+  lastname: string;
+  languages: ILanguageModel[];
+  token: IToken
+}
+
+export interface IForgotPassword {
+  email: string;
 }
 
 export type TRecordOfSignInResponseData = RecordOf<TSignInResponseData>;
+export type TRecordOfSignUpResponseData = RecordOf<TSignUpResponseData>
 
 export interface IUserState {
   signIn: ResponseGenericType<TRecordOfSignInResponseData>;
   token: string | null;
-  profile: ResponseGenericType<RecordOf<TProfileModel>>;
+  profile: ResponseGenericType<RecordOf<IProfileModel>>;
+  signUp: ResponseGenericType<TRecordOfSignUpResponseData>;
+  forgotPassword: ResponseGenericType<boolean>;
 }
+
 export type TRecordOfUser = RecordOf<IUserState>;
 export type TSignInResponse = AxiosResponse<TSignInResponseData>
+export type TSignUpResponse = AxiosResponse<TSignUpResponseData>
 
-export type TSelectorReturnType<T> = OutputSelector<
-  [((state: IApplicationState) => TRecordOfUser)],
+export type TSelectorReturnType<T> = OutputSelector<[((state: IApplicationState) => TRecordOfUser)],
   T,
   (...args: SelectorResultArray<[((state: IApplicationState) => TRecordOfUser)]>) => T,
-  GetParamsFromSelectors<[((state: IApplicationState) => TRecordOfUser)]>
->;
+  GetParamsFromSelectors<[((state: IApplicationState) => TRecordOfUser)]>>;
 
 export type TUserStoreHandler<T> = THandler<TRecordOfUser, T>;
 

@@ -2,12 +2,30 @@
   margin: 20px 0;
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .search-icon {
+    position: absolute;
+    top: 30%;
+    left: 30px;
+  }
+
+  &_search {
+    padding-left: 45px;
+    width: 218px;
+    height: 32px;
+    border-radius: $border-radius-lg;
+    border: 0.5px solid $superLightGrey;
+
+  }
 
   &_input {
     padding-left: 10px;
     height: 46px;
     width: 100%;
-    background: rgba(255, 255, 255, 0.2);
+    background: $darkGrey;
     border: none;
     border-radius: 8px;
 
@@ -25,7 +43,8 @@
   }
 
   &_label {
-    margin: 0 0 5px 10px;
+    align-self: flex-start;
+    margin: 0 0 5px 0;
     font-size: 12px;
     font-family: Rubik;
     color: white;
@@ -34,11 +53,11 @@
   .error {
     font-size: 12px;
     color: red;
+    margin-top: 5px;
   }
 
   .eye-password {
     position: absolute;
-    top: 62%;
     right: 15px;
     transform: translateY(-50%);
     width: 20px;
@@ -48,6 +67,14 @@
     background-repeat: no-repeat;
     border-radius: 50%;
     cursor: pointer;
+
+    &.dirty {
+      top: 49%
+    }
+
+    &.clean {
+      top: 62%;
+    }
 
     &.visible {
       color: white;

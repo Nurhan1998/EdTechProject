@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 import Router from 'next/router';
 
 import request from 'api/index';
@@ -7,21 +7,27 @@ import request from 'api/index';
 import { HOME_PAGE } from 'configuration/urls';
 
 import {
-  SIGN_IN_REQUEST,
+  FORGOT_PASSWORD_REQUEST,
+  forgotPasswordFailure,
+  forgotPasswordSuccess,
   GET_PROFILE_REQUEST,
+  getProfileFailure,
+  getProfileSuccess,
+  SIGN_IN_REQUEST,
+  SIGN_UP_REQUEST,
   signInFailure,
   signInSuccess,
-  getProfileSuccess,
-  getProfileFailure,
+  signUpFailure,
+  signUpSuccess,
 } from 'store/users/actions';
-import { TSignInResponse, TSignUpModel } from 'store/users/types';
+import { IForgotPassword, TSignIn, TSignInResponse, TSignUp, TSignUpResponse, } from 'store/users/types';
 import { IPayloadAction } from 'store/types';
 
 import buildFormData from 'utils/formData';
 import { EStorageKeys, setStorageData } from 'utils/storageHelpers';
 
 
-function* SingIn(action: IPayloadAction<TSignUpModel>): Generator {
+function* SingIn(action: IPayloadAction<TSignIn>): Generator {
   const form = buildFormData(action.payload);
   try {
     const response = yield call(
@@ -39,6 +45,26 @@ function* SingIn(action: IPayloadAction<TSignUpModel>): Generator {
   }
 }
 
+function* SignUp(action: IPayloadAction<TSignUp>): Generator {
+  const geo = { country: 'KG', city: 'Bishkek' };
+  const dataWithGeo = Object.assign(action.payload, geo);
+  const form = buildFormData(dataWithGeo);
+
+  try {
+    const response = yield call(
+      request.post,
+      '/user/',
+      form,
+    );
+    const { data } = response as TSignUpResponse;
+    yield call(setStorageData, EStorageKeys.TOKEN, data.token.token);
+    yield put(signUpSuccess(data));
+    yield call(Router.push, HOME_PAGE);
+  } catch (error) {
+    yield put(signUpFailure(error as AxiosError));
+  }
+}
+
 function* GetProfile(): Generator {
   try {
     const response = yield call(
@@ -53,11 +79,28 @@ function* GetProfile(): Generator {
   }
 }
 
+function* ForgotPassword(action: IPayloadAction<IForgotPassword>): Generator {
+  const { email } = action.payload;
+  try {
+    const response = yield call(
+      request.post,
+      '/user/forgot/',
+      { email }
+    );
+    const { data } = response as AxiosResponse<boolean>;
+    yield put(forgotPasswordSuccess(data));
+  } catch (e) {
+    yield put(forgotPasswordFailure(e as AxiosError));
+  }
+}
+
 
 function* Saga(): Generator {
   yield all([
     takeLatest(SIGN_IN_REQUEST, SingIn),
-    takeLatest(GET_PROFILE_REQUEST, GetProfile)
+    takeLatest(GET_PROFILE_REQUEST, GetProfile),
+    takeLatest(SIGN_UP_REQUEST, SignUp),
+    takeLatest(FORGOT_PASSWORD_REQUEST, ForgotPassword)
   ]);
 }
 

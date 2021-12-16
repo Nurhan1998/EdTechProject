@@ -6,8 +6,8 @@ import { TFormState } from 'store/form/types';
 import { TRecordOfUser } from 'store/users/types';
 
 export interface IApplicationState {
-  users?: TRecordOfUser
-  form?: TFormState
+  users?: TRecordOfUser;
+  form?: TFormState;
 }
 
 export interface IWithSagaTaskStore extends Store<IApplicationState> {
@@ -38,7 +38,6 @@ export type ResponseGenericType<T, E = Record<string, unknown>> = {
   fetching: boolean;
   data: T | null;
   error: AxiosError<E> | null;
-  submitting?: boolean;
 };
 
 export type TResponseType<T> = {

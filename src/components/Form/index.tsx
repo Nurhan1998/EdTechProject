@@ -1,11 +1,11 @@
-import { FormEvent, FormEventHandler, memo, useMemo } from 'react';
+import { FormEvent, FormEventHandler, memo, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
-import { IFormProps, EFormOrientation, IConfig } from 'components/Form/types';
+import { EFormOrientation, IConfig, IFormProps } from 'components/Form/types';
 
-import { selectFormValues } from 'store/form/selectors';
-import { setFormValue } from 'store/form/actions';
+import { makeSelectFormValues } from 'store/form/selectors';
+import { setFormError, setFormValue } from 'store/form/actions';
 import { TFieldValue } from 'store/form/types';
 
 import Field from './Field';
@@ -18,9 +18,10 @@ const Form = (props: IFormProps): JSX.Element => {
     config,
     orientation = EFormOrientation.VERTICAL,
     className,
+    validateFn
   } = props;
   const dispatch = useDispatch();
-  const formValues = useSelector(selectFormValues(name));
+  const formValues = useSelector(makeSelectFormValues(name));
 
   const handleSubmit = (e: FormEventHandler<HTMLFormElement> & FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,6 +43,20 @@ const Form = (props: IFormProps): JSX.Element => {
     [config, formValues],
   );
 
+  useEffect(
+    () => {
+      if (validateFn) {
+        dispatch(setFormError({
+          form: name,
+          error: validateFn(formValues),
+        }));
+      }
+    },
+    // We should re-validate only when formValues changes
+    // eslint-disable-next-line
+    [formValues],
+  );
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -53,9 +68,9 @@ const Form = (props: IFormProps): JSX.Element => {
         const disabled = typeof item.disabledIf === 'function'
           ? item.disabledIf(formValues)
           : false;
-
         return (
           <Field
+            form={name}
             key={key}
             field={item}
             onChange={handleFieldChange(item.name)}
@@ -67,5 +82,6 @@ const Form = (props: IFormProps): JSX.Element => {
     </form>
   );
 };
+
 
 export default memo(Form);

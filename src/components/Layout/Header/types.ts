@@ -4,4 +4,5 @@ export interface IHeader {
   className?: string;
   setHeaderHeight: Dispatch<SetStateAction<number>>;
   sidebarWidth: number;
+  rightSideBar: number;
 }

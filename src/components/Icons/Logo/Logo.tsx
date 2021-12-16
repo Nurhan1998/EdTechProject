@@ -1,9 +1,16 @@
 /*eslint-disable max-len*/
-import { FC } from 'react';
 
-import { IIcon } from 'components/Icons/Logo/types';
+import { IIconProps } from 'components/Icons/types';
 
-export const Logo: FC<IIcon> = ({ width = 1055, height = 368, color = '#06a34e' }) => (
+export interface ILogoProps extends IIconProps {
+  color?: string;
+  secondColor?: string;
+  className?: string;
+  opacity?: string;
+}
+
+
+export const Logo = ({ width = 1055, height = 368, color = '#06a34e' }: ILogoProps): JSX.Element => (
 
   <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width={width} height={height}
     viewBox="0 0 1055 368" preserveAspectRatio="xMidYMid meet">

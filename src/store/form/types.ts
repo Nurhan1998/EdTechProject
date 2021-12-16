@@ -33,16 +33,18 @@ export interface ISetFieldValueAction extends IFormPayload {
   value: TFieldValue;
 }
 
+export interface ISetFieldErrorAction extends IFormPayload {
+  error: Record<string, string | string[]> | boolean;
+}
+
 export interface ISetInitValuesFormAction extends IFormPayload {
   instance: Record<string, TFieldValue>;
 }
 
-export type TSelectorReturnType<T> = OutputSelector<
-  [((state: IApplicationState) => TFormState)],
+export type TSelectorReturnType<T> = OutputSelector<[((state: IApplicationState) => TFormState)],
   T,
   (...args: SelectorResultArray<[((state: IApplicationState) => TFormState)]>) => T,
-  GetParamsFromSelectors<[((state: IApplicationState) => TFormState)]>
->;
+  GetParamsFromSelectors<[((state: IApplicationState) => TFormState)]>>;
 
 export type TRecordOfFormState = RecordOf<IFormState>;
 export type TFormState = RecordOf<Record<string, TRecordOfFormState>>;

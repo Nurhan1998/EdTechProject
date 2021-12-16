@@ -1,0 +1,25 @@
+.progressbar{
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+
+  &-wrapper {
+    width: 90%;
+    display: flex;
+    background-color: #f2f2f2;
+    border-radius: $border-radius-sm;
+    height: 3px;
+    overflow: hidden;
+  }
+
+  &-inner_wrapper {
+    height: 3px;
+    background-color: $primaryColor;
+  }
+
+  &-text {
+    left: 10px;
+  }
+}
