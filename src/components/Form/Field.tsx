@@ -16,7 +16,7 @@ export interface IFieldProps {
 }
 
 const Field = (props: IFieldProps): JSX.Element => {
-  const { form, field, onChange, value, disabled, } = props;
+  const { form, field, onChange, value, disabled } = props;
   const {
     name,
     type,
