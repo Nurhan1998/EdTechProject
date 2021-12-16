@@ -36,7 +36,7 @@ const UserCard = ({
         </div>
         <div className="data_content">
           <p className="text-grey">Hard skills</p>
-          <p className="text-grey">Average index:<span className="text-bold">{' '}{`${hardSkill}/10`}</span></p>
+          <p className="text-grey">Average index:<span className="text-bold">&nbsp;{`${hardSkill}/10`}</span></p>
         </div>
         <div className="data_content">
           <p className="text-grey">FaceBook</p>
@@ -53,7 +53,7 @@ const UserCard = ({
           <p className="text-grey">
             Average index:
             <span className="text-bold">
-              {' '}{`${softSkill / 10 * 100}%`}
+              &nbsp;{`${softSkill / 10 * 100}%`}
             </span>
           </p>
         </div>
