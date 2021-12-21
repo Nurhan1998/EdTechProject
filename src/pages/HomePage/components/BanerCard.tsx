@@ -4,7 +4,7 @@ import { IBannerCardProps } from 'pages/HomePage/types';
 
 
 export const BannerCard = ({ count, content, text }: IBannerCardProps): JSX.Element =>{
-  const isMobile = useMediaQuery({ query: 'max-width(375px)' });
+  const isMobile = useMediaQuery({ query: 'max-width(500px)' });
   return (
     <div className="card">
       <div className={isMobile ? 'd-flex-centered' : ''}>

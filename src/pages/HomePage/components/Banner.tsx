@@ -8,7 +8,7 @@ import { BannerCard } from 'pages/HomePage/components/BanerCard';
 
 const Banner = (): JSX.Element => {
   const [visible, setVisible] = useState(true);
-  const isMobile = useMediaQuery({ query: '(max-width: 375px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
   const handleClose = (): void => {
     setVisible(false);
   };

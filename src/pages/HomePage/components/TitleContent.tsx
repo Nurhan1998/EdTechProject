@@ -7,7 +7,7 @@ interface ITitleContentProps {
 }
 
 const TitleContent = ({ count }: ITitleContentProps): JSX.Element => {
-  const isMobile = useMediaQuery({ query: '(max-width: 375px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
   return  (<div className="title-wrapper">
     <div className="title-left_side">
       <span><CalendarWithSearch width={isMobile ? 33 : undefined} height={isMobile ? 33 : undefined }/></span>
