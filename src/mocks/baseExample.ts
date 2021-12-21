@@ -6,15 +6,15 @@ import { IUserCard } from 'pages/HomePage/types';
 export const langBaseExample: TSelectItem[] = [
   {
     value: 'en',
-    label: 'EN',
+    label: 'English',
   },
   {
     value: 'ru',
-    label: 'RU',
+    label: 'Russian',
   },
   {
     value: 'eu',
-    label: 'EU',
+    label: 'Spain',
   }
 ];
 
@@ -105,7 +105,7 @@ export const userListBaseExample: IUserCard[] = [
     progressbarColor: '#8DC152'
   },
   {
-    id: '1',
+    id: '5',
     avatar: 'https://i.pravatar.cc/300?img=11',
     name: 'Lorem',
     surName: 'Random',
@@ -115,7 +115,7 @@ export const userListBaseExample: IUserCard[] = [
     skillName: 'confidence',
   },
   {
-    id: '2',
+    id: '6',
     avatar: 'https://i.pravatar.cc/300?img=12',
     name: 'aafLorem123',
     surName: 'fefeRandom',
@@ -126,7 +126,7 @@ export const userListBaseExample: IUserCard[] = [
     progressbarColor: '#FFCD54'
   },
   {
-    id: '3',
+    id: '7',
     avatar: 'https://i.pravatar.cc/300?img=13',
     name: 'aefaefLorem',
     surName: 'aefaefRandom',
@@ -137,7 +137,7 @@ export const userListBaseExample: IUserCard[] = [
     progressbarColor: '#FFCD54'
   },
   {
-    id: '4',
+    id: '8',
     avatar: 'https://i.pravatar.cc/300?img=14',
     name: 'aefafLorem',
     surName: 'aefRandom',

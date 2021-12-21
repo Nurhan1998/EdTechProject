@@ -1,23 +1,23 @@
 .header {
   &_wrapper {
-    position: fixed;
-    top: 10px;
-    right: 0;
-    padding: 8px 25px;
-    background-color: $alabaster;
-    box-shadow: $bsBoxShadow;
-    border-bottom: 1px solid $borderColor;
-    z-index: $zIndexHeader;
-    height: 80px;
-    border-radius: $border-radius-bs;
+      position: fixed;
+      top: 10px;
+      right: 0;
+      padding: 8px 25px;
+      background-color: $alabaster;
+      box-shadow: $bsBoxShadow;
+      border-bottom: 1px solid $borderColor;
+      z-index: $zIndexHeader;
+      height: 80px;
+      border-radius: $border-radius-bs;
   }
 
   &_inner-wrapper {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    align-items: center;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
+      align-items: center;
   }
 
   &_profile {
@@ -84,11 +84,18 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      object-fit: cover;
       width: 40px;
       height: 40px;
       border-radius: $border-radius-circle;
       overflow: hidden;
+      margin-right: 10px;
       border: 1px solid $borderColor;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     &__title {
@@ -111,6 +118,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: $md-xs-media) {
+  .header {
+    &_wrapper {
+      top: 0;
+      padding: 38px 13px 10px 11px;
+    }
+
+    &_profile {
+      &__title {
+        display: none;
+      }
+
+      &__icon {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &_action__wrapper {
+      display: none;
     }
   }
 }

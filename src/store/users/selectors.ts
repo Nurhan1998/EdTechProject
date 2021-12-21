@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { AxiosError } from 'axios';
 
 import { IApplicationState } from 'store/types';
-import { TRecordOfUser, TSelectorReturnType, TSignInResponseData } from 'store/users/types';
+import { IUsersListResponseData, TRecordOfUser, TSelectorReturnType, TSignInResponseData } from 'store/users/types';
 
 
 const selectState = (state: IApplicationState): TRecordOfUser | undefined => state.users;
@@ -44,6 +44,19 @@ export const makeSelectForgotPasswordError: TSelectorReturnType<AxiosError | nul
 export const makeSelectForgotPasswordData: TSelectorReturnType<TSignInResponseData | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['forgotPassword', 'data'])?.toJS() || null,
+);
+
+export const makeSelectUsersListFetching: TSelectorReturnType<boolean> = createSelector(
+  selectState,
+  (state?: TRecordOfUser) => state?.getIn(['usersList', 'fetching']) || false
+);
+export const makeSelectUsersListError: TSelectorReturnType<AxiosError | null> = createSelector(
+  selectState,
+  (state?: TRecordOfUser) => state?.getIn(['usersList', 'error']) || null
+);
+export const makeSelectUsersListData: TSelectorReturnType<IUsersListResponseData[] | null> = createSelector(
+  selectState,
+  (state?: TRecordOfUser) => state?.getIn(['usersList', 'data'])?.toJS() || null,
 );
 
 

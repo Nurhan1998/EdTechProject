@@ -12,3 +12,14 @@ a {
   transition: $bsTransition;
   text-decoration: none;
 }
+
+.d-flex-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-flex {
+  display: flex;
+}
+

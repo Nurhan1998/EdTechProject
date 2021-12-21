@@ -3,3 +3,11 @@
     padding: 20px;
   }
 }
+
+@media screen and (max-width: $md-xs-media) {
+  .layout{
+    &_inner-wrapper{
+      padding: 0;
+    }
+  }
+}

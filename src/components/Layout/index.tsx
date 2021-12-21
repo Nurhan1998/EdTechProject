@@ -20,7 +20,11 @@ const Layout: FC<ILayout> = ({
   return (
     <div
       className={cn('layout_wrapper', layoutClassName)}
-      style={{ paddingTop: headerHeight, paddingLeft: sidebarWidth, paddingRight: rightSideBarWidth }}
+      style={{
+        paddingTop:  headerHeight,
+        paddingLeft:  sidebarWidth,
+        paddingRight:  rightSideBarWidth
+      }}
     >
       <Header setHeaderHeight={setHeaderHeight} sidebarWidth={sidebarWidth} rightSideBar={rightSideBarWidth}/>
       <Sidebar setSidebarWidth={setSidebarWidth}/>

@@ -1,6 +1,13 @@
 import { AxiosError } from 'axios';
 
-import { IProfileModel, TSignIn, TSignInResponseData, TSignUp, TSignUpResponseData } from 'store/users/types';
+import {
+  IProfileModel,
+  IUsersListResponseData,
+  TSignIn,
+  TSignInResponseData,
+  TSignUp,
+  TSignUpResponseData
+} from 'store/users/types';
 
 import createAction from 'utils/createAction';
 
@@ -22,6 +29,10 @@ export const FORGOT_PASSWORD_REQUEST = `${STATE_KEY}_FORGOT_PASSWORD_REQUEST`;
 export const FORGOT_PASSWORD_SUCCESS = `${STATE_KEY}_FORGOT_PASSWORD_SUCCESS`;
 export const FORGOT_PASSWORD_FAILURE = `${STATE_KEY}_FORGOT_PASSWORD_FAILURE`;
 
+export const GET_USERS_LIST_REQUEST = `${STATE_KEY}_GET_USERS_LIST_REQUEST`;
+export const GET_USERS_LIST_SUCCESS = `${STATE_KEY}_GET_USERS_LIST_SUCCESS`;
+export const GET_USERS_LIST_FAILURE = `${STATE_KEY}_GET_USERS_LIST_FAILURE`;
+
 
 export const signInRequest = createAction<TSignIn>(SIGN_IN_REQUEST);
 export const signInSuccess = createAction<TSignInResponseData>(SIGN_IN_SUCCESS);
@@ -38,3 +49,8 @@ export const getProfileFailure = createAction<AxiosError>(GET_PROFILE_FAILURE);
 export const forgotPasswordRequest = createAction<{ email: string }>(FORGOT_PASSWORD_REQUEST);
 export const forgotPasswordSuccess = createAction<boolean>(FORGOT_PASSWORD_SUCCESS);
 export const forgotPasswordFailure = createAction<AxiosError>(FORGOT_PASSWORD_FAILURE);
+
+export const getUsersListRequest = createAction(GET_USERS_LIST_REQUEST);
+export const getUsersListSuccess = createAction<IUsersListResponseData>(GET_USERS_LIST_SUCCESS);
+export const getUsersListFailure = createAction<AxiosError>(GET_USERS_LIST_FAILURE);
+

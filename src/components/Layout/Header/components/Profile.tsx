@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import cn from 'classnames';
+import { photos } from 'mocks/photos';
 
 import { HOME_PAGE } from 'configuration/urls';
 
@@ -13,7 +14,7 @@ const Profile = (): JSX.Element => {
 
   const name = 'Super';
   const surName = 'Investor';
-  const imagePath = undefined;
+  const imagePath = photos[0].src;
 
   // const handleClickOutside = (e: MouseEvent) => {
   //   if (dropdownRef.current && dropdownRef.current.contains(e.target)) {
@@ -49,21 +50,23 @@ const Profile = (): JSX.Element => {
 
   return (
     <div className="header_profile__inner-wrapper" onClick={() => setVisible(!visible)}>
-      <div className="header_profile__icon">
-        {imagePath ? <img src={imagePath} alt="avatar"/> : (
-          <>
-            {name.substr(0, 1).toUpperCase()}
-            {surName.substr(0, 1).toUpperCase()}
-          </>
-        )}
+      <div className="d-flex-centered">
+        <div className="header_profile__icon">
+          {imagePath ? <img src={imagePath} alt="avatar"/> : (
+            <>
+              {name.substr(0, 1).toUpperCase()}
+              {surName.substr(0, 1).toUpperCase()}
+            </>
+          )}
+        </div>
+        <div className="header_profile__title">
+          <span>Hello,&nbsp;</span>
+          {name}&nbsp;
+          {surName}
+        </div>
+        <MostBell/>
+        {visible && dropdownMenu}
       </div>
-      <div className="header_profile__title">
-        <span>Hello,&nbsp;</span>
-        {name}&nbsp;
-        {surName}
-      </div>
-      <MostBell/>
-      {visible && dropdownMenu}
     </div>
   );
 };

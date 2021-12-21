@@ -10,9 +10,9 @@ import {
   FORGOT_PASSWORD_REQUEST,
   forgotPasswordFailure,
   forgotPasswordSuccess,
-  GET_PROFILE_REQUEST,
+  GET_PROFILE_REQUEST, GET_USERS_LIST_REQUEST,
   getProfileFailure,
-  getProfileSuccess,
+  getProfileSuccess, getUsersListFailure, getUsersListSuccess,
   SIGN_IN_REQUEST,
   SIGN_UP_REQUEST,
   signInFailure,
@@ -20,7 +20,14 @@ import {
   signUpFailure,
   signUpSuccess,
 } from 'store/users/actions';
-import { IForgotPassword, TSignIn, TSignInResponse, TSignUp, TSignUpResponse, } from 'store/users/types';
+import {
+  IForgotPassword,
+  TSignIn,
+  TSignInResponse,
+  TSignUp,
+  TSignUpResponse,
+  TUserListResponse,
+} from 'store/users/types';
 import { IPayloadAction } from 'store/types';
 
 import buildFormData from 'utils/formData';
@@ -94,13 +101,26 @@ function* ForgotPassword(action: IPayloadAction<IForgotPassword>): Generator {
   }
 }
 
+function* GetUsers(): Generator {
+  try {
+    const response = yield call(
+      request.get,
+      '/user/',
+    );
+    const { data } = response as TUserListResponse;
+    yield put(getUsersListSuccess(data));
+  } catch (error) {
+    yield put(getUsersListFailure(error as AxiosError));
+  }
+}
 
 function* Saga(): Generator {
   yield all([
     takeLatest(SIGN_IN_REQUEST, SingIn),
     takeLatest(GET_PROFILE_REQUEST, GetProfile),
     takeLatest(SIGN_UP_REQUEST, SignUp),
-    takeLatest(FORGOT_PASSWORD_REQUEST, ForgotPassword)
+    takeLatest(FORGOT_PASSWORD_REQUEST, ForgotPassword),
+    takeLatest(GET_USERS_LIST_REQUEST, GetUsers)
   ]);
 }
 
