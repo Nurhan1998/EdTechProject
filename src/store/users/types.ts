@@ -47,6 +47,7 @@ export interface IProfileModel {
   description: string;
   email: string;
   firstname: string;
+  lastname: string;
   hskill: IHSkillModel[];
   id: string;
   is_active: string;
@@ -77,7 +78,6 @@ export interface TSignInResponseData extends IToken {
 }
 
 export type TSignUpResponseData = Omit<IProfileModel, 'is_admin' | 'notes'> & {
-  lastname: string;
   languages: ILanguageModel[];
   token: IToken
 }
@@ -86,8 +86,13 @@ export interface IForgotPassword {
   email: string;
 }
 
+export interface IUsersListResponseData extends IProfileModel {
+  languages: ILanguageModel[];
+}
+
 export type TRecordOfSignInResponseData = RecordOf<TSignInResponseData>;
 export type TRecordOfSignUpResponseData = RecordOf<TSignUpResponseData>
+export type TRecordOfUserListResponseData = RecordOf<IUsersListResponseData>;
 
 export interface IUserState {
   signIn: ResponseGenericType<TRecordOfSignInResponseData>;
@@ -95,11 +100,13 @@ export interface IUserState {
   profile: ResponseGenericType<RecordOf<IProfileModel>>;
   signUp: ResponseGenericType<TRecordOfSignUpResponseData>;
   forgotPassword: ResponseGenericType<boolean>;
+  usersList: ResponseGenericType<TRecordOfUserListResponseData>
 }
 
 export type TRecordOfUser = RecordOf<IUserState>;
 export type TSignInResponse = AxiosResponse<TSignInResponseData>
 export type TSignUpResponse = AxiosResponse<TSignUpResponseData>
+export type TUserListResponse = AxiosResponse<IUsersListResponseData>
 
 export type TSelectorReturnType<T> = OutputSelector<[((state: IApplicationState) => TRecordOfUser)],
   T,

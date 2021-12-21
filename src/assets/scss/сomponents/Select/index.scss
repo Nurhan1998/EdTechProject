@@ -37,3 +37,19 @@
     }
   }
 }
+
+@media screen and (max-width: $md-xs-media){
+  .select {
+    &_wrapper {
+      margin-top: 5px;
+    }
+
+    &_label {
+      font-size: 10px;
+    }
+
+    &_field {
+      padding: 10px 28px 13px 22px;
+    }
+  }
+}

@@ -7,7 +7,7 @@ import {
   FORGOT_PASSWORD_SUCCESS,
   GET_PROFILE_FAILURE,
   GET_PROFILE_REQUEST,
-  GET_PROFILE_SUCCESS,
+  GET_PROFILE_SUCCESS, GET_USERS_LIST_FAILURE, GET_USERS_LIST_REQUEST, GET_USERS_LIST_SUCCESS,
   SIGN_IN_FAILURE,
   SIGN_IN_REQUEST,
   SIGN_IN_SUCCESS,
@@ -20,7 +20,7 @@ import { IPayloadAction } from 'store/types';
 import createReducer from 'utils/createReducer';
 import { EStorageKeys, getStorageData } from 'utils/storageHelpers';
 
-import { IProfileModel, TRecordOfUser, TUserStoreHandler } from './types';
+import { IProfileModel, IUsersListResponseData, TRecordOfUser, TUserStoreHandler } from './types';
 
 
 const requestDummyState = {
@@ -35,6 +35,7 @@ const initialState: TRecordOfUser = fromJS({
   profile: requestDummyState,
   signUp: requestDummyState,
   forgotPassword: requestDummyState,
+  usersList: requestDummyState
 });
 
 const setSignInFetching = (value: boolean) =>
@@ -65,6 +66,13 @@ const setForgotPasswordData: TUserStoreHandler<boolean> = (state, action) =>
 const setForgotPasswordError: TUserStoreHandler<AxiosError> = (state, action) =>
   state.setIn(['forgotPassword', 'error'], action.payload);
 
+const setUsersListFetching = (value: boolean): TUserStoreHandler<void> => state =>
+  state.setIn(['usersList', 'fetching'], value);
+const setUsersListData: TUserStoreHandler<IUsersListResponseData> = (state, action) =>
+  state.setIn(['usersList', 'data'], fromJS(action.payload));
+const setUsersListError: TUserStoreHandler<AxiosError> = (state, action) =>
+  state.setIn(['usersList', 'error'], action.payload);
+
 export default createReducer<TRecordOfUser>(initialState, {
   [SIGN_IN_REQUEST]: setSignInFetching(true),
   [SIGN_IN_SUCCESS]: [setSignInFetching(false), setSignInData],
@@ -80,5 +88,9 @@ export default createReducer<TRecordOfUser>(initialState, {
 
   [FORGOT_PASSWORD_REQUEST]: setForgotPasswordFetching(true),
   [FORGOT_PASSWORD_SUCCESS]: [setForgotPasswordFetching(false), setForgotPasswordData],
-  [FORGOT_PASSWORD_FAILURE]: [setForgotPasswordFetching(false), setForgotPasswordError]
+  [FORGOT_PASSWORD_FAILURE]: [setForgotPasswordFetching(false), setForgotPasswordError],
+
+  [GET_USERS_LIST_REQUEST]: setUsersListFetching(true),
+  [GET_USERS_LIST_SUCCESS]: [setUsersListFetching(false), setUsersListData],
+  [GET_USERS_LIST_FAILURE]: [setUsersListFetching(false), setUsersListError]
 });

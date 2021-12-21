@@ -1,24 +1,20 @@
-import { userListBaseExample } from 'mocks/baseExample';
-
-import { IUserCard } from '../types';
+import { IUsersListResponseData } from 'store/users/types';
 
 import UserCard from './UserCard';
 
+interface IUsersList {
+  users: IUsersListResponseData[] | null;
+}
 
-const List = (): JSX.Element => (
+
+const List = ({ users }:IUsersList): JSX.Element => (
   <div className="home-page_list__wrapper">
-    {userListBaseExample.map((item: IUserCard) => (
+    {users?.map((item: IUsersListResponseData) => (
       <UserCard
-        progressbarColor={item.progressbarColor}
-        skillName={item.skillName}
-        likesCount={item.likesCount}
         key={item.id}
-        id={item.id}
-        avatar={item.avatar}
-        name={item.name}
-        surName={item.surName}
-        hardSkill={item.hardSkill}
-        softSkill={item.softSkill}
+        lastname={item.lastname}
+        firstname={item.firstname}
+        photo={item.photo}
       />
     ))}
   </div>

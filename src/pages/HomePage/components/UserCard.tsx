@@ -4,39 +4,54 @@ import VideoChat from 'components/Icons/VideoChat';
 import Heart from 'components/Icons/Heart';
 import RightArrows from 'components/Icons/RightArrows';
 
-import { IUserCard } from '../types';
+import { IUsersListResponseData } from 'store/users/types';
+
 
 
 const UserCard = ({
-  name,
-  likesCount,
-  surName,
-  hardSkill,
-  softSkill,
-  avatar,
-  skillName,
-  progressbarColor,
-}:IUserCard):JSX.Element => (
+  firstname,
+  photo,
+  hskill,
+  skills
+}: Partial<IUsersListResponseData>):JSX.Element => (
   <div className="user-card_wrapper">
     <div className="user-card_avatar">
       <span>
-        <img src={avatar} alt="avatar"/>
+        <img
+          src={photo || 'https://development.wyndhamhotels.com/wp-content/uploads/2018/05/Default-Avatar.jpg'}
+          alt="avatar"
+        />
       </span>
+      <div className="user-card_avatar__footer">
+        <CalendarWithPen/>
+        <VideoChat/>
+      </div>
     </div>
     <div className="user-card_info">
       <div className="data">
         <div className="data_head">
-          <p className="title">{`${name} ${surName}`}</p>
+          <p className="title">{firstname}</p>
           <div className="icons">
-            <CalendarWithPen/>
-            <VideoChat/>
-            <Heart filled/>
-            <p className="text-red">{`(${likesCount||12})`}</p>
+            <span className="icons_invisible">
+              <CalendarWithPen/>
+            </span>
+            <span className="icons_invisible">
+              <VideoChat/>
+            </span>
+            <div className="d-flex-centered">
+              <Heart filled/>
+              <p className="text-red">{`(${12})`}</p>
+            </div>
+            <span className="icons_visible">
+              <RightArrows color="#49A057"/>
+            </span>
           </div>
         </div>
         <div className="data_content">
           <p className="text-grey">Hard skills</p>
-          <p className="text-grey">Average index:<span className="text-bold">&nbsp;{`${hardSkill}/10`}</span></p>
+          <p className="text-grey">
+            Average index:<span className="text-bold">&nbsp;{`${hskill?.length || 9}/10`}</span>
+          </p>
         </div>
         <div className="data_content">
           <p className="text-grey">FaceBook</p>
@@ -53,13 +68,13 @@ const UserCard = ({
           <p className="text-grey">
             Average index:
             <span className="text-bold">
-              &nbsp;{`${softSkill / 10 * 100}%`}
+              &nbsp;{`${skills?.length || 8 / 10 * 100}%`}
             </span>
           </p>
         </div>
         <div className="data_content">
-          <p className="text-grey">{skillName}</p>
-          <ProgressBar current={9} max={10} color={progressbarColor}/>
+          <p className="text-grey">Facebook</p>
+          <ProgressBar current={9} max={10} color="#FFCD54"/>
         </div>
       </div>
     </div>

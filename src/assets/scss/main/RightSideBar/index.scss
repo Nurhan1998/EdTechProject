@@ -104,3 +104,9 @@
     }
   }
 }
+
+@media screen and (max-width: $md-xs-media) {
+  .right-sidebar {
+    display: none;
+  }
+}
