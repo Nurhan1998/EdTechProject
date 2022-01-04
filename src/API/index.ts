@@ -2,11 +2,11 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import assign from 'lodash/assign';
 import Router from 'next/router';
 
-import { HOME_PAGE } from 'configuration/urls';
+import { HOME_PAGE, SIGN_IN } from 'configuration/urls';
 
 import { TResponseType } from 'store/types';
 
-import { getStorageData, EStorageKeys } from 'utils/storageHelpers';
+import { getStorageData, EStorageKeys, clearStorageData } from 'utils/storageHelpers';
 
 
 const mainURL = process.env.MAIN_URL;
@@ -28,6 +28,9 @@ instance.interceptors.response.use(
   (response: AxiosResponse<TResponseType<unknown>>) => {
     const { data, success, code } = response.data;
     if (!success) {
+      if(code === 401){
+        clearStorageData().then(()  => Router.push(SIGN_IN));
+      }
       throw {
         code: code.toString(),
         config: response.config,

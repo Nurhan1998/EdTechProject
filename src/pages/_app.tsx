@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { AppPropsType } from 'next/dist/shared/lib/utils';
 import { useDispatch, useSelector } from 'react-redux';
+import ReactNotification from 'react-notifications-component';
 
 import { HOME_PAGE, SIGN_IN } from 'configuration/urls';
 
@@ -10,6 +11,7 @@ import { wrapper } from 'store/index';
 import { makeSelectToken } from 'store/users/selectors';
 import { getProfileRequest } from 'store/users/actions';
 
+import 'react-notifications-component/dist/theme.css';
 import 'assets/scss/vendor/normalize.scss';
 import 'assets/scss/index.scss';
 
@@ -40,7 +42,13 @@ const App: NextPage<AppPropsType> = props => {
     [],
   );
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Component {...pageProps}/>
+      <ReactNotification/>
+    </>
+  );
+
 };
 
 export default wrapper.withRedux(App);

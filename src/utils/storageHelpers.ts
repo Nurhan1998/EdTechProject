@@ -16,3 +16,8 @@ export const setStorageData = async (key: EStorageKeys | string, value: string):
   if (typeof localStorage === 'undefined') return;
   await localStorage.setItem(key, value);
 };
+
+export const clearStorageData = async (): Promise<void> => {
+  if(typeof localStorage === 'undefined') return;
+  await localStorage.clear();
+};
