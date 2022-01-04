@@ -22,7 +22,6 @@ const HomePage = (): JSX.Element => {
     dispatch(getUsersListRequest());
   },[dispatch]);
 
-
   const number = 132;
   return (
     <Layout pageClassName="home-page">

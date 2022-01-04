@@ -1,0 +1,106 @@
+.notifications-component {
+  top: 0;
+}
+
+.notification {
+  max-height: 64px;
+  min-height: 64px;
+  max-width: 300px;
+  margin-bottom: 10px;
+
+  &__item {
+    background-color: $secondaryBlack;
+    opacity: .7;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: $border-radius-bs;
+    margin-bottom: 10px;
+    border: 1px solid $black;
+
+    &::after {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      content: '';
+      background: url("../../../img/svg/crossed.svg") transparent no-repeat center;
+      width: 8px;
+      height: 8px;
+    }
+
+    &--danger {
+      .notification__content {
+        padding-left: 50px;
+
+        .notification__message {
+          position: relative;
+
+          &::before {
+            position: absolute;
+            left: -30px;
+            top: -2px;
+            content: '';
+            border: 1px solid $white;
+            border-radius: $border-radius-circle;
+            background: url("../../../img/svg/crossed.svg") red no-repeat center;
+            width: 22px;
+            height: 22px;
+          }
+        }
+      }
+    }
+
+    &--success {
+      .notification__content {
+        padding-left: 50px;
+
+        .notification__message {
+          position: relative;
+
+          &::before {
+            position: absolute;
+            left: -30px;
+            top: -2px;
+            content: '';
+            border: 1px solid $white;
+            border-radius: $border-radius-circle;
+            background: url("../../../img/svg/check.svg") $lightGreen no-repeat center;
+            width: 22px;
+            height: 22px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+//animations
+.animate__animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 0.7;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.animate__fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+
