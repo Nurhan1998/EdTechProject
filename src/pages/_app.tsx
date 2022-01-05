@@ -11,6 +11,7 @@ import { wrapper } from 'store/index';
 import { makeSelectToken } from 'store/users/selectors';
 import { getProfileRequest } from 'store/users/actions';
 
+import '@fullcalendar/common/main.css';
 import 'react-notifications-component/dist/theme.css';
 import 'assets/scss/vendor/normalize.scss';
 import 'assets/scss/index.scss';

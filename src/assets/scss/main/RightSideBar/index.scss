@@ -9,15 +9,27 @@
   justify-content: center;
 
   &_inner {
-    height: 100%;
     width: 300px;
-    border-radius: $border-radius-bs;
+    height: 100%;
     background-color: $alabaster;
+    border-radius: $border-radius-bs;
     box-shadow: $bsBoxShadow;
     z-index: $zIndexSidebar;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+
+    button {
+      color: $secondaryBlack;
+      border-radius: $border-radius-bs;
+      background-color: $white;
+      width: 90%;
+      height: 46px;
+      border: 1px solid $secondaryBlack;
+      margin: 10px;
+    }
+
   }
 
   .title-wrapper {

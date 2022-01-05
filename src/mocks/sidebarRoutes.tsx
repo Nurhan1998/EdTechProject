@@ -23,7 +23,7 @@ export const SidebarList: ILinkItem[] = [
   }, {
     path: COURSES,
     icon: <Calendar/>,
-    name: 'Upcoming courses'
+    name: 'Calendar'
   }, {
     path: CHAT_PAGE,
     icon: <Chat/>,

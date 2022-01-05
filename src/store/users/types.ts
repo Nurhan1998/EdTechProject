@@ -18,10 +18,17 @@ export type TSignUp = TSignIn & {
   city?: string;
 }
 
-export interface IHSkillModel {
-  hskillid: string;
+export interface ISkill {
   name: string;
-  value: string;
+  value: string
+}
+
+export interface IHSkillModel extends ISkill {
+  hskill_id: string;
+}
+
+export interface ISkillModel extends ISkill {
+  skill_id: string
 }
 
 export interface ILanguageModel {
@@ -67,7 +74,7 @@ export interface IProfileModel {
   phone: string;
   photo: string;
   postautomat: string;
-  skills: IHSkillModel[];
+  skills: ISkillModel[];
   skip_guide: string;
   timezone: string;
 }
@@ -108,7 +115,7 @@ export type TSignInResponse = AxiosResponse<TSignInResponseData>
 export type TSignUpResponse = AxiosResponse<TSignUpResponseData>
 export type TUserListResponse = AxiosResponse<IUsersListResponseData>
 
-export type TSelectorReturnType<T> = OutputSelector<[((state: IApplicationState) => TRecordOfUser)],
+export type TUserSelectorReturnType<T> = OutputSelector<[((state: IApplicationState) => TRecordOfUser)],
   T,
   (...args: SelectorResultArray<[((state: IApplicationState) => TRecordOfUser)]>) => T,
   GetParamsFromSelectors<[((state: IApplicationState) => TRecordOfUser)]>>;

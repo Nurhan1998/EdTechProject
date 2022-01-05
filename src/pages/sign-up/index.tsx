@@ -23,7 +23,7 @@ const SignUp = (): JSX.Element => {
   const dispatch = useDispatch();
   const signInFetching = useSelector(makeSelectSignInFetching);
   const formValues = useSelector(makeSelectFormValues(SIGN_UP_FORM));
-  const [isStudent] = useState<boolean>(false);
+  const [isStudent] = useState<boolean>(true);
 
   const signUp = (): void => {
     delete formValues.confirm_password;

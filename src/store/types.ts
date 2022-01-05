@@ -4,10 +4,12 @@ import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { TFormState } from 'store/form/types';
 import { TRecordOfUser } from 'store/users/types';
+import { TRecordOfCalendar } from 'store/calendar/types';
 
 export interface IApplicationState {
   users?: TRecordOfUser;
   form?: TFormState;
+  calendar?: TRecordOfCalendar
 }
 
 export interface IWithSagaTaskStore extends Store<IApplicationState> {

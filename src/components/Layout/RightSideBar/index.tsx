@@ -30,6 +30,7 @@ const RightSideBar: FC<IRightSidebar> = ({ setRightSidebarWidth }) => {
           <FavoriteUserCard avatar="https://i.pravatar.cc/300?img=11" name={'Catrina'} hskill={10} sskill={10} />
           <FavoriteUserCard avatar="https://i.pravatar.cc/300?img=11" name={'Catrina'} hskill={10} sskill={10} />
         </div>
+        <button>View all</button>
       </div>
     </div>
   );
