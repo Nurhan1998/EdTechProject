@@ -2,65 +2,65 @@ import { createSelector } from 'reselect';
 import { AxiosError } from 'axios';
 
 import { IApplicationState } from 'store/types';
-import { IUsersListResponseData, TRecordOfUser, TSelectorReturnType, TSignInResponseData } from 'store/users/types';
+import { IUsersListResponseData, TRecordOfUser, TUserSelectorReturnType, TSignInResponseData } from 'store/users/types';
 
 
 const selectState = (state: IApplicationState): TRecordOfUser | undefined => state.users;
 
-export const makeSelectSignInFetching: TSelectorReturnType<boolean> = createSelector(
+export const makeSelectSignInFetching: TUserSelectorReturnType<boolean> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['signIn', 'fetching']) || false
 );
-export const makeSelectSignInError: TSelectorReturnType<AxiosError | null> = createSelector(
+export const makeSelectSignInError: TUserSelectorReturnType<AxiosError | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['signIn', 'error']) || null
 );
-export const makeSelectSignInData: TSelectorReturnType<TSignInResponseData | null> = createSelector(
+export const makeSelectSignInData: TUserSelectorReturnType<TSignInResponseData | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['signIn', 'data'])?.toJS() || null,
 );
 
-export const makeSelectSignUpFetching: TSelectorReturnType<boolean> = createSelector(
+export const makeSelectSignUpFetching: TUserSelectorReturnType<boolean> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['signUp', 'fetching']) || false
 );
-export const makeSelectSignUpError: TSelectorReturnType<AxiosError | null> = createSelector(
+export const makeSelectSignUpError: TUserSelectorReturnType<AxiosError | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['signUp', 'error']) || null
 );
-export const makeSelectSignUpData: TSelectorReturnType<TSignInResponseData | null> = createSelector(
+export const makeSelectSignUpData: TUserSelectorReturnType<TSignInResponseData | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['signUp', 'data'])?.toJS() || null,
 );
 
-export const makeSelectForgotPasswordFetching: TSelectorReturnType<boolean> = createSelector(
+export const makeSelectForgotPasswordFetching: TUserSelectorReturnType<boolean> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['forgotPassword', 'fetching']) || false
 );
-export const makeSelectForgotPasswordError: TSelectorReturnType<AxiosError | null> = createSelector(
+export const makeSelectForgotPasswordError: TUserSelectorReturnType<AxiosError | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['forgotPassword', 'error']) || null
 );
-export const makeSelectForgotPasswordData: TSelectorReturnType<TSignInResponseData | null> = createSelector(
+export const makeSelectForgotPasswordData: TUserSelectorReturnType<TSignInResponseData | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['forgotPassword', 'data'])?.toJS() || null,
 );
 
-export const makeSelectUsersListFetching: TSelectorReturnType<boolean> = createSelector(
+export const makeSelectUsersListFetching: TUserSelectorReturnType<boolean> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['usersList', 'fetching']) || false
 );
-export const makeSelectUsersListError: TSelectorReturnType<AxiosError | null> = createSelector(
+export const makeSelectUsersListError: TUserSelectorReturnType<AxiosError | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['usersList', 'error']) || null
 );
-export const makeSelectUsersListData: TSelectorReturnType<IUsersListResponseData[] | null> = createSelector(
+export const makeSelectUsersListData: TUserSelectorReturnType<IUsersListResponseData[] | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.getIn(['usersList', 'data'])?.toJS() || null,
 );
 
 
-export const makeSelectToken: TSelectorReturnType<string | null> = createSelector(
+export const makeSelectToken: TUserSelectorReturnType<string | null> = createSelector(
   selectState,
   (state?: TRecordOfUser) => state?.get('token') || null,
 );

@@ -13,11 +13,10 @@ export const stringYupPassword = stringYupRequired
   .matches(/[a-zA-Z0-9]/, 'Password should contain only latin symbols');
 
 
-
 export const executeValidation = (
   schema: ObjectShape,
   values: TFormValues
-): Promise<null | Record<string, string | string[]>> =>
+): Promise<null | Record<string, string[]>> =>
   new Promise((resolve, reject) => {
     yup
       .object()

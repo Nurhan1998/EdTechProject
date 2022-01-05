@@ -21,6 +21,10 @@ const Header = ({ className, setHeaderHeight, sidebarWidth, rightSideBar }: IHea
     }
   }, [headerRef, setHeaderHeight]);
 
+  const handleOpen = (): void => {
+    //some logic
+  };
+
   return (
     <div
       ref={headerRef}
@@ -33,7 +37,7 @@ const Header = ({ className, setHeaderHeight, sidebarWidth, rightSideBar }: IHea
         </div>
         <MediaQuery maxWidth={500}>
           <SidebarLogo height={32} width={87}/>
-          <BurgerMenu/>
+          <span onClick={handleOpen}><BurgerMenu/></span>
         </MediaQuery>
         <div className="header_action__wrapper">
           <p className="action-title">{language}</p>

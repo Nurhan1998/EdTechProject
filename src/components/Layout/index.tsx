@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import RightSideBar from 'components/Layout/RightSideBar';
@@ -11,11 +11,16 @@ import { ILayout } from './types';
 const Layout: FC<ILayout> = ({
   layoutClassName,
   pageClassName,
-  children
+  children,
+  withoutRightSidebar= false
 }) => {
   const [sidebarWidth, setSidebarWidth] = useState<number>(0);
   const [rightSideBarWidth, setRightSidebarWidth] = useState<number>(0);
   const [headerHeight, setHeaderHeight] = useState<number>(0);
+
+  useEffect(()=>{
+    if(withoutRightSidebar) setRightSidebarWidth(8);
+  }, [withoutRightSidebar]);
 
   return (
     <div
@@ -28,7 +33,7 @@ const Layout: FC<ILayout> = ({
     >
       <Header setHeaderHeight={setHeaderHeight} sidebarWidth={sidebarWidth} rightSideBar={rightSideBarWidth}/>
       <Sidebar setSidebarWidth={setSidebarWidth}/>
-      <RightSideBar setRightSidebarWidth={setRightSidebarWidth}/>
+      {!withoutRightSidebar && <RightSideBar setRightSidebarWidth={setRightSidebarWidth}/>}
       <div className={cn('layout_inner-wrapper', pageClassName)}>
         {children}
       </div>

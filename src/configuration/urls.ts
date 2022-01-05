@@ -1,7 +1,7 @@
 export const HOME_PAGE = '/';
 export const CHAT_PAGE = '/chat';
 export const PROFILE = '/profile';
-export const COURSES = '/courses';
+export const COURSES = '/calendar';
 export const JOBS = '/jobs';
 export const FAVORITES = '/favorites';
 export const SETTINGS = '/settings';

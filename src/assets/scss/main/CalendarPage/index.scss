@@ -1,0 +1,213 @@
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 0;
+}
+
+.calendar-page {
+  &_wrapper {
+    border-collapse: collapse;
+    width: 100%;
+    height: 755px;
+    border: 1px solid $superLightGrey;
+    border-radius: $border-radius-bs;
+    background-color: $alabaster;
+
+    .fc {
+      table {
+        border: none;
+
+        tr[role=row]{
+          td[role=gridcell]{
+            height: 114px;
+          }
+        }
+      }
+
+      &-header-toolbar {
+        height: 82px;
+        align-items: center;
+        margin-bottom: 0;
+
+        .fc-toolbar-chunk {
+          display: flex;
+
+          &:first-child {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+
+            &:before {
+              content: '';
+              width: 41px;
+              height: 41px;
+              background: url("../../../img/svg/BigCalendar.svg") no-repeat;
+            }
+
+            &:after {
+              content: 'Calendar';
+              font-weight: $semiBold;
+              font-size: 20px;
+              margin-left: 20px;
+            }
+
+            button {
+              display: none;
+            }
+          }
+
+          &:nth-child(2){
+            div {
+              margin: 30px 0 28px 0;
+              display: flex;
+              .fc-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 24px;
+                height: 24px;
+                background-color: $alabaster;
+                color: $secondaryBlack;
+                border: none;
+                margin: 0 10px;
+              }
+            }
+          }
+
+          &:nth-child(3) {
+            div {
+              width: 400px;
+              display: flex;
+              justify-content: space-between;
+
+              .fc-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $white;
+                max-width: 92px;
+                border-radius: $border-radius-lg;
+                height: 32px;
+                border: none;
+                color: $textColorLightGrey;
+
+                &-active {
+                  border: none;
+                  background-color: $primaryColor;
+                  color: $white;
+                }
+
+                &:focus {
+                  border: none;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &-event {
+        background-color:  $lightGreen;
+        opacity: 1;
+        color: $textColorLight;
+
+        .event-content {
+          position: relative;
+          padding: 10px;
+          display: flex;
+          height: 100%;
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: space-between;
+          font-size: 14px;
+
+          p {
+            margin: 0;
+          }
+
+          &_theme {
+            width: 100%;
+            max-height: 42px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            p {
+              margin-left: 5px;
+            }
+
+            &::after {
+              position: absolute;
+              content: "";
+              border-left: 1px solid $textColorLight;
+              height: 100%;
+              left: 0;
+              top: 0;
+            }
+          }
+
+          &_curator {
+            align-self: flex-end;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            color: $white;
+          }
+        }
+
+        &-past {
+          opacity: 1;
+          background-color: #7EBB88;
+        }
+      }
+
+      &-toolbar-title {
+        font-size: 20px;
+        font-weight: $semiBold;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: center;
+      background-color: $alabaster;
+      width: 387px;
+      margin: 0 auto;
+      height: 65px;
+
+      .content {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 50%;
+
+        p {
+          font-family: $primaryFontRegular;
+          font-size: 14px;
+          margin: 0;
+        }
+
+        .circle {
+          width: 26px;
+          height: 26px;
+          border: 2px solid $white;
+          border-radius: $border-radius-circle;
+        }
+
+        .green {
+          background-color: $lightGreen;
+        }
+
+        .blue {
+          background-color: $primaryBlue;
+        }
+      }
+    }
+  }
+}

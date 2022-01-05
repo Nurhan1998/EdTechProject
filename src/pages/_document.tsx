@@ -1,4 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { NotificationContainer } from 'react-notifications';
+
 
 class BaseDocument extends Document {
   render(): JSX.Element {
@@ -17,6 +19,7 @@ class BaseDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <NotificationContainer />
         </body>
       </Html>
     );

@@ -19,23 +19,18 @@ import { IPayloadAction } from 'store/types';
 
 import createReducer from 'utils/createReducer';
 import { EStorageKeys, getStorageData } from 'utils/storageHelpers';
+import getRequestState from 'utils/requestState';
 
 import { IProfileModel, IUsersListResponseData, TRecordOfUser, TUserStoreHandler } from './types';
 
 
-const requestDummyState = {
-  fetching: false,
-  data: null,
-  error: null,
-};
-
 const initialState: TRecordOfUser = fromJS({
-  signIn: requestDummyState,
+  signIn: getRequestState(),
   token: getStorageData(EStorageKeys.TOKEN),
-  profile: requestDummyState,
-  signUp: requestDummyState,
-  forgotPassword: requestDummyState,
-  usersList: requestDummyState
+  profile: getRequestState(),
+  signUp: getRequestState(),
+  forgotPassword: getRequestState(),
+  usersList: getRequestState()
 });
 
 const setSignInFetching = (value: boolean) =>
