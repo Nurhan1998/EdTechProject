@@ -1,0 +1,71 @@
+.dialog-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: rgba(0,0,0, 0.4);
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+
+  &.visible {
+    display: flex;
+  }
+
+  &.invisible {
+    display: none;
+  }
+
+  .dialog-content {
+    position: relative;
+    padding: 74px 21px 21px 21px;
+    width: 613px;
+    height: 198px;
+    background: $alabaster;
+    border-radius: $border-radius-bs;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .text {
+      margin: 0 0 40px 0;
+      color: $textColorLightGrey;
+    }
+
+    .action-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      button {
+        width: 280px;
+        height: 46px;
+        border: 1px solid $black;
+        border-radius: $border-radius-bs;
+        cursor: pointer;
+
+        &:first-child {
+          background-color: $secondaryBlack;
+          color: $alabaster;
+        }
+        &:last-child {
+          background-color: $alabaster;
+          color: $secondaryBlack;
+        }
+      }
+
+    }
+
+    &_close::after {
+      top: 15px;
+      right: 15px;
+      position: absolute;
+      content: "\00d7";
+      cursor: pointer;
+    }
+  }
+}

@@ -3,4 +3,6 @@ export interface IProgressBarProps {
   max: number;
   width?: number;
   color?: string;
+  title?: string;
+  className?: string;
 }

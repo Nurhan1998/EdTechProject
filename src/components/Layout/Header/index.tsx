@@ -4,26 +4,28 @@ import { Languages } from 'mocks/languages';
 import MediaQuery from 'react-responsive';
 
 import SidebarLogo from 'components/Icons/Sidebar/SidebarLogo';
-import BurgerMenu from 'components/Icons/burgerMenu';
+import BurgerMenuLines from 'components/Icons/burgerMenuLines';
+import CrossLines from 'components/Icons/CrossLines';
+import BurgerMenu from 'components/BurgerMenu';
 
 import Profile from './components/Profile';
 import { IHeader } from './types';
 
 
-
 const Header = ({ className, setHeaderHeight, sidebarWidth, rightSideBar }: IHeader): JSX.Element => {
   const headerRef = useRef<HTMLDivElement>(null);
   const [language, setLanguage] = useState<string>(Languages[0].name);
+  const [visible, setVisible] = useState<boolean>(false);
+
+  const handleClickMenu = (): void => {
+    setVisible(!visible);
+  };
 
   useEffect(() => {
     if (headerRef?.current?.clientHeight) {
       setHeaderHeight(headerRef.current.clientHeight);
     }
   }, [headerRef, setHeaderHeight]);
-
-  const handleOpen = (): void => {
-    //some logic
-  };
 
   return (
     <div
@@ -37,14 +39,16 @@ const Header = ({ className, setHeaderHeight, sidebarWidth, rightSideBar }: IHea
         </div>
         <MediaQuery maxWidth={500}>
           <SidebarLogo height={32} width={87}/>
-          <span onClick={handleOpen}><BurgerMenu/></span>
+          <span onClick={handleClickMenu}>
+            {visible ? <CrossLines width={24} height={24}/> : <BurgerMenuLines/>}
+          </span>
         </MediaQuery>
         <div className="header_action__wrapper">
           <p className="action-title">{language}</p>
-          {Languages.map(({ icon, id, name }) => (
+          {Languages.map(({ icon, id, name,className }) => (
             <span
               key={`${id}_${name}`}
-              className="action"
+              className={`action ${className ? className: ''}`}
               onClick={() => setLanguage(name)}
             >
               {icon}
@@ -52,6 +56,7 @@ const Header = ({ className, setHeaderHeight, sidebarWidth, rightSideBar }: IHea
           ))}
         </div>
       </div>
+      <BurgerMenu language={language} setLanguage={setLanguage} visible={visible}/>
     </div>
   );
 };

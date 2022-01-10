@@ -1,8 +1,7 @@
 import { RecordOf } from 'immutable';
 import { AxiosResponse } from 'axios';
-import { GetParamsFromSelectors, OutputSelector, SelectorResultArray } from 'reselect';
 
-import { IApplicationState, ResponseGenericType } from 'store/types';
+import { ResponseGenericType, TSelectorReturnType } from 'store/types';
 import { IProfileModel } from 'store/users/types';
 
 
@@ -42,9 +41,4 @@ export interface ICalendarState {
 export type TRecordOfCalendar = RecordOf<ICalendarState>
 export type TCalendarResponse = AxiosResponse<ICourse[]>
 
-export type TCalendarSelectorReturnType<T> = OutputSelector<
-  [((state: IApplicationState) => TRecordOfCalendar)],
-  T,
-  (...args: SelectorResultArray<[((state: IApplicationState) => TRecordOfCalendar)]>) => T,
-  GetParamsFromSelectors<[((state: IApplicationState) => TRecordOfCalendar)]>
->;
+export type TCalendarSelectorReturnType<T> = TSelectorReturnType<T, TRecordOfCalendar>

@@ -50,7 +50,7 @@ const setSignUpFailure = (state: TRecordOfUser, action: IPayloadAction): TRecord
 const setProfileFetching = (value: boolean): TUserStoreHandler<void> => state =>
   state.setIn(['profile', 'fetching'], value);
 const setProfileData: TUserStoreHandler<IProfileModel> = (state, action) =>
-  state.setIn(['profile', 'data'], action.payload);
+  state.setIn(['profile', 'data'], fromJS(action.payload));
 const setProfileError: TUserStoreHandler<AxiosError> = (state, action) =>
   state.setIn(['profile', 'error'], action.payload);
 

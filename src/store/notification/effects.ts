@@ -1,4 +1,4 @@
-import { all, takeEvery } from 'redux-saga/effects';
+import { all, takeEvery, call } from 'redux-saga/effects';
 
 import { IPayloadAction } from 'store/types';
 import { INotificationAction } from 'store/notification/types';
@@ -8,17 +8,18 @@ import createNotification from 'utils/createNotification';
 import { NOTIFICATION_SUCCESS, NOTIFICATION_ERROR } from './actions';
 
 function* openSuccess(action: IPayloadAction<INotificationAction>): Generator {
-  createNotification({
+  yield call(createNotification, {
     type: 'success',
     message: action.payload.message
   });
 }
 
 function* openError(action: IPayloadAction<INotificationAction>) {
-  createNotification({
+  yield call(createNotification, {
     type: 'danger',
     message: action.payload.message
   });
+
 }
 
 function* Saga(): Generator {

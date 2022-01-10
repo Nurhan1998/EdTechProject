@@ -1,8 +1,9 @@
 .layout{
   &_wrapper {
+    background-color: $white;
     display: flex;
     flex-direction: column;
-
+    height: 100%;
   }
 
   &_inner-wrapper{

@@ -1,9 +1,13 @@
 .progressbar{
-  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  max-width: 530px;
+
+  &-title {
+    color: $textColorLightGrey;
+    margin: 0;
+  }
 
   &-wrapper {
     width: 90%;

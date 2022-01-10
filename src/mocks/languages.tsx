@@ -6,13 +6,15 @@ interface ILanguage {
   name: string;
   id: number;
   icon: JSX.Element;
+  className?: string;
 }
 
 export const Languages: ILanguage[] = [
   {
     name: 'English',
     id: 2,
-    icon: <USFlag/>
+    icon: <USFlag/>,
+    className: 'eng'
   },
   {
     name: 'Spain',

@@ -12,7 +12,9 @@ import { makeSelectToken } from 'store/users/selectors';
 import { getProfileRequest } from 'store/users/actions';
 
 import '@fullcalendar/common/main.css';
+import '@fullcalendar/list/main.css';
 import 'react-notifications-component/dist/theme.css';
+import 'react-circular-progressbar/dist/styles.css';
 import 'assets/scss/vendor/normalize.scss';
 import 'assets/scss/index.scss';
 

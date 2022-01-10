@@ -1,0 +1,154 @@
+.profile-page {
+  &_inner__wrapper {
+    .top {
+      display: flex;
+      justify-content: space-between;
+
+      .avatar-wrapper {
+        width: 403px;
+        height: 403px;
+        padding: 20px;
+        background-color: $alabaster;
+        border-radius: $border-radius-bs;
+        border: 1px solid $superLightGrey;
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: $border-radius-bs;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          width: 72px;
+          height: 72px;
+          border-top-left-radius: $border-radius-bs;
+          border-bottom-right-radius: $border-radius-bs;
+          bottom: 21px;
+          right: 21px;
+          background: url("../../../img/png/photoCamera.png") $alabaster no-repeat center;
+          opacity: 0.8;
+        }
+      }
+
+      .letter {
+        p {
+          margin: 0;
+        }
+
+        &_wrapper {
+          width: 760px;
+          height: 403px;
+          background-color: $alabaster;
+          border-radius: $border-radius-bs;
+          border: 1px solid $superLightGrey;
+        }
+        &-top {
+          padding: 20px 13px 21px 20px;
+          height: 64px;
+          width: 100%;
+          border-bottom: 1px solid $superLightGrey;
+          display: flex;
+          justify-content: space-between;
+
+          .left {
+            display: flex;
+            align-items: flex-end;
+            p {
+              margin:0;
+            }
+
+            .title {
+              color: $secondaryBlack;
+              font-size: 20px;
+            }
+
+            .subtitle {
+              color: $textColorLightGrey;
+              font-size: 14px;
+              margin-left: 10px;
+            }
+          }
+
+          .right {
+            color: $lightGreen;
+            cursor: pointer;
+          }
+        }
+
+        &-body {
+          padding: 20px;
+          color: $textColorLightGrey;
+          max-height: 720px;
+          overflow: hidden;
+          white-space: pre-line;
+          //TODO: prevent text out of div
+        }
+      }
+    }
+
+    .hard-skills_wrapper {
+      height: 200px;
+      width: 100%;
+      background-color: $alabaster;
+      border-radius: $border-radius-bs;
+      border: 1px solid $superLightGrey;
+      margin-top: 12px;
+    }
+    .skills-header {
+      padding: 21px 18px 15px 20px;
+      height: 81px;
+      width: 100%;
+      border-bottom: 1px solid $superLightGrey;
+      display: flex;
+      justify-content: space-between;
+
+      p.title {
+        margin: 0 0 7px 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      span {
+        color: $textColorLightGrey;
+      }
+
+      .right-side {
+        text-align: right;
+      }
+    }
+
+    .skills-body {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 20px;
+      width: 100%;
+      height: calc(100% - 81px);
+
+      .grade {
+        &:not(last-child) {
+          margin-top: 7px;
+        }
+
+        .progressbar-title {
+          min-width: 160px;
+        }
+      }
+    }
+
+
+    .soft-skills_wrapper {
+      height: 316px;
+      width: 100%;
+      background-color: $alabaster;
+      border-radius: $border-radius-bs;
+      border: 1px solid $superLightGrey;
+      margin-top: 12px;
+    }
+  }
+}
