@@ -1,8 +1,18 @@
+import cn from 'classnames';
+
 import { IProgressBarProps } from 'components/ProgressBar/types';
 
 
-export const ProgressBar = ({ current, max, width = 100, color='#50C0E8' }: IProgressBarProps): JSX.Element => (
-  <div className="progressbar">
+export const ProgressBar = ({
+  current,
+  max,
+  width = 100,
+  color='#50C0E8',
+  title,
+  className
+}: IProgressBarProps): JSX.Element => (
+  <div className={cn('progressbar', className)}>
+    {title && <p className="progressbar-title">{title}</p>}
     <div className="progressbar-wrapper" style={{ width: width }}>
       <span className="progressbar-inner_wrapper" style={{ width: `${current / max * 100}%`, backgroundColor: color }}/>
     </div>

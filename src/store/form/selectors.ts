@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
 import { IApplicationState } from 'store/types';
-import { TFormState, TFormValues, TSelectorReturnType } from 'store/form/types';
+import { TFormSelectorReturnType, TFormState, TFormValues } from 'store/form/types';
 
 const selectState = (state: IApplicationState): TFormState | undefined => state.form;
 
-export const makeSelectFormValues = (form: string): TSelectorReturnType<TFormValues> =>
+export const makeSelectFormValues = (form: string): TFormSelectorReturnType<TFormValues> =>
   createSelector(selectState, (state?: TFormState) =>
     state?.getIn([form, 'values'])?.toJS() || {}
   );
@@ -13,5 +13,5 @@ export const makeSelectFormValues = (form: string): TSelectorReturnType<TFormVal
 export const makeSelectFormFieldError = (
   form: string,
   field: string
-): TSelectorReturnType<string[]> =>
+): TFormSelectorReturnType<string[]> =>
   createSelector(selectState, (state?: TFormState) => state?.getIn([form, 'errors', field]));

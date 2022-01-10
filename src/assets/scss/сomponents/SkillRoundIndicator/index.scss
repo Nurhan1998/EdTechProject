@@ -1,0 +1,52 @@
+.indicator_wrapper {
+  display: flex;
+  width: 160px;
+  height: 45px;
+  background-color: transparent;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
+
+  .icon_wrapper {
+    width: 45px;
+    height: 45px;
+    position: relative;
+
+    .excellent {
+      position: absolute;
+      background: url("../../../img/svg/excellentMark.svg");
+      height: 21px;
+      width: 21px;
+      top: 11px;
+      left: 11px;
+    }
+    .great {
+      position: absolute;
+      background: url("../../../img/svg/greatMark.svg");
+      height: 21px;
+      width: 21px;
+      top: 11px;
+      left: 11px;
+    }
+  }
+
+  .text_wrapper {
+    .title {
+      font-size: 20px;
+      font-weight: $semiBold;
+      color: $secondaryBlack;
+    }
+    .subtitle {
+      color: $textColorLightGrey;
+      font-size: 14px;
+    }
+  }
+}
+
+@keyframes growProgressBar {
+  0%, 33% { --pgPercentage: 0; }
+  100% { --pgPercentage: var(--value); }
+}

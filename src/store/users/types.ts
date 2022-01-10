@@ -1,8 +1,7 @@
 import { RecordOf } from 'immutable';
 import { AxiosResponse } from 'axios';
-import { GetParamsFromSelectors, OutputSelector, SelectorResultArray } from 'reselect';
 
-import { IApplicationState, ResponseGenericType, THandler } from 'store/types';
+import { ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
 
 
 export type TSignIn = {
@@ -55,7 +54,7 @@ export interface IProfileModel {
   email: string;
   firstname: string;
   lastname: string;
-  hskill: IHSkillModel[];
+  hskills: IHSkillModel[];
   id: string;
   is_active: string;
   is_admin: string;
@@ -115,10 +114,7 @@ export type TSignInResponse = AxiosResponse<TSignInResponseData>
 export type TSignUpResponse = AxiosResponse<TSignUpResponseData>
 export type TUserListResponse = AxiosResponse<IUsersListResponseData>
 
-export type TUserSelectorReturnType<T> = OutputSelector<[((state: IApplicationState) => TRecordOfUser)],
-  T,
-  (...args: SelectorResultArray<[((state: IApplicationState) => TRecordOfUser)]>) => T,
-  GetParamsFromSelectors<[((state: IApplicationState) => TRecordOfUser)]>>;
+export type TUserSelectorReturnType<T> = TSelectorReturnType<T, TRecordOfUser>
 
 export type TUserStoreHandler<T> = THandler<TRecordOfUser, T>;
 

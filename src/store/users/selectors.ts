@@ -2,7 +2,13 @@ import { createSelector } from 'reselect';
 import { AxiosError } from 'axios';
 
 import { IApplicationState } from 'store/types';
-import { IUsersListResponseData, TRecordOfUser, TUserSelectorReturnType, TSignInResponseData } from 'store/users/types';
+import {
+  IUsersListResponseData,
+  TRecordOfUser,
+  TUserSelectorReturnType,
+  TSignInResponseData,
+  IProfileModel
+} from 'store/users/types';
 
 
 const selectState = (state: IApplicationState): TRecordOfUser | undefined => state.users;
@@ -59,6 +65,18 @@ export const makeSelectUsersListData: TUserSelectorReturnType<IUsersListResponse
   (state?: TRecordOfUser) => state?.getIn(['usersList', 'data'])?.toJS() || null,
 );
 
+export const makeSelectProfileFetching: TUserSelectorReturnType<boolean> = createSelector(
+  selectState,
+  (state?: TRecordOfUser) => state?.getIn(['profile', 'fetching']) || false
+);
+export const makeSelectProfileData: TUserSelectorReturnType<IProfileModel | null> = createSelector(
+  selectState,
+  (state?: TRecordOfUser) => state?.getIn(['profile', 'data'])?.toJS() || null
+);
+export const makeSelectProfileError: TUserSelectorReturnType<AxiosError | null> = createSelector(
+  selectState,
+  (state?: TRecordOfUser) => state?.getIn(['profile', 'error']) || null
+);
 
 export const makeSelectToken: TUserSelectorReturnType<string | null> = createSelector(
   selectState,

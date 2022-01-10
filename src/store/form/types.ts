@@ -1,10 +1,9 @@
 import { RecordOf } from 'immutable';
-import { GetParamsFromSelectors, OutputSelector, SelectorResultArray } from 'reselect';
 import { ObjectShape } from 'yup/lib/object';
 
 import { IConfig } from 'components/Form/types';
 
-import { IApplicationState, THandler } from 'store/types';
+import { THandler, TSelectorReturnType } from 'store/types';
 
 
 export type TFieldValue<T = string> = T | Array<T>;
@@ -43,11 +42,7 @@ export interface ISetInitValuesFormAction extends IFormPayload {
   instance: Record<string, TFieldValue>;
 }
 
-export type TSelectorReturnType<T> = OutputSelector<[((state: IApplicationState) => TFormState)],
-  T,
-  (...args: SelectorResultArray<[((state: IApplicationState) => TFormState)]>) => T,
-  GetParamsFromSelectors<[((state: IApplicationState) => TFormState)]>>;
-
+export type TFormSelectorReturnType<T> = TSelectorReturnType<T, TFormState>;
 export type TRecordOfFormState = RecordOf<IFormState>;
 export type TFormState = RecordOf<Record<string, TRecordOfFormState>>;
 export type TFormStateHandler<T> = THandler<TFormState, T>;

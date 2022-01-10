@@ -9,4 +9,5 @@ export interface ILinkItem {
   isActive?: boolean;
   icon: JSX.Element;
   name: string;
+  className?: string;
 }

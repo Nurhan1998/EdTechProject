@@ -1,15 +1,18 @@
 import { Store } from 'redux';
 import { Task } from 'redux-saga';
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { GetParamsFromSelectors, OutputSelector, SelectorResultArray } from 'reselect';
 
 import { TFormState } from 'store/form/types';
 import { TRecordOfUser } from 'store/users/types';
 import { TRecordOfCalendar } from 'store/calendar/types';
+import { TSkillsRecordOf } from 'store/skills/types';
 
 export interface IApplicationState {
   users?: TRecordOfUser;
   form?: TFormState;
-  calendar?: TRecordOfCalendar
+  calendar?: TRecordOfCalendar;
+  skills?: TSkillsRecordOf
 }
 
 export interface IWithSagaTaskStore extends Store<IApplicationState> {
@@ -58,3 +61,10 @@ export type TRequestFunction<R = AxiosResponse> = (
   url: string,
   options?: AxiosRequestConfig
 ) => Promise<R>;
+
+export type TSelectorReturnType<T, D> = OutputSelector<
+  [((state: IApplicationState) => D)],
+  T,
+  (...args: SelectorResultArray<[((state: IApplicationState) => D)]>) => T,
+  GetParamsFromSelectors<[((state: IApplicationState) => D)]>
+  >;

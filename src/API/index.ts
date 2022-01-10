@@ -29,7 +29,7 @@ instance.interceptors.response.use(
     const { data, success, code } = response.data;
     if (!success) {
       if(code === 401){
-        clearStorageData().then(()  => Router.push(SIGN_IN));
+        clearStorageData().then(() => Router.push(SIGN_IN));
       }
       throw {
         code: code.toString(),

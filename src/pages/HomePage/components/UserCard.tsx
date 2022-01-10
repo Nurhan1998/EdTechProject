@@ -11,7 +11,7 @@ import { IUsersListResponseData } from 'store/users/types';
 const UserCard = ({
   firstname,
   photo,
-  hskill,
+  hskills,
   skills
 }: Partial<IUsersListResponseData>):JSX.Element => (
   <div className="user-card_wrapper">
@@ -50,7 +50,7 @@ const UserCard = ({
         <div className="data_content">
           <p className="text-grey">Hard skills</p>
           <p className="text-grey">
-            Average index:<span className="text-bold">&nbsp;{`${hskill?.length || 9}/10`}</span>
+            Average index:<span className="text-bold">&nbsp;{`${hskills?.length || 9}/10`}</span>
           </p>
         </div>
         <div className="data_content">

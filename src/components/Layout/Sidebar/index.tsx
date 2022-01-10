@@ -11,6 +11,8 @@ import LinkItem from 'components/Layout/Sidebar/components/LinkItem';
 import Input from 'components/Input';
 
 
+import IsMenuActive from 'utils/IsMenuActive';
+
 import { ISidebar } from './types';
 
 
@@ -23,8 +25,6 @@ const Sidebar = ({ setSidebarWidth }: ISidebar): JSX.Element => {
       setSidebarWidth(sidebarRef.current.clientWidth);
     }
   }, [sidebarRef, setSidebarWidth]);
-
-  const isMenuActive = (path: string): boolean => router.pathname === path;
 
   return (
     <div className="sidebar_wrapper" ref={sidebarRef}>
@@ -44,7 +44,7 @@ const Sidebar = ({ setSidebarWidth }: ISidebar): JSX.Element => {
             <LinkItem
               key={`${path}_${idx}`}
               path={path}
-              isActive={isMenuActive(path)}
+              isActive={IsMenuActive(path, router)}
               icon={icon}
               name={name}
             />
