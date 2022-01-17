@@ -25,6 +25,12 @@
     -moz-appearance: none;
     background: url(../../../img/png/custom-select.png) right 1.1rem center no-repeat;
     background-size: auto;
+
+    &:disabled {
+      color: $textColorLightGrey;
+      cursor: default;
+    }
+
     option {
       line-height: 1rem;
     }

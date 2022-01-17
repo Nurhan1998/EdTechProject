@@ -1,0 +1,78 @@
+.personal-settings_form {
+  justify-content: space-around;
+  .left-side_input {
+    margin: 5px 0 0 0;
+    width: 55%;
+
+    .label {
+      color: $textColorLightGrey;
+    }
+
+    .select_label {
+      color: $textColorLightGrey;
+    }
+
+    .select_field {
+      box-shadow: none;
+      border-radius: $border-radius-bs;
+      background-color: $white;
+      height: 46px;
+      color: $secondaryBlack;
+    }
+
+    .input {
+      background-color: $white;
+      color: $secondaryBlack;
+    }
+  }
+
+  .right-side_input {
+    width: 40%;
+    margin: 5px 0 0 0;
+
+    .label, select_label {
+      color: $textColorLightGrey;
+    }
+    .input {
+      background-color: $white;
+    }
+
+  }
+}
+
+.system-setting_form {
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+
+  .select {
+    &_wrapper {
+      &:last-child {
+        margin-top: 14px;
+      }
+    }
+
+    &_label {
+      color: $textColorLightGrey;
+    }
+
+    &_field {
+      box-shadow: none;
+      border-radius: $border-radius-bs;
+      background-color: $white;
+      height: 46px;
+      color: $secondaryBlack;
+    }
+  }
+}
+
+@media screen and (max-width: $md-xs-media) {
+  .personal-settings_form {
+    .left-side_input, .right-side_input {
+      width: 100%;
+    }
+  }
+  .system-setting_form {
+    height: 100%;
+  }
+}

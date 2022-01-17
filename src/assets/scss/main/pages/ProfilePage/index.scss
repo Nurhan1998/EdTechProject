@@ -1,6 +1,9 @@
 .profile-page {
   &_inner__wrapper {
+    margin-right: 8px;
+
     .top {
+      margin-top: 12px;
       display: flex;
       justify-content: space-between;
 
@@ -28,7 +31,7 @@
           border-bottom-right-radius: $border-radius-bs;
           bottom: 21px;
           right: 21px;
-          background: url("../../../img/png/photoCamera.png") $alabaster no-repeat center;
+          background: url("../../../../img/png/photoCamera.png") $alabaster no-repeat center;
           opacity: 0.8;
         }
       }
@@ -39,7 +42,7 @@
         }
 
         &_wrapper {
-          width: 760px;
+          width: 737px;
           height: 403px;
           background-color: $alabaster;
           border-radius: $border-radius-bs;
@@ -149,6 +152,100 @@
       border-radius: $border-radius-bs;
       border: 1px solid $superLightGrey;
       margin-top: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: $md-xs-media) {
+  .profile-page_inner__wrapper {
+    .top {
+      flex-wrap: wrap;
+      .avatar-wrapper, .letter_wrapper {
+        width: 100%;
+        border-radius: 0;
+        margin-top: 12px;
+      }
+    }
+
+    .hard-skills_wrapper, .soft-skills_wrapper {
+      width: 100%;
+      border-radius: 0;
+      margin-top: 12px;
+      max-height: 400px;
+
+      .skills-header {
+        height: 57px;
+        padding: 10px 10px 14px 10px;
+
+        .indicator_wrapper {
+          height: 33px;
+
+          .icon_wrapper {
+            width: 33px;
+            height: 100%;
+
+            .excellent {
+              width: 16px;
+              height: 16px;
+              background: url("../../../../img/svg/excellentMarkMobile.svg");
+              top: 8px;
+              left: 8px;
+            }
+            .great {
+              width: 16px;
+              height: 16px;
+              background: url("../../../../img/svg/greatMarkMobile.svg");
+              top: 8px;
+              left: 8px;
+            }
+          }
+
+          .text_wrapper {
+            margin-left: 10px;
+            .title {
+              margin: 0;
+              font-size: 16px;
+            }
+
+            .subtitle {
+              font-size: 12px;
+            }
+          }
+        }
+
+        .right-side {
+          p {
+            font-size: 14px;
+          }
+
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .skills-body {
+        padding: 14px 10px 20px 10px;
+        flex-wrap: wrap;
+        height: 100%;
+
+        .progressbar {
+          width: 100%;
+          height: 14px;
+
+          &-title {
+            max-width: 124px;
+          }
+
+          &-text {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .hard-skills_wrapper {
+      height: 226px; //TODO: change height to dynamic
     }
   }
 }

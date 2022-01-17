@@ -1,7 +1,7 @@
 import Layout from 'components/Layout';
 
 const FavoritesPage = (): JSX.Element => (
-  <Layout pageClassName="chat-page">
+  <Layout pageClassName="favorites-page">
     <div>FavoritesPage</div>
   </Layout>
 );

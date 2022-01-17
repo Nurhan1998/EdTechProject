@@ -7,7 +7,7 @@ import {
   INIT_FORM,
   REMOVE_FORM,
   SET_FORM_ERROR,
-  SET_FORM_INITIAL_VALUES,
+  SET_FORM_INITIAL_VALUES, SET_FORM_TOUCHED,
   SET_FORM_VALUE
 } from 'store/form/actions';
 
@@ -22,6 +22,7 @@ import {
   ISetInitValuesFormAction,
   TFormState,
   TFormStateHandler,
+  ISetIsTouchedAction,
 } from './types';
 
 const initialState: TFormState = fromJS({});
@@ -39,7 +40,7 @@ const initForm: TFormStateHandler<IInitFormAction> = (state, action) => {
 const setFieldValue: TFormStateHandler<ISetFieldValueAction> = (state, action) => {
   const { form, field, value } = action.payload;
   if (!state.has(form)) return state;
-  return state.setIn([form, 'values', field], value);
+  return state.setIn([form, 'values', field, 'value'], value);
 };
 
 const clearForm: TFormStateHandler<IFormPayload> = (state, action) => {
@@ -58,12 +59,10 @@ const removeForm: TFormStateHandler<IFormPayload> = (state, action) => {
 const setFormInitialValues: TFormStateHandler<ISetInitValuesFormAction> = (state, action) => {
   const { form, instance } = action.payload;
   if (!state.has(form)) return state;
-  return state.updateIn(
+  const config: IConfig[] = state.getIn([form, '_META', 'config']);
+  return state.setIn(
     [form, 'values'],
-    prevState => ({
-      ...prevState,
-      ...instance,
-    })
+    fromJS(normalizeFormFields(config, instance))
   );
 };
 
@@ -73,6 +72,11 @@ const setFieldError: TFormStateHandler<ISetFieldErrorAction> = (state, action) =
   return state.setIn([form, 'errors'], error);
 };
 
+const setTouched: TFormStateHandler<ISetIsTouchedAction> = (state,action) =>{
+  const { form, field, isTouched } = action.payload;
+  if(!state.has(form)) return state;
+  return state.setIn([form,'values', field, 'isTouched'], isTouched);
+};
 
 export default createReducer<TFormState>(initialState, {
   [INIT_FORM]: initForm,
@@ -81,4 +85,5 @@ export default createReducer<TFormState>(initialState, {
   [REMOVE_FORM]: removeForm,
   [SET_FORM_INITIAL_VALUES]: setFormInitialValues,
   [SET_FORM_ERROR]: setFieldError,
+  [SET_FORM_TOUCHED]: setTouched,
 });

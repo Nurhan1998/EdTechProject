@@ -3,15 +3,16 @@
 
 // Blocks
 @import './main/Layout';
-@import './main/Sidebar';
-@import './main/Header';
-@import './main/RightSideBar';
+@import './main/Layout/Sidebar';
+@import './main/Layout/Header';
+@import './main/Layout/RightSideBar';
 
 // Pages
-@import './main/HomePage';
-@import "./main/Auth";
-@import './main/CalendarPage';
-@import './main/Profile';
+@import './main/pages/HomePage';
+@import "./main/pages/Auth";
+@import './main/pages/CalendarPage';
+@import './main/pages/ProfilePage';
+@import './main/pages/SettingsPage';
 
 // components
 @import 'сomponents/Select';
@@ -19,6 +20,7 @@
 @import 'сomponents/Input';
 @import 'сomponents/Button';
 @import 'сomponents/Form';
+@import 'сomponents/Form/settingsForm';
 @import 'сomponents/ProgressBar';
 @import 'сomponents/PreLoader';
 @import 'сomponents/SkillRoundIndicator';

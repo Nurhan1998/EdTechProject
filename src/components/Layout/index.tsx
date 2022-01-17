@@ -1,7 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
+import { useMediaQuery } from 'react-responsive';
+import { Languages } from 'mocks/languages';
 
 import RightSideBar from 'components/Layout/RightSideBar';
+import BurgerMenu from 'components/BurgerMenu';
+
+import disableBodyScroll from 'utils/disableBodyScroll';
 
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -14,29 +19,35 @@ const Layout: FC<ILayout> = ({
   children,
   withoutRightSidebar= false
 }) => {
-  const [sidebarWidth, setSidebarWidth] = useState<number>(0);
-  const [rightSideBarWidth, setRightSidebarWidth] = useState<number>(0);
-  const [headerHeight, setHeaderHeight] = useState<number>(0);
+  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
+  const [language, setLanguage] = useState<string>(Languages[0].name);
+  const [visible, setVisible] = useState<boolean>(false);
 
-  useEffect(()=>{
-    if(withoutRightSidebar) setRightSidebarWidth(8);
-  }, [withoutRightSidebar]);
+  const handleClickMenu = (): void => {
+    setVisible(!visible);
+  };
 
-  return (
-    <div
-      className={cn('layout_wrapper', layoutClassName)}
-      style={{
-        paddingTop:  headerHeight,
-        paddingLeft:  sidebarWidth,
-        paddingRight:  rightSideBarWidth
-      }}
-    >
-      <Header setHeaderHeight={setHeaderHeight} sidebarWidth={sidebarWidth} rightSideBar={rightSideBarWidth}/>
-      <Sidebar setSidebarWidth={setSidebarWidth}/>
-      {!withoutRightSidebar && <RightSideBar setRightSidebarWidth={setRightSidebarWidth}/>}
-      <div className={cn('layout_inner-wrapper', pageClassName)}>
+  useEffect(() => {
+    disableBodyScroll(visible);
+  },[visible]);
+
+  return(
+    <div className={cn('layout_wrapper', layoutClassName)}>
+      <Sidebar />
+      <div
+        className={cn('layout_inner-wrapper', pageClassName)}
+        style={{ maxWidth: withoutRightSidebar ? '' : 820, marginRight: withoutRightSidebar && !isMobile ? 8 : '' }}
+      >
+        <Header
+          handleClickMenu={handleClickMenu}
+          language={language}
+          visible={visible}
+          setLanguage={setLanguage}
+        />
+        <BurgerMenu language={language} setLanguage={setLanguage} visible={visible}/>
         {children}
       </div>
+      {!withoutRightSidebar && <RightSideBar />}
     </div>
   );
 };

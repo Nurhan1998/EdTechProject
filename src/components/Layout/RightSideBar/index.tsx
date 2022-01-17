@@ -1,22 +1,11 @@
-import { FC, useEffect, useRef } from 'react';
-
-import { IRightSidebar } from 'components/Layout/RightSideBar/types';
 import FavoriteUserCard from 'components/Layout/RightSideBar/components/FavoriteUserCard';
 import Heart from 'components/Icons/Heart';
 import RightArrows from 'components/Icons/RightArrows';
 
-const RightSideBar: FC<IRightSidebar> = ({ setRightSidebarWidth }) => {
-  const rightSidebarRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (rightSidebarRef.current?.clientWidth) {
-      setRightSidebarWidth(rightSidebarRef.current.clientWidth);
-    }
-  }, [rightSidebarRef, setRightSidebarWidth]);
-
+const RightSideBar = (): JSX.Element => {
   const number = 15;
   return (
-    <div className="right-sidebar" ref={rightSidebarRef}>
+    <div className="right-sidebar">
       <div className="right-sidebar_inner">
         <div className="title-wrapper">
           <span><Heart height={16} width={18} stroke="#000000" /></span>

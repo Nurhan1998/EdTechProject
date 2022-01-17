@@ -13,6 +13,7 @@ import Field from './Field';
 
 const Form = (props: IFormProps): JSX.Element => {
   const {
+    isFormDisabled,
     name,
     loading,
     config,
@@ -32,7 +33,7 @@ const Form = (props: IFormProps): JSX.Element => {
       form: name,
       field,
       validateSchema,
-      value: value,
+      value,
     }));
   };
 
@@ -51,7 +52,7 @@ const Form = (props: IFormProps): JSX.Element => {
     >
       {fields.map((item, idx) => {
         const key = `FORM_${name}_${item.name}_FIELD_${idx}`;
-        const value = formValues[item.name];
+        const value  = formValues[item.name];
         const disabled = typeof item.disabledIf === 'function'
           ? item.disabledIf(formValues)
           : false;
@@ -62,7 +63,7 @@ const Form = (props: IFormProps): JSX.Element => {
             field={item}
             onChange={handleFieldChange(item.name)}
             value={value}
-            disabled={loading || disabled}
+            disabled={loading || disabled || isFormDisabled}
           />
         );
       })}

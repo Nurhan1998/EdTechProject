@@ -48,6 +48,7 @@ function* SingIn(action: IPayloadAction<TSignIn>): Generator {
     yield put(signInSuccess(data));
     yield call(Router.push, HOME_PAGE);
   } catch (error) {
+    console.error(error);
     yield put(signInFailure(error as AxiosError));
   }
 }

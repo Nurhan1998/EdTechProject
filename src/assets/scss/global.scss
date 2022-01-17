@@ -6,6 +6,10 @@ body {
   min-height: 100vh;
   background-color: $blackSqueeze;
   font-family: $primaryFontRegular;
+
+  &.disable-scroll {
+    overflow: hidden;
+  }
 }
 
 a {
@@ -26,4 +30,14 @@ a {
 .fw-bold {
   font-weight: bold;
   color: $black !important;
+}
+
+.vertical {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
 }

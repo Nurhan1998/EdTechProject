@@ -14,7 +14,6 @@ const withTM = require('next-transpile-modules')([
   '@fullcalendar/list'
 ]);
 
-
 const env = {
   MAIN_URL: process.env.MAIN_URL
 };

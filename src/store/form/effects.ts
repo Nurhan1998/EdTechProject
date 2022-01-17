@@ -21,6 +21,7 @@ function* validateFormFields(action: IPayloadAction<ISetFieldValueAction>): Gene
     const error = getValidationErrors(validationResult as ValidationError);
     yield put(setFormError({ form, error }));
   } catch (error) {
+    yield put(setFormError({ form, error: {} }));
     // validation passes without errors
     // so just doing nothing here.
   }

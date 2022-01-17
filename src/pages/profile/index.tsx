@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-// import intersectionBy from 'lodash/intersectionBy';
+import { useMediaQuery } from 'react-responsive';
 
 import Layout from 'components/Layout';
 import SkillRoundIndicator from 'components/SkillRoundindicator';
@@ -18,6 +18,7 @@ const ProfilePage = (): JSX.Element => {
   const profileData = useSelector(makeSelectProfileData);
   const hardSkillsData = useSelector(makeSelectHardSkillsData);
   const softSkillsData = useSelector(makeSelectSoftSkillsData);
+  const isMobile = useMediaQuery({ query: 'max-width(500px)' });
 
   useEffect(()=>{
     if(!profileData){
@@ -25,12 +26,6 @@ const ProfilePage = (): JSX.Element => {
     }
   },[profileData, dispatch]);
 
-  // const hardSkills = useMemo(() => {
-  //   if(profileData?.hskills) {
-  //     intersectionBy(hardSkillsData, profileData?.hskills, 'id');
-  //   }
-  // },
-  // [hardSkillsData]);
 
   const hardSkills = hardSkillsData.slice(0,5);
 
@@ -72,7 +67,7 @@ const ProfilePage = (): JSX.Element => {
           <div className="skills-body">
             {hardSkills.map(item => (
               <ProgressBar
-                width={330}
+                width={isMobile? 191 : 330}
                 color={getRandomColor()}
                 className="grade"
                 title={item.name}
@@ -94,7 +89,7 @@ const ProfilePage = (): JSX.Element => {
           <div className="skills-body">
             {softSkillsData.map(item => (
               <ProgressBar
-                width={330}
+                width={isMobile? 191 : 330}
                 className="grade"
                 title={item.name}
                 key={item.id}

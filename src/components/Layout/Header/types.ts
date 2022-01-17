@@ -1,8 +1,7 @@
-import { Dispatch, SetStateAction } from 'react';
-
 export interface IHeader {
   className?: string;
-  setHeaderHeight: Dispatch<SetStateAction<number>>;
-  sidebarWidth: number;
-  rightSideBar: number;
+  visible: boolean;
+  language: string;
+  setLanguage: (language: string) => void;
+  handleClickMenu: () => void;
 }

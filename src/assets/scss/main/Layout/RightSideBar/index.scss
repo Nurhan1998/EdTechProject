@@ -1,19 +1,18 @@
 .right-sidebar {
-  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   width: 320px;
-  margin: 10px 0 0 0;
+  margin: 10px 8px 8px 14px;
   display: flex;
   justify-content: center;
 
   &_inner {
-    width: 300px;
+    position: fixed;
+    width: 320px;
     height: 100%;
     background-color: $alabaster;
     border-radius: $border-radius-bs;
-    box-shadow: $bsBoxShadow;
     z-index: $zIndexSidebar;
     display: flex;
     flex-direction: column;
