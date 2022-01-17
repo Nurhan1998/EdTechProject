@@ -24,7 +24,7 @@
     }
   }
 
-  &_input {
+  .input {
     padding-left: 10px;
     height: 46px;
     width: 100%;
@@ -43,9 +43,13 @@
     &:focus {
       outline: none;
     }
+
+    &:disabled {
+      color: $textColorGrey;
+    }
   }
 
-  &_label {
+  .label {
     align-self: flex-start;
     margin: 0 0 5px 0;
     font-size: 12px;

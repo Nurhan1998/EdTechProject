@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { SidebarList } from 'mocks/sidebarRoutes';
@@ -13,21 +12,11 @@ import Input from 'components/Input';
 
 import IsMenuActive from 'utils/IsMenuActive';
 
-import { ISidebar } from './types';
 
-
-const Sidebar = ({ setSidebarWidth }: ISidebar): JSX.Element => {
-  const sidebarRef = useRef<HTMLDivElement>(null);
+const Sidebar = (): JSX.Element => {
   const router = useRouter();
-
-  useEffect(() => {
-    if (sidebarRef.current?.clientWidth) {
-      setSidebarWidth(sidebarRef.current.clientWidth);
-    }
-  }, [sidebarRef, setSidebarWidth]);
-
   return (
-    <div className="sidebar_wrapper" ref={sidebarRef}>
+    <div className="sidebar_wrapper" >
       <div className="sidebar-inner_wrapper">
         <div className="sidebar_logo__wrapper">
           <Link href={HOME_PAGE}>

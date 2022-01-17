@@ -17,7 +17,7 @@ instance.interceptors.request.use(
     const token = getStorageData(EStorageKeys.TOKEN);
     return assign<AxiosRequestConfig, Partial<AxiosRequestConfig>>(config, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       params: token ? { hash: token } : undefined,
     });

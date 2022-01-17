@@ -6,6 +6,8 @@
   &_wrapper {
     border-collapse: collapse;
     width: 100%;
+    margin-top: 12px;
+    margin-left: 2px;
     height: 755px;
     border: 1px solid $superLightGrey;
     border-radius: $border-radius-bs;
@@ -41,7 +43,7 @@
               content: '';
               width: 41px;
               height: 41px;
-              background: url("../../../img/svg/BigCalendar.svg") no-repeat;
+              background: url("../../../../img/svg/BigCalendar.svg") no-repeat;
             }
 
             &:after {

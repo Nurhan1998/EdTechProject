@@ -1,6 +1,6 @@
 import { ObjectShape } from 'yup/lib/object';
 
-import { TFormValues } from 'store/form/types';
+import { TFormattedFormValues } from 'store/form/types';
 
 
 export enum EFieldType {
@@ -28,12 +28,13 @@ export interface IConfig {
   placeholder?: string;
   label?: string;
   disabled?: boolean;
-  showIf?: (formValues: TFormValues) => boolean;
-  disabledIf?: (formValues: TFormValues) => boolean;
+  showIf?: (formValues: TFormattedFormValues) => boolean;
+  disabledIf?: (formValues: TFormattedFormValues) => boolean;
   className?: string;
 }
 
 export interface IFormProps {
+  isFormDisabled?: boolean;
   name: string;
   config: Array<IConfig>;
   className?: string;

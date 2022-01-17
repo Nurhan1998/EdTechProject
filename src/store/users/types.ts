@@ -3,7 +3,6 @@ import { AxiosResponse } from 'axios';
 
 import { ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
 
-
 export type TSignIn = {
   email: string;
   password: string;

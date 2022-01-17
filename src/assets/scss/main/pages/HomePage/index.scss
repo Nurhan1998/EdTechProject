@@ -4,9 +4,9 @@
       position: relative;
       width: 100%;
       height: 91px;
+      margin-top: 12px;
       border: 1px solid $superLightGrey;
       border-radius: $border-radius-bs;
-      margin-bottom: 14px;
       background-color: $alabaster;
       padding: 15px 90px 15px 55px;
 
@@ -96,6 +96,7 @@
   .main-content {
     width: 100%;
     min-height: 90vh;
+    margin-top: 12px;
     border-radius: $border-radius-bs;
     background-color: $alabaster;
     border: 1px solid $superLightGrey;

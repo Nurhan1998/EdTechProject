@@ -1,17 +1,33 @@
 import { IConfig, EFieldType } from 'components/Form/types';
 
-import { TFormValues } from 'store/form/types';
+import { IFormItem } from 'store/form/types';
 
-const normalizeFormFields = (config: Array<IConfig>): TFormValues => config.reduce(
+import safeGet from 'utils/safeGet';
+
+
+const normalizeFormFields = (
+  config: Array<IConfig>,
+  initialValues?: Record<string, string | string[]>
+): Record<string, IFormItem> => config.reduce(
   (memo, curr) => {
     // On 14 line we create new object so no need to recreate object just mutate
     // Avoid O(n2) loops in reduce body
-    memo[curr.name] = curr.type === EFieldType.SELECT
-      ? []
-      : '';
-    return memo;
+    const value = safeGet(initialValues, curr.name, '');
+    return {
+      ...memo,
+      [curr.name] : {
+        value: curr.type === EFieldType.SELECT
+          ? (
+            Array.isArray(value)
+              ? value
+              : Boolean(value) ? [value] : []
+          )
+          : value,
+        isTouched: false
+      }
+    };
   },
-  {} as TFormValues
+  {} as Record<string, IFormItem>
 );
 
 export default normalizeFormFields;

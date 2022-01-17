@@ -2,13 +2,13 @@
   &_wrapper {
     background-color: $white;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     height: 100%;
+    min-height: 100vh;
   }
 
   &_inner-wrapper{
-
-    padding: 19px 0 20px;
+    width: 100%;
   }
 }
 

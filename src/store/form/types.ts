@@ -7,8 +7,12 @@ import { THandler, TSelectorReturnType } from 'store/types';
 
 
 export type TFieldValue<T = string> = T | Array<T>;
-export type TFormValues = Record<string, TFieldValue>;
-
+export interface IFormItem<T = string> {
+  value: TFieldValue<T>,
+  isTouched: boolean
+}
+export type TFormattedFormValues = Record<string, string | string[]>;
+export type TFormValues = Record<string, IFormItem>;
 export interface IFormMeta {
   config: Array<IConfig>;
   title?: string;
@@ -17,7 +21,7 @@ export interface IFormMeta {
 
 export interface IFormState {
   _META: IFormMeta;
-  values: TFormValues;
+  values: IFormItem;
 }
 
 export interface IFormPayload {
@@ -36,6 +40,11 @@ export interface ISetFieldValueAction extends IFormPayload {
 
 export interface ISetFieldErrorAction extends IFormPayload {
   error: Record<string, string[]>;
+}
+
+export interface ISetIsTouchedAction extends  IFormPayload {
+  field: string;
+  isTouched: boolean;
 }
 
 export interface ISetInitValuesFormAction extends IFormPayload {
