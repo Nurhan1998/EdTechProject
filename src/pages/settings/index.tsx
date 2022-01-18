@@ -7,6 +7,7 @@ import { EFormOrientation } from 'components/Form/types';
 
 import { initForm, removeForm, setFormInitialValues } from 'store/form/actions';
 import { makeSelectProfileData } from 'store/users/selectors';
+import { IProfileModel } from 'store/users/types';
 
 import normalizeDataToForm from 'utils/normalizeDataToForm';
 
@@ -20,24 +21,19 @@ const SettingsPage = (): JSX.Element => {
   const [isFormDisabled, setIsFormDisabled] = useState<boolean>(true);
 
   useEffect(() => {
-    if(profileData) {
+    if (profileData) {
       dispatch(setFormInitialValues({
         form: PERSONAL_SETTINGS_FORM,
-        instance: normalizeDataToForm(profileData, personalConfig)
+        instance: normalizeDataToForm<IProfileModel>(profileData, personalConfig)
       }));
-      // dispatch(setFormInitialValues({ form: SYSTEM_SETTING_FORM, instance: {} }));
+      dispatch(setFormInitialValues({
+        form: SYSTEM_SETTING_FORM,
+        instance: normalizeDataToForm({}, systemConfig)
+      }));
     }
     // dispatch
     // eslint-disable-next-line
   },[profileData]);
-
-  const handleDisable = (): void => {
-    setIsFormDisabled(false);
-  };
-
-  const handleEnable = (): void => {
-    setIsFormDisabled(true);
-  };
 
   useEffect(
     () => {
@@ -52,6 +48,14 @@ const SettingsPage = (): JSX.Element => {
     // eslint-disable-next-line
     []
   );
+
+  const handleDisable = (): void => {
+    setIsFormDisabled(false);
+  };
+
+  const handleEnable = (): void => {
+    setIsFormDisabled(true);
+  };
 
   return(
     <Layout pageClassName="settings-page" withoutRightSidebar>

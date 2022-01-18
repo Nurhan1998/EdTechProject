@@ -59,7 +59,7 @@ const removeForm: TFormStateHandler<IFormPayload> = (state, action) => {
 const setFormInitialValues: TFormStateHandler<ISetInitValuesFormAction> = (state, action) => {
   const { form, instance } = action.payload;
   if (!state.has(form)) return state;
-  const config: IConfig[] = state.getIn([form, '_META', 'config']);
+  const config: IConfig[] = state.getIn([form, '_META', 'config']).toJS();
   return state.setIn(
     [form, 'values'],
     fromJS(normalizeFormFields(config, instance))

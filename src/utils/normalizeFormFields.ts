@@ -10,7 +10,7 @@ const normalizeFormFields = (
   initialValues?: Record<string, string | string[]>
 ): Record<string, IFormItem> => config.reduce(
   (memo, curr) => {
-    // On 14 line we create new object so no need to recreate object just mutate
+    // On 30 line we create new object so no need to recreate object just mutate
     // Avoid O(n2) loops in reduce body
     const value = safeGet(initialValues, curr.name, '');
     return {
