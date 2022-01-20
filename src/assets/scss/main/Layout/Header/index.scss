@@ -108,23 +108,30 @@
 
   &_action__wrapper {
     display: flex;
-    align-self: center;
-    .eng {
-      svg{
-        margin-top: 4px;
-      }
-    }
-    &:nth-child(2) {
-      margin-top: 4px;
-    }
+    align-items: center;
+    width: 180px;
+    justify-content: space-between;
 
+    div {
+      display: flex;
+    }
 
     .action {
-      width: 40px;
-      height: 40px;
+      width: 25px;
+      height: 25px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid $white;
+      border-radius: $border-radius-circle;
+
+      &:not(last-child) {
+        margin-right: 10px;
+      }
+    }
+
+    .active {
+      box-shadow: $bsBoxShadowDark;
     }
   }
 

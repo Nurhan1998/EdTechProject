@@ -14,7 +14,6 @@ export const Languages: ILanguage[] = [
     name: 'English',
     id: 2,
     icon: <USFlag/>,
-    className: 'eng'
   },
   {
     name: 'Spain',

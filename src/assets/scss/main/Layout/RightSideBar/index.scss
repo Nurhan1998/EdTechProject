@@ -8,6 +8,7 @@
   justify-content: center;
 
   &_inner {
+    border: 1px solid $superLightGrey;
     position: fixed;
     width: 320px;
     height: 100%;

@@ -8,6 +8,8 @@ import { EFormOrientation } from 'components/Form/types';
 import { initForm, removeForm, setFormInitialValues } from 'store/form/actions';
 import { makeSelectProfileData } from 'store/users/selectors';
 import { IProfileModel } from 'store/users/types';
+import { saveSettingsRequest } from 'store/settings/actions';
+import { makeSelectFormValues } from 'store/form/selectors';
 
 import normalizeDataToForm from 'utils/normalizeDataToForm';
 
@@ -18,6 +20,7 @@ import { PERSONAL_SETTINGS_FORM, SYSTEM_SETTING_FORM } from './form/constants';
 const SettingsPage = (): JSX.Element => {
   const dispatch = useDispatch();
   const profileData = useSelector(makeSelectProfileData);
+  const changedData = useSelector(makeSelectFormValues(PERSONAL_SETTINGS_FORM));
   const [isFormDisabled, setIsFormDisabled] = useState<boolean>(true);
 
   useEffect(() => {
@@ -53,8 +56,9 @@ const SettingsPage = (): JSX.Element => {
     setIsFormDisabled(false);
   };
 
-  const handleEnable = (): void => {
+  const handleSaveChanges = (): void => {
     setIsFormDisabled(true);
+    dispatch(saveSettingsRequest(changedData));
   };
 
   return(
@@ -90,7 +94,7 @@ const SettingsPage = (): JSX.Element => {
               name={SYSTEM_SETTING_FORM}
               config={systemConfig}
             />
-            <button onClick={handleEnable}>Save Changes</button>
+            <button onClick={handleSaveChanges}>Save Changes</button>
           </div>
         </div>
       </div>
