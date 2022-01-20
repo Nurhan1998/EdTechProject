@@ -7,7 +7,7 @@ export interface ISidebar {
 export interface ILinkItem {
   path: string;
   isActive?: boolean;
-  icon: JSX.Element;
+  icon: (isActive: boolean) => JSX.Element;
   name: string;
   className?: string;
 }

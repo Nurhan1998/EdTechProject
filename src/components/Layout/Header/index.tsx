@@ -24,15 +24,17 @@ const Header = ({ className, handleClickMenu, setLanguage, language, visible }: 
       </MediaQuery>
       <div className="header_action__wrapper">
         <p className="action-title">{language}</p>
-        {Languages.map(({ icon, id, name,className }) => (
-          <span
-            key={`${id}_${name}`}
-            className={`action ${className ? className: ''}`}
-            onClick={() => setLanguage(name)}
-          >
-            {icon}
-          </span>
-        ))}
+        <div>
+          {Languages.map(({ icon, id, name }) => (
+            <span
+              key={`${id}_${name}`}
+              className={cn('action', language === name ? 'active' : '')}
+              onClick={() => setLanguage(name)}
+            >
+              {icon}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   </div>

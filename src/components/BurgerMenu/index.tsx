@@ -22,15 +22,15 @@ const BurgerMenu = ({ visible, language, setLanguage }: IBurgerProps): JSX.Eleme
           <p>{language}</p>
           <div className="languages">
             <div
-              className={cn('languages-item', 'eng' )}
+              className={cn('languages-item', 'eng', language === 'English'? 'active' : '')}
               onClick={() => setLanguage('English')}
             />
             <div
-              className={cn('languages-item', 'spain' )}
+              className={cn('languages-item', 'spain', language === 'Spain'? 'active' : '')}
               onClick={() => setLanguage('Spain')}
             />
             <div
-              className={cn('languages-item', 'rus' )}
+              className={cn('languages-item', 'rus', language === 'Russian'? 'active' : '')}
               onClick={() => setLanguage('Russian')}
             />
           </div>
@@ -45,7 +45,7 @@ const BurgerMenu = ({ visible, language, setLanguage }: IBurgerProps): JSX.Eleme
               key={`${path}_${idx}`}
               path={path}
               isActive={IsMenuActive(path, router)}
-              icon={icon}
+              icon={icon(IsMenuActive(path, router))}
               name={name}
             />
           ))}

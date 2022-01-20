@@ -1,8 +1,6 @@
 /*eslint-disable max-len*/
-import { IIconProps } from 'components/Icons/types';
-
-const LogOut = ({ width = 20, height = 20 }: IIconProps): JSX.Element => (
-  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+const LogOut = (): JSX.Element => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M16.0017 12H21.0038" stroke="#85888B" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M19.0032 14.0008L21.004 12L19.0032 9.99915" stroke="#85888B" strokeLinecap="round"
       strokeLinejoin="round"/>
@@ -14,6 +12,5 @@ const LogOut = ({ width = 20, height = 20 }: IIconProps): JSX.Element => (
       d="M3.99683 18.9999C3.99683 20.4875 5.56248 21.4549 6.89203 20.7896L10.8937 18.7888C11.572 18.4487 12.0002 17.7564 12.0002 16.998V2.99622"
       stroke="#85888B" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
-
 );
 export default LogOut;
