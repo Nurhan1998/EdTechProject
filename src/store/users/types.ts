@@ -1,7 +1,7 @@
 import { RecordOf } from 'immutable';
 import { AxiosResponse } from 'axios';
 
-import { ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
+import { AxiosResponseWithTotal, ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
 
 export type TSignIn = {
   email: string;
@@ -95,8 +95,13 @@ export interface IUsersListResponseData extends IProfileModel {
   languages: ILanguageModel[];
 }
 
+export interface IPagination {
+  onpage: number;
+  page: number;
+}
+
 export type TRecordOfSignInResponseData = RecordOf<TSignInResponseData>;
-export type TRecordOfSignUpResponseData = RecordOf<TSignUpResponseData>
+export type TRecordOfSignUpResponseData = RecordOf<TSignUpResponseData>;
 export type TRecordOfUserListResponseData = RecordOf<IUsersListResponseData>;
 
 export interface IUserState {
@@ -105,15 +110,16 @@ export interface IUserState {
   profile: ResponseGenericType<RecordOf<IProfileModel>>;
   signUp: ResponseGenericType<TRecordOfSignUpResponseData>;
   forgotPassword: ResponseGenericType<boolean>;
-  usersList: ResponseGenericType<TRecordOfUserListResponseData>
+  usersList: ResponseGenericType<TRecordOfUserListResponseData>;
+  totalCount: number;
 }
 
 export type TRecordOfUser = RecordOf<IUserState>;
-export type TSignInResponse = AxiosResponse<TSignInResponseData>
-export type TSignUpResponse = AxiosResponse<TSignUpResponseData>
-export type TUserListResponse = AxiosResponse<IUsersListResponseData>
+export type TSignInResponse = AxiosResponse<TSignInResponseData>;
+export type TSignUpResponse = AxiosResponse<TSignUpResponseData>;
+export type TUserListResponse = AxiosResponseWithTotal<IUsersListResponseData>;
 
-export type TUserSelectorReturnType<T> = TSelectorReturnType<T, TRecordOfUser>
+export type TUserSelectorReturnType<T> = TSelectorReturnType<T, TRecordOfUser>;
 
 export type TUserStoreHandler<T> = THandler<TRecordOfUser, T>;
 

@@ -62,7 +62,12 @@ export const makeSelectUsersListError: TUserSelectorReturnType<AxiosError | null
 );
 export const makeSelectUsersListData: TUserSelectorReturnType<IUsersListResponseData[] | null> = createSelector(
   selectState,
-  (state?: TRecordOfUser) => state?.getIn(['usersList', 'data'])?.toJS() || null,
+  (state?: TRecordOfUser) => state?.getIn(['usersList', 'data', 'data'])?.toJS() || null,
+);
+
+export const makeSelectUsersListCount: TUserSelectorReturnType<{count: number}> = createSelector(
+  selectState,
+  (state?: TRecordOfUser) => state?.getIn(['usersList', 'data', 'count'])?.toJS() || null,
 );
 
 export const makeSelectProfileFetching: TUserSelectorReturnType<boolean> = createSelector(

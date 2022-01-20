@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios';
 
 import {
+  IPagination,
   IProfileModel,
-  IUsersListResponseData,
   TSignIn,
   TSignInResponseData,
   TSignUp,
-  TSignUpResponseData
+  TSignUpResponseData, TUserListResponse
 } from 'store/users/types';
 
 import createAction from 'utils/createAction';
@@ -50,7 +50,7 @@ export const forgotPasswordRequest = createAction<{ email: string }>(FORGOT_PASS
 export const forgotPasswordSuccess = createAction<boolean>(FORGOT_PASSWORD_SUCCESS);
 export const forgotPasswordFailure = createAction<AxiosError>(FORGOT_PASSWORD_FAILURE);
 
-export const getUsersListRequest = createAction(GET_USERS_LIST_REQUEST);
-export const getUsersListSuccess = createAction<IUsersListResponseData>(GET_USERS_LIST_SUCCESS);
+export const getUsersListRequest = createAction<IPagination>(GET_USERS_LIST_REQUEST);
+export const getUsersListSuccess = createAction<TUserListResponse>(GET_USERS_LIST_SUCCESS);
 export const getUsersListFailure = createAction<AxiosError>(GET_USERS_LIST_FAILURE);
 

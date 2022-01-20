@@ -21,7 +21,7 @@ import {
   signUpSuccess,
 } from 'store/users/actions';
 import {
-  IForgotPassword,
+  IForgotPassword, IPagination, IUsersListResponseData,
   TSignIn,
   TSignInResponse,
   TSignUp,
@@ -102,14 +102,24 @@ function* ForgotPassword(action: IPayloadAction<IForgotPassword>): Generator {
   }
 }
 
-function* GetUsers(): Generator {
+function* GetUsers(action: IPayloadAction<IPagination>): Generator {
+  const { page, onpage } = action.payload;
+  const params = {
+    page,
+    onpage,
+    start: page === 1 ? page : (page * onpage)
+  };
+
   try {
     const response = yield call(
       request.get,
       '/user/',
+      { params }
     );
-    const { data } = response as TUserListResponse;
-    yield put(getUsersListSuccess(data));
+
+    const { data, total } = response as TUserListResponse;
+    console.log(data);
+    yield put(getUsersListSuccess({ data, total }));
   } catch (error) {
     yield put(getUsersListFailure(error as AxiosError));
   }

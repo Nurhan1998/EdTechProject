@@ -19,14 +19,14 @@ instance.interceptors.request.use(
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      params: token ? { hash: token } : undefined,
+      params: token ? { ...config.params, hash: token } : config.params,
     });
   }
 );
 
 instance.interceptors.response.use(
   (response: AxiosResponse<TResponseType<unknown>>) => {
-    const { data, success, code } = response.data;
+    const { data, success, code, total } = response.data;
     if (!success) {
       if(code === 401){
         clearStorageData().then(() => Router.push(SIGN_IN));
@@ -41,7 +41,7 @@ instance.interceptors.response.use(
         response: response,
       } as AxiosError;
     }
-    return assign<AxiosResponse, Partial<AxiosResponse>>(response, { data });
+    return assign<AxiosResponse, Partial<AxiosResponse & { total: number }>>(response, { data, total });
   },
   (error: AxiosError) => {
     const { response } = error;

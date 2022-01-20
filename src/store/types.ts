@@ -48,7 +48,12 @@ export type ResponseGenericType<T, E = Record<string, unknown>> = {
 export type TResponseType<T> = {
   code: number;
   data: T;
-  success: boolean
+  success: boolean,
+  total: number
+}
+
+export interface AxiosResponseWithTotal<T> extends  AxiosResponse<T> {
+  total: number
 }
 
 export type TRequestWithDataFunction<D = unknown, R = AxiosResponse> = (
