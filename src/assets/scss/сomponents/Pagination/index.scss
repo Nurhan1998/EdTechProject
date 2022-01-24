@@ -1,2 +1,46 @@
 .pagination {
+  display: flex;
+  justify-content: flex-end;
+  background-color: $white;
+
+  &-container {
+    display: flex;
+    margin-right: 5px;
+  }
+}
+
+.pagination__link {
+  display: none;
+
+  &--active {
+    background-color: $secondaryBlack;
+    color: $white
+  }
+}
+
+li {
+  list-style-type: none;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $backgroundLight;
+  border-radius: $border-radius-sm;
+
+  &:not(last-child) {
+    margin-left: 5px;
+  }
+
+  &.break {
+    background-color: $white;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.previous, .next {
+  display: none;
 }
