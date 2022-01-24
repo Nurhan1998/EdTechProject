@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { DEFAULT_PAGE_SIZE } from 'configuration/constants';
 
 import Layout from 'components/Layout';
 import Preloader from 'components/Preloader';
-import Pagination from 'components/MostPagination';
+// import MostPagination from 'components/MostPagination';
 
 import Banner from 'pages/HomePage/components/Banner';
 import TitleContent from 'pages/HomePage/components/TitleContent';
@@ -23,13 +23,13 @@ const HomePage = (): JSX.Element => {
   const dispatch = useDispatch();
   const users = useSelector(makeSelectUsersListData);
   const isUsersLoading = useSelector(makeSelectUsersListFetching);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(0);
 
   useEffect(() => {
     dispatch(getSoftSkillsRequest());
     dispatch(getHardSkillsRequest());
-    dispatch(getUsersListRequest({ page, onpage: DEFAULT_PAGE_SIZE }));
-  },[dispatch, page]);
+    dispatch(getUsersListRequest({ page: 1, onpage: DEFAULT_PAGE_SIZE }));
+  },[dispatch]);
 
   const number = 132;
   return (
@@ -41,11 +41,14 @@ const HomePage = (): JSX.Element => {
           <TitleContent count={number}/>
           <Actions/>
         </div>
-        {isUsersLoading ? <Preloader/> : <div>
-          <List users={users}/>
-          <Pagination page={page} setPage={setPage}/>
-        </div>
-        }
+        {isUsersLoading ? (
+          <Preloader/>
+        ) : (
+          <div>
+            <List users={users}/>
+            {/*<MostPagination page={page} setPage={setPage}/>*/}
+          </div>
+        )}
       </div>
     </Layout>
   );

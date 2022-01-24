@@ -107,7 +107,7 @@ function* GetUsers(action: IPayloadAction<IPagination>): Generator {
   const params = {
     page,
     onpage,
-    start: page === 1 ? page : (page * onpage)
+    start: (page * onpage)
   };
 
   try {
