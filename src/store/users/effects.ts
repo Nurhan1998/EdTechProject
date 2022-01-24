@@ -10,9 +10,9 @@ import {
   FORGOT_PASSWORD_REQUEST,
   forgotPasswordFailure,
   forgotPasswordSuccess,
-  GET_PROFILE_REQUEST, GET_USERS_LIST_REQUEST,
+  GET_PROFILE_REQUEST, GET_USERS_BY_SEARCH_REQUEST, GET_USERS_LIST_REQUEST,
   getProfileFailure,
-  getProfileSuccess, getUsersListFailure, getUsersListSuccess,
+  getProfileSuccess, getUsersBySearchFailure, getUsersBySearchSuccess, getUsersListFailure, getUsersListSuccess,
   SIGN_IN_REQUEST,
   SIGN_UP_REQUEST,
   signInFailure,
@@ -21,7 +21,7 @@ import {
   signUpSuccess,
 } from 'store/users/actions';
 import {
-  IForgotPassword,
+  IForgotPassword, IPagination,
   TSignIn,
   TSignInResponse,
   TSignUp,
@@ -102,17 +102,41 @@ function* ForgotPassword(action: IPayloadAction<IForgotPassword>): Generator {
   }
 }
 
-function* GetUsers(): Generator {
+function* GetUsers(action: IPayloadAction<IPagination>): Generator {
+  const { page, onpage } = action.payload;
+  const params = {
+    page,
+    onpage,
+    start: page === 1 ? page : (page * onpage)
+  };
+
   try {
     const response = yield call(
       request.get,
       '/user/',
+      { params }
     );
-    const { data } = response as TUserListResponse;
+    const { data } = response as TUserListResponse ;
     yield put(getUsersListSuccess(data));
   } catch (error) {
     yield put(getUsersListFailure(error as AxiosError));
   }
+}
+
+function* GetUsersBySearch(action: IPayloadAction<{ name: string }>): Generator {
+  try {
+    const response = yield call(
+      request.get,
+      '/user/search',
+      { params: action.payload }
+    );
+
+    const { data } = response as TUserListResponse;
+    yield put(getUsersBySearchSuccess(data));
+  } catch (e) {
+    yield put(getUsersBySearchFailure(e as AxiosError));
+  }
+
 }
 
 function* Saga(): Generator {
@@ -121,7 +145,8 @@ function* Saga(): Generator {
     takeLatest(GET_PROFILE_REQUEST, GetProfile),
     takeLatest(SIGN_UP_REQUEST, SignUp),
     takeLatest(FORGOT_PASSWORD_REQUEST, ForgotPassword),
-    takeLatest(GET_USERS_LIST_REQUEST, GetUsers)
+    takeLatest(GET_USERS_LIST_REQUEST, GetUsers),
+    takeLatest(GET_USERS_BY_SEARCH_REQUEST, GetUsersBySearch)
   ]);
 }
 

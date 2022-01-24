@@ -1,3 +1,5 @@
+import { DEFAULT_AVATAR } from 'configuration/constants';
+
 import { ProgressBar } from 'components/ProgressBar';
 import CalendarWithPen from 'components/Icons/CalendarWithPen';
 import VideoChat from 'components/Icons/VideoChat';
@@ -18,7 +20,7 @@ const UserCard = ({
     <div className="user-card_avatar">
       <span>
         <img
-          src={photo || 'https://development.wyndhamhotels.com/wp-content/uploads/2018/05/Default-Avatar.jpg'}
+          src={photo || DEFAULT_AVATAR}
           alt="avatar"
         />
       </span>

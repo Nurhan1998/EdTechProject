@@ -6,7 +6,7 @@
 
   &-title {
     color: $textColorLightGrey;
-    margin: 0;
+    margin: 0 5px 0 0;
   }
 
   &-wrapper {
@@ -24,6 +24,6 @@
   }
 
   &-text {
-    left: 10px;
+    margin-left: 10px;
   }
 }

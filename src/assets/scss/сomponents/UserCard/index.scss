@@ -170,14 +170,6 @@
           width: 100px;
           color: red;
           font-size: 12px;
-
-          &_invisible {
-            display: none;
-          }
-          &_visible {
-            display: block;
-          }
-
         }
       }
 
@@ -188,5 +180,26 @@
       }
     }
   }
+  }
+}
+
+@media screen and (max-width: $lg-media) {
+  .user-card {
+    &_wrapper {
+      height: 110px;
+    }
+
+    &_avatar {
+      &__footer {
+        display: flex;
+        justify-content: space-evenly;
+      }
+    }
+
+    &_info {
+      .data {
+        width: 270px;
+      }
+    }
   }
 }

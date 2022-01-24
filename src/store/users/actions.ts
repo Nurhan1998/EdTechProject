@@ -1,8 +1,8 @@
 import { AxiosError } from 'axios';
 
 import {
-  IProfileModel,
-  IUsersListResponseData,
+  IPagination,
+  IProfileModel, IUsersListResponseData,
   TSignIn,
   TSignInResponseData,
   TSignUp,
@@ -33,6 +33,11 @@ export const GET_USERS_LIST_REQUEST = `${STATE_KEY}_GET_USERS_LIST_REQUEST`;
 export const GET_USERS_LIST_SUCCESS = `${STATE_KEY}_GET_USERS_LIST_SUCCESS`;
 export const GET_USERS_LIST_FAILURE = `${STATE_KEY}_GET_USERS_LIST_FAILURE`;
 
+export const GET_USERS_BY_SEARCH_REQUEST = `${STATE_KEY}_GET_USERS_BY_SEARCH_REQUEST`;
+export const GET_USERS_BY_SEARCH_FAILURE = `${STATE_KEY}_GET_USERS_BY_SEARCH_FAILURE`;
+export const GET_USERS_BY_SEARCH_SUCCESS = `${STATE_KEY}_GET_USERS_BY_SEARCH_SUCCESS`;
+
+export const SET_USERS_COUNT = `${STATE_KEY}_SET_USERS_COUNT`;
 
 export const signInRequest = createAction<TSignIn>(SIGN_IN_REQUEST);
 export const signInSuccess = createAction<TSignInResponseData>(SIGN_IN_SUCCESS);
@@ -50,7 +55,12 @@ export const forgotPasswordRequest = createAction<{ email: string }>(FORGOT_PASS
 export const forgotPasswordSuccess = createAction<boolean>(FORGOT_PASSWORD_SUCCESS);
 export const forgotPasswordFailure = createAction<AxiosError>(FORGOT_PASSWORD_FAILURE);
 
-export const getUsersListRequest = createAction(GET_USERS_LIST_REQUEST);
-export const getUsersListSuccess = createAction<IUsersListResponseData>(GET_USERS_LIST_SUCCESS);
+export const getUsersListRequest = createAction<IPagination>(GET_USERS_LIST_REQUEST);
+export const getUsersListSuccess = createAction<IUsersListResponseData[]>(GET_USERS_LIST_SUCCESS);
 export const getUsersListFailure = createAction<AxiosError>(GET_USERS_LIST_FAILURE);
 
+export const getUsersBySearchRequest = createAction<{ name: string }>(GET_USERS_BY_SEARCH_REQUEST);
+export const getUsersBySearchSuccess = createAction<IUsersListResponseData[]>(GET_USERS_BY_SEARCH_SUCCESS);
+export const getUsersBySearchFailure = createAction<AxiosError>(GET_USERS_BY_SEARCH_FAILURE);
+
+export const setUsersCount = createAction<{total: number}>(SET_USERS_COUNT);

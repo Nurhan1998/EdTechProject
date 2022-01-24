@@ -23,6 +23,20 @@ const SettingsPage = (): JSX.Element => {
   const changedData = useSelector(makeSelectFormValues(PERSONAL_SETTINGS_FORM));
   const [isFormDisabled, setIsFormDisabled] = useState<boolean>(true);
 
+  useEffect(
+    () => {
+      dispatch(initForm({ form: PERSONAL_SETTINGS_FORM, config: personalConfig, }));
+      dispatch(initForm({ form: SYSTEM_SETTING_FORM, config: systemConfig }));
+      return () => {
+        dispatch(removeForm({ form: PERSONAL_SETTINGS_FORM }));
+        dispatch(removeForm({ form: SYSTEM_SETTING_FORM }));
+      };
+    },
+    // Need to call this effect only once at mount
+    // eslint-disable-next-line
+    []
+  );
+
   useEffect(() => {
     if (profileData) {
       dispatch(setFormInitialValues({
@@ -38,19 +52,6 @@ const SettingsPage = (): JSX.Element => {
     // eslint-disable-next-line
   },[profileData]);
 
-  useEffect(
-    () => {
-      dispatch(initForm({ form: PERSONAL_SETTINGS_FORM, config: personalConfig, }));
-      dispatch(initForm({ form: SYSTEM_SETTING_FORM, config: systemConfig }));
-      return () => {
-        dispatch(removeForm({ form: PERSONAL_SETTINGS_FORM }));
-        dispatch(removeForm({ form: SYSTEM_SETTING_FORM }));
-      };
-    },
-    // Need to call this effect only once at mount
-    // eslint-disable-next-line
-    []
-  );
 
   const handleDisable = (): void => {
     setIsFormDisabled(false);
