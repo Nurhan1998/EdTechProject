@@ -12,7 +12,7 @@ import TitleContent from 'pages/HomePage/components/TitleContent';
 import { Favorites } from 'pages/HomePage/components/Favorites';
 
 import { getUsersListRequest } from 'store/users/actions';
-import { makeSelectUsersListCount, makeSelectUsersListData, makeSelectUsersListFetching } from 'store/users/selectors';
+import { makeSelectUsersListData, makeSelectUsersListFetching } from 'store/users/selectors';
 import { getHardSkillsRequest, getSoftSkillsRequest } from 'store/skills/actions';
 
 import Actions from './components/Actions';
@@ -22,8 +22,6 @@ import List from './components/List';
 const HomePage = (): JSX.Element => {
   const dispatch = useDispatch();
   const users = useSelector(makeSelectUsersListData);
-  const count = useSelector(makeSelectUsersListCount);
-  console.log(count);
   const isUsersLoading = useSelector(makeSelectUsersListFetching);
   const [page, setPage] = useState(1);
 
@@ -31,7 +29,7 @@ const HomePage = (): JSX.Element => {
     dispatch(getSoftSkillsRequest());
     dispatch(getHardSkillsRequest());
     dispatch(getUsersListRequest({ page, onpage: DEFAULT_PAGE_SIZE }));
-  },[dispatch]);
+  },[dispatch, page]);
 
   const number = 132;
   return (

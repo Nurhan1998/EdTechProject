@@ -8,7 +8,8 @@ const Input = ({
   error,
   label,
   inputProps,
-  isTouched
+  isTouched,
+  onButtonClick
 }: IInputProps): JSX.Element => {
   const { className, type, value, placeholder, onChange, onFocus, onBlur, disabled } = inputProps;
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
@@ -27,7 +28,7 @@ const Input = ({
     <div className={cn(className, 'input-wrapper')}>
       <p className="label">{label}</p>
       {type === 'search' ? (
-        <SearchInput {...inputProps}/>
+        <SearchInput inputProps={inputProps} onButtonClick={onButtonClick}/>
       ) : type === 'password' ? (
         <>
           <input

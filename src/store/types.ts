@@ -52,10 +52,6 @@ export type TResponseType<T> = {
   total: number
 }
 
-export interface AxiosResponseWithTotal<T> extends  AxiosResponse<T> {
-  total: number
-}
-
 export type TRequestWithDataFunction<D = unknown, R = AxiosResponse> = (
   url: string,
   data?: D,

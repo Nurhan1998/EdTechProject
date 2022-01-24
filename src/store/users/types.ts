@@ -1,7 +1,7 @@
 import { RecordOf } from 'immutable';
 import { AxiosResponse } from 'axios';
 
-import { AxiosResponseWithTotal, ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
+import { ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
 
 export type TSignIn = {
   email: string;
@@ -102,7 +102,7 @@ export interface IPagination {
 
 export type TRecordOfSignInResponseData = RecordOf<TSignInResponseData>;
 export type TRecordOfSignUpResponseData = RecordOf<TSignUpResponseData>;
-export type TRecordOfUserListResponseData = RecordOf<IUsersListResponseData>;
+export type TRecordOfUserListResponseData = RecordOf<IUsersListResponseData[]>;
 
 export interface IUserState {
   signIn: ResponseGenericType<TRecordOfSignInResponseData>;
@@ -117,7 +117,7 @@ export interface IUserState {
 export type TRecordOfUser = RecordOf<IUserState>;
 export type TSignInResponse = AxiosResponse<TSignInResponseData>;
 export type TSignUpResponse = AxiosResponse<TSignUpResponseData>;
-export type TUserListResponse = AxiosResponseWithTotal<IUsersListResponseData>;
+export type TUserListResponse = AxiosResponse<IUsersListResponseData[]>;
 
 export type TUserSelectorReturnType<T> = TSelectorReturnType<T, TRecordOfUser>;
 
