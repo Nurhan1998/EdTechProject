@@ -1,7 +1,7 @@
 import { RecordOf } from 'immutable';
 import { AxiosResponse } from 'axios';
 
-import { ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
+import { AxiosResponseWithTotal, ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
 
 export type TSignIn = {
   email: string;
@@ -111,15 +111,16 @@ export interface IUserState {
   signUp: ResponseGenericType<TRecordOfSignUpResponseData>;
   forgotPassword: ResponseGenericType<boolean>;
   usersList: ResponseGenericType<TRecordOfUserListResponseData>;
-  totalCount: number;
+  usersCount: number | null;
 }
 
 export type TRecordOfUser = RecordOf<IUserState>;
 export type TSignInResponse = AxiosResponse<TSignInResponseData>;
 export type TSignUpResponse = AxiosResponse<TSignUpResponseData>;
-export type TUserListResponse = AxiosResponse<IUsersListResponseData[]>;
+export type TUserListResponse = AxiosResponseWithTotal<IUsersListResponseData[]>;
 
 export type TUserSelectorReturnType<T> = TSelectorReturnType<T, TRecordOfUser>;
 
 export type TUserStoreHandler<T> = THandler<TRecordOfUser, T>;
+
 

@@ -4,7 +4,7 @@ import Router from 'next/router';
 
 import { HOME_PAGE, SIGN_IN } from 'configuration/urls';
 
-import { TResponseType } from 'store/types';
+import { AxiosResponseWithTotal, TResponseType } from 'store/types';
 
 import { getStorageData, EStorageKeys, clearStorageData } from 'utils/storageHelpers';
 
@@ -26,7 +26,8 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response: AxiosResponse<TResponseType<unknown>>) => {
-    const { data, success, code, total } = response.data;
+    const { data, success, code, total = 0 } = response.data;
+
     if (!success) {
       if(code === 401){
         clearStorageData().then(() => Router.push(SIGN_IN));
@@ -41,7 +42,13 @@ instance.interceptors.response.use(
         response: response,
       } as AxiosError;
     }
-    return assign<AxiosResponse, Partial<AxiosResponse & { total: number }>>(response, { data, total });
+    return assign<AxiosResponse, Partial<AxiosResponseWithTotal>>(
+      response,
+      {
+        data,
+        total
+      }
+    );
   },
   (error: AxiosError) => {
     const { response } = error;

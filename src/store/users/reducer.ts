@@ -11,7 +11,7 @@ import {
   GET_USERS_BY_SEARCH_REQUEST, GET_USERS_BY_SEARCH_SUCCESS,
   GET_USERS_LIST_FAILURE,
   GET_USERS_LIST_REQUEST,
-  GET_USERS_LIST_SUCCESS,
+  GET_USERS_LIST_SUCCESS, SET_USERS_COUNT,
   SIGN_IN_FAILURE,
   SIGN_IN_REQUEST,
   SIGN_IN_SUCCESS,
@@ -34,7 +34,8 @@ const initialState: TRecordOfUser = fromJS({
   profile: getRequestState(),
   signUp: getRequestState(),
   forgotPassword: getRequestState(),
-  usersList: getRequestState()
+  usersList: getRequestState(),
+  usersCount: null
 });
 
 const setSignInFetching = (value: boolean) =>
@@ -72,6 +73,10 @@ const setUsersListData: TUserStoreHandler<IUsersListResponseData[]> = (state, ac
 const setUsersListError: TUserStoreHandler<AxiosError> = (state, action) =>
   state.setIn(['usersList', 'error'], action.payload);
 
+const setUsersCount: TUserStoreHandler<{total: number}> = (state, action) =>
+  state.setIn(['usersCount'], action.payload.total);
+
+
 export default createReducer<TRecordOfUser>(initialState, {
   [SIGN_IN_REQUEST]: setSignInFetching(true),
   [SIGN_IN_SUCCESS]: [setSignInFetching(false), setSignInData],
@@ -96,4 +101,6 @@ export default createReducer<TRecordOfUser>(initialState, {
   [GET_USERS_BY_SEARCH_REQUEST]: setUsersListFetching(true),
   [GET_USERS_BY_SEARCH_SUCCESS]: [setUsersListFetching(false), setUsersListData],
   [GET_USERS_BY_SEARCH_FAILURE]: [setUsersListFetching(false), setUsersListError],
+
+  [SET_USERS_COUNT]: setUsersCount,
 });

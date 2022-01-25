@@ -52,6 +52,8 @@ export type TResponseType<T> = {
   total: number
 }
 
+export type AxiosResponseWithTotal<T = unknown> = AxiosResponse<T> & { total: number }
+
 export type TRequestWithDataFunction<D = unknown, R = AxiosResponse> = (
   url: string,
   data?: D,
@@ -69,3 +71,4 @@ export type TSelectorReturnType<T, D> = OutputSelector<
   (...args: SelectorResultArray<[((state: IApplicationState) => D)]>) => T,
   GetParamsFromSelectors<[((state: IApplicationState) => D)]>
   >;
+
