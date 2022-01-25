@@ -65,9 +65,9 @@ export const makeSelectUsersListData: TUserSelectorReturnType<IUsersListResponse
   (state?: TRecordOfUser) => state?.getIn(['usersList', 'data'])?.toJS() || null,
 );
 
-export const makeSelectUsersListCount: TUserSelectorReturnType<{count: number}> = createSelector(
+export const makeSelectUsersListCount: TUserSelectorReturnType<number> = createSelector(
   selectState,
-  (state?: TRecordOfUser) => state?.getIn(['count'])?.toJS() || null,
+  (state?: TRecordOfUser) => state?.getIn(['usersCount']) || null,
 );
 
 export const makeSelectProfileFetching: TUserSelectorReturnType<boolean> = createSelector(
@@ -87,3 +87,4 @@ export const makeSelectToken: TUserSelectorReturnType<string | null> = createSel
   selectState,
   (state?: TRecordOfUser) => state?.get('token') || null,
 );
+

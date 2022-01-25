@@ -10,9 +10,16 @@ import {
   FORGOT_PASSWORD_REQUEST,
   forgotPasswordFailure,
   forgotPasswordSuccess,
-  GET_PROFILE_REQUEST, GET_USERS_BY_SEARCH_REQUEST, GET_USERS_LIST_REQUEST,
+  GET_PROFILE_REQUEST,
+  GET_USERS_BY_SEARCH_REQUEST,
+  GET_USERS_LIST_REQUEST,
   getProfileFailure,
-  getProfileSuccess, getUsersBySearchFailure, getUsersBySearchSuccess, getUsersListFailure, getUsersListSuccess,
+  getProfileSuccess,
+  getUsersBySearchFailure,
+  getUsersBySearchSuccess,
+  getUsersListFailure,
+  getUsersListSuccess,
+  setUsersCount,
   SIGN_IN_REQUEST,
   SIGN_UP_REQUEST,
   signInFailure,
@@ -105,9 +112,8 @@ function* ForgotPassword(action: IPayloadAction<IForgotPassword>): Generator {
 function* GetUsers(action: IPayloadAction<IPagination>): Generator {
   const { page, onpage } = action.payload;
   const params = {
-    page,
     onpage,
-    start: (page * onpage)
+    start: page === 1 ? page : (page * onpage)
   };
 
   try {
@@ -116,8 +122,9 @@ function* GetUsers(action: IPayloadAction<IPagination>): Generator {
       '/user/',
       { params }
     );
-    const { data } = response as TUserListResponse ;
+    const { data, total } = response as TUserListResponse ;
     yield put(getUsersListSuccess(data));
+    yield put(setUsersCount({ total }));
   } catch (error) {
     yield put(getUsersListFailure(error as AxiosError));
   }
@@ -131,8 +138,9 @@ function* GetUsersBySearch(action: IPayloadAction<{ name: string }>): Generator 
       { params: action.payload }
     );
 
-    const { data } = response as TUserListResponse;
+    const { data, total } = response as TUserListResponse;
     yield put(getUsersBySearchSuccess(data));
+    yield put(setUsersCount({ total }));
   } catch (e) {
     yield put(getUsersBySearchFailure(e as AxiosError));
   }

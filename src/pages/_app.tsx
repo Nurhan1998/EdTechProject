@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { AppPropsType } from 'next/dist/shared/lib/utils';
 import { useDispatch, useSelector } from 'react-redux';
-import ReactNotification from 'react-notifications-component';
+import  ReactNotifications from 'react-notifications-component';
 
 import { HOME_PAGE, SIGN_IN } from 'configuration/urls';
 
@@ -48,7 +48,7 @@ const App: NextPage<AppPropsType> = props => {
   return (
     <>
       <Component {...pageProps}/>
-      <ReactNotification/>
+      <ReactNotifications/>
     </>
   );
 

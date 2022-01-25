@@ -76,7 +76,7 @@ const UserCard = ({
         </div>
         <div className="data_content">
           <p className="text-grey">Facebook</p>
-          <ProgressBar current={9} max={10} color="#FFCD54"/>
+          <ProgressBar current={83} max={100} color="#FFCD54"/>
         </div>
       </div>
     </div>
