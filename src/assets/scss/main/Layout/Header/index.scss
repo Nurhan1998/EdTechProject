@@ -137,6 +137,16 @@
 
 }
 
+@media screen and (min-width: $md-xs-media) and (max-width: $tablet-media) {
+  .header_action__wrapper {
+    width: 200px;
+
+    p {
+      min-width: 60px;
+    }
+  }
+}
+
 @media screen and (max-width: $md-xs-media) {
   .header {
     &_wrapper {
