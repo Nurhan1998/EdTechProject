@@ -19,3 +19,11 @@
     }
   }
 }
+
+@media screen and (min-width: $md-xs-media) and (max-width:$tablet-media){
+  .layout{
+    &_inner-wrapper{
+      padding: 0 5px;
+    }
+  }
+}

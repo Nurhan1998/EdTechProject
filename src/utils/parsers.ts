@@ -1,4 +1,3 @@
-
 export const parseJSON = <T = Record<string, unknown>>(value: string): T | null => {
   try {
     return JSON.parse(value) as T;

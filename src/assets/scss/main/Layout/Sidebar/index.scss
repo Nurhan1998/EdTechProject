@@ -107,8 +107,6 @@
   width: 100vw;
   height: 90vh;
   top: 80px;
-  left: 0;
-  right: 0;
   z-index: 9999;
 
   &_wrapper {
@@ -205,5 +203,34 @@
 @media screen and (max-width: $md-xs-media) {
   .sidebar_wrapper {
     display: none;
+  }
+}
+
+@media screen and (min-width: $md-xs-media) and (max-width: $tablet-media){
+  .sidebar {
+    &_wrapper {
+      display: none;
+    }
+
+    &_links {
+      &__wrapper {
+        padding: 5px;
+      }
+    }
+  }
+  .burger-menu {
+    margin-top: 9px;
+    width: 300px;
+    border: 1px solid $superLightGrey;
+    right: 0;
+
+    .header, .sidebar_search-wrapper {
+      display: none;
+    }
+
+    &_wrapper {
+      padding-top: 0;
+
+    }
   }
 }
