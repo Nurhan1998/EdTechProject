@@ -43,6 +43,11 @@ const Header = (props: IHeader): JSX.Element => {
             </span>
           </MediaQuery>
         </div>
+        <MediaQuery maxWidth={768} minWidth={501}>
+          <span onClick={handleClickMenu}>
+            {visible ? <CrossLines width={24} height={24}/> : <BurgerMenuLines/>}
+          </span>
+        </MediaQuery>
       </div>
     </div>
   );
