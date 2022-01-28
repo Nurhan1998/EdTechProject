@@ -96,7 +96,6 @@ export interface IUsersListResponseData extends IProfileModel {
 }
 
 export interface IPagination {
-  onpage: number;
   page: number;
 }
 

@@ -59,7 +59,7 @@ export const getUsersListRequest = createAction<IPagination>(GET_USERS_LIST_REQU
 export const getUsersListSuccess = createAction<IUsersListResponseData[]>(GET_USERS_LIST_SUCCESS);
 export const getUsersListFailure = createAction<AxiosError>(GET_USERS_LIST_FAILURE);
 
-export const getUsersBySearchRequest = createAction<{ name: string }>(GET_USERS_BY_SEARCH_REQUEST);
+export const getUsersBySearchRequest = createAction<IPagination & { name: string }>(GET_USERS_BY_SEARCH_REQUEST);
 export const getUsersBySearchSuccess = createAction<IUsersListResponseData[]>(GET_USERS_BY_SEARCH_SUCCESS);
 export const getUsersBySearchFailure = createAction<AxiosError>(GET_USERS_BY_SEARCH_FAILURE);
 

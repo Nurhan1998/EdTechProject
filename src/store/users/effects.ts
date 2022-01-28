@@ -5,6 +5,7 @@ import Router from 'next/router';
 import request from 'api/index';
 
 import { HOME_PAGE } from 'configuration/urls';
+import { DEFAULT_PAGE_SIZE } from 'configuration/constants';
 
 import {
   FORGOT_PASSWORD_REQUEST,
@@ -110,10 +111,10 @@ function* ForgotPassword(action: IPayloadAction<IForgotPassword>): Generator {
 }
 
 function* GetUsers(action: IPayloadAction<IPagination>): Generator {
-  const { page, onpage } = action.payload;
+  const { page } = action.payload;
   const params = {
-    onpage,
-    start: page === 1 ? page : (page * onpage)
+    onpage: DEFAULT_PAGE_SIZE,
+    start: page === 1 ? page : (page * DEFAULT_PAGE_SIZE)
   };
 
   try {
@@ -130,12 +131,19 @@ function* GetUsers(action: IPayloadAction<IPagination>): Generator {
   }
 }
 
-function* GetUsersBySearch(action: IPayloadAction<{ name: string }>): Generator {
+function* GetUsersBySearch(action: IPayloadAction<IPagination & { name: string }>): Generator {
+  const { name, page } = action.payload;
+  const params = {
+    name,
+    onpage: DEFAULT_PAGE_SIZE,
+    start: page === 1 ? page : (page * DEFAULT_PAGE_SIZE)
+  };
+
   try {
     const response = yield call(
       request.get,
       '/user/search',
-      { params: action.payload }
+      { params }
     );
 
     const { data, total } = response as TUserListResponse;
