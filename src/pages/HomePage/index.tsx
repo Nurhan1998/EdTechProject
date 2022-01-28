@@ -40,7 +40,6 @@ const HomePage = (): JSX.Element => {
   useEffect(() => {
     dispatch(getUsersListRequest({
       page: isEmpty(query) ? 1 : currentPage,
-      onpage: DEFAULT_PAGE_SIZE
     }));
     // dispatch
     // eslint-disable-next-line
