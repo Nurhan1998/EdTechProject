@@ -1,6 +1,6 @@
-import { IUsersListResponseData } from 'store/users/types';
+import UserCard from 'components/UserCard';
 
-import UserCard from './UserCard';
+import { IUsersListResponseData } from 'store/users/types';
 
 interface IUsersList {
   users: IUsersListResponseData[] | null;

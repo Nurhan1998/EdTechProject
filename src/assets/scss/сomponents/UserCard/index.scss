@@ -1,5 +1,77 @@
 .user-card{
-  &_wrapper{
+  //user card components
+  &-title {
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    p {
+      margin: 0;
+    }
+
+    .title {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-weight: $semiBold;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90px;
+      color: red;
+
+      span {
+        width: 17px;
+        height: 17px;
+      }
+
+      .text-red {
+        font-size: 14px;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &-skillsAverage {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  &-skillWithProgress {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .progressbar {
+      &-text {
+        font-size: 14px;
+        width: 13px;
+        font-weight: $semiBold;
+      }
+    }
+  }
+
+  &-viewProfile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 14px;
+    cursor: pointer;
+
+    .title {
+      color: #49A057;
+      font-weight: $semiBold;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  &_wrapper {
+    padding: 11px 20px 11px 11px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -14,190 +86,155 @@
     }
   }
 
-  &_avatar {
+  &-avatar {
     flex: 0 0 auto;
+    height: 100%;
 
-    &__footer {
-      display: none;
-    }
-
-    span {
+    .img-wrapper {
       display: inline-block;
       border-radius: $border-radius-circle;
       border: 1px solid $superLightGrey;
       overflow: hidden;
       width: 69px;
       height: 69px;
+      margin-bottom: 6px;
+
+      img {
+        max-width: 100%;
+      }
     }
-    img{
-      max-width: 100%;
+
+    .avatar-footer {
+      width: 60%;
+      margin: 0 0 auto;
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        width: 17px;
+        height: 17px;
+      }
     }
   }
 
-  &_info{
+  &_info {
     width: 100%;
     display: flex;
     justify-content: space-between;
 
-    .text-grey {
+    .text {
       margin: 0;
       font-size: 14px;
       color: $textColorLightGrey;
       white-space: nowrap;
-    }
 
-    .text-bold {
-      white-space: nowrap;
-      margin: 0;
-      font-size: 14px;
-      color: $black;
-      font-weight: $semiBold;
+      span {
+        color: $secondaryBlack;
+        font-weight: $semiBold;
+      }
     }
 
     .data {
       display: flex;
+      height: 69px;
       flex-direction: column;
       width: 300px;
-
-      &_right-head {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-
-        .title {
-          color: #49A057;
-          font-weight: $semiBold;
-          margin-right: 10px;
-        }
-      }
-
-      &_head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-
-        .title {
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-          font-weight: $semiBold;
-        }
-
-        .icons {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 90px;
-          color: red;
-          font-size: 12px;
-
-          &_visible {
-            display: none;
-          }
-        }
-      }
-
-      &_content {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-
-        .progressbar {
-          &-text {
-            font-size: 14px;
-            font-weight: $semiBold;
-          }
-        }
-      }
     }
   }
 }
 
 @media screen and (max-width: $md-xs-media) {
   .user-card {
+    &-title {
+      width: 100%;
+      height: 17px;
+      margin-bottom: 6px;
+
+      .title {
+        font-size: 14px;
+        max-width: 140px;
+      }
+
+      .icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100px;
+        color: red;
+        font-size: 12px;
+      }
+    }
+
+    &-skillsAverage {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 2px;
+
+      .text {
+        font-size: 12px;
+        color: $secondaryBlack;
+      }
+      span {
+        font-size: 12px;
+        color: $secondaryBlack;
+      }
+    }
+
+    &-skillWithProgress {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+
+      .progressbar {
+        &-text {
+          font-size: 12px;
+          font-weight: $semiBold;
+        }
+      }
+    }
+
     &_wrapper {
       height: 110px;
 
       > * {
-        padding-left: 5px;
+        padding: 0;
       }
     }
 
-    &_avatar{
-      &__footer{
+    &-avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 10px;
+
+      .avatar-footer {
+        width: 44px;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
       }
     }
 
-    &_info{
+    &_info {
       width: 100%;
       display: flex;
       flex-direction: column;
-
-      .text-grey {
-        margin: 0;
-        font-size: 12px;
-        color: $textColorLightGrey;
-        white-space: nowrap;
-      }
-
-      .text-bold {
-        white-space: nowrap;
-        margin: 0;
-        font-size: 14px;
-        color: $black;
-        font-weight: $semiBold;
-      }
 
       .data {
         display: flex;
         flex-direction: column;
         width: 100%;
-        &_right-head {
-          display: none;
-        }
+        height: 100%;
 
-        .title {
-          margin: 0;
-        }
-
-        &_head {
-          height: 100%;
-
-          .title {
-            max-width: 140px;
-          }
-
-          .icons {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100px;
-            color: red;
-            font-size: 12px;
-          }
-        }
-
-        &_content {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-
-          .progressbar {
-            &-text {
-              font-size: 12px;
-              font-weight: $semiBold;
-            }
-          }
+        .text {
+          font-size: 12px;
         }
       }
     }
   }
 }
 
-@media screen and (max-width: $lg-media) {
+@media screen and (min-width: $md-xs-media)  and (max-width: $lg-media){
   .user-card {
     &_wrapper {
       height: 110px;
