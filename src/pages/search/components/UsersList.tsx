@@ -1,6 +1,6 @@
-import { IUsersListResponseData } from 'store/users/types';
+import UserCard from 'components/UserCard';
 
-import UserCard from './Card';
+import { IUsersListResponseData } from 'store/users/types';
 
 
 

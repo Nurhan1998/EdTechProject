@@ -114,7 +114,7 @@ function* GetUsers(action: IPayloadAction<IPagination>): Generator {
   const { page } = action.payload;
   const params = {
     onpage: DEFAULT_PAGE_SIZE,
-    start: page === 1 ? page : (page * DEFAULT_PAGE_SIZE)
+    start: page === 1 ? 0 : (page * DEFAULT_PAGE_SIZE)
   };
 
   try {
@@ -132,11 +132,12 @@ function* GetUsers(action: IPayloadAction<IPagination>): Generator {
 }
 
 function* GetUsersBySearch(action: IPayloadAction<IPagination & { name: string }>): Generator {
+
   const { name, page } = action.payload;
   const params = {
     name,
     onpage: DEFAULT_PAGE_SIZE,
-    start: page === 1 ? page : (page * DEFAULT_PAGE_SIZE)
+    start: page === 1 ? 0 : (page * DEFAULT_PAGE_SIZE)
   };
 
   try {
