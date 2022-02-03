@@ -2,10 +2,15 @@ import { DEFAULT_AVATAR } from 'configuration/constants';
 
 import CalendarWithPen from 'components/Icons/CalendarWithPen';
 import VideoChat from 'components/Icons/VideoChat';
-import { IAvatarProps } from 'components/UserCard/types';
 
+export interface IAvatarProps {
+  photoUrl?: string;
+  withIcons: boolean;
+  leftIconAction?: () => void;
+  rightIconAction?: () => void;
+}
 
-export const Avatar = (props: IAvatarProps): JSX.Element => {
+const UserCardAvatar = (props: IAvatarProps): JSX.Element => {
   const { withIcons, rightIconAction, leftIconAction, photoUrl } = props;
   return (
     <div className="user-card-avatar">
@@ -31,3 +36,5 @@ export const Avatar = (props: IAvatarProps): JSX.Element => {
     </div>
   );
 };
+
+export default UserCardAvatar;

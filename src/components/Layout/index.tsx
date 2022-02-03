@@ -12,12 +12,14 @@ import Header from './Header';
 import { ILayout } from './types';
 
 
-const Layout: FC<ILayout> = ({
-  layoutClassName,
-  pageClassName,
-  children,
-  withoutRightSidebar= false
-}) => {
+const Layout: FC<ILayout> = props => {
+  const {
+    layoutClassName,
+    pageClassName,
+    children,
+    withoutRightSidebar= false
+  } = props;
+
   const [language, setLanguage] = useState<string>(Languages[0].name);
   const [visible, setVisible] = useState<boolean>(false);
 

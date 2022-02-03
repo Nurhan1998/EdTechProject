@@ -1,9 +1,12 @@
 import { ProgressBar } from 'components/ProgressBar';
-import { ISkillsProps } from 'components/UserCard/types';
 
+interface ISkillWithProgress {
+  text?: string;
+  current: number;
+  max: number
+}
 
-
-export const SkillWithProgress = (props: ISkillsProps): JSX.Element => {
+const SkillWithProgress = (props: ISkillWithProgress): JSX.Element => {
   const { text, max, current } = props;
   return (
     <div className="user-card-skillWithProgress">
@@ -12,3 +15,5 @@ export const SkillWithProgress = (props: ISkillsProps): JSX.Element => {
     </div>
   );
 };
+
+export default SkillWithProgress;

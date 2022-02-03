@@ -7,7 +7,7 @@
   justify-content: center;
 
   &_container {
-    width: 722px;
+    width: 772px;
     display: flex;
     flex-direction: column;
 
@@ -68,53 +68,40 @@
 
       .list {
         .user-card_wrapper {
+          padding: 21px 20px 20px 20px;
           height: 152px;
           border: 1px solid $superLightGrey;
           border-radius: $border-radius-bs;
 
+          & > * {
+            padding: 0;
+          }
+
           .user-card {
             &_info {
-              height: 80%;
+              padding-left: 16px;
 
               .data {
-                width: 260px;
+                position: relative;
+                width: 48%;
+                height: 100%;
+
                 &:nth-child(2) {
-                  margin-top: 30px;
+                  padding-top: 32px;
+
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    width: 1px;
+                    height: 84px;
+                    background-color: $superLightGrey;
+                    top: 30px;
+                    left: -10px;
+                  }
                 }
 
-
-                .data {
-                  &_head {
-                    height: 30px;
-                    p {
-                      margin: 0;
-                    }
-                    .title {
-                      margin: 0 0 10px 0;
-                    }
-                    .icons {
-                      margin-bottom: 10px;
-                    }
-                  }
-
-                  &_content {
-                    &:not(last-child) {
-                      margin-top: 7px;
-                    }
-                    .progressbar {
-                      p, span {
-                        font-size: 14px;
-                      }
-
-                      &-title {
-                        width: 110px;
-                      }
-
-                      span {
-                        font-weight: $semiBold;
-                      }
-                    }
-                  }
+                .user-card-viewProfile {
+                  margin: 25px 0 0 0;
                 }
               }
             }
@@ -126,6 +113,48 @@
 
           &:not(last-child) {
             margin-bottom: 6px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(min-width: $md-xs-media) and (max-width: $tablet-media) {
+  .search-page {
+    &_container {
+      width: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: $md-xs-media) {
+  .search-page {
+    &_container {
+      width: 96%;
+
+      .body {
+        .list {
+          .user-card_wrapper {
+            height: 110px;
+            align-items: flex-start;
+            padding: 11px 10px 10px 11px;
+
+            .user-card_info {
+              padding-left: 0;
+
+              .data {
+                width: 100%;
+
+                &:nth-child(2) {
+                  padding-top: 0;
+
+                  &::before {
+                    display: none;
+                  }
+                }
+              }
+            }
           }
         }
       }

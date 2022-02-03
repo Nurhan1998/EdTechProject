@@ -60,34 +60,36 @@ const SearchStudent = (): JSX.Element => {
   return (
     <div className="search-page">
       <div className="search-page_container">
-        <div className="head">
-          <div className="hints">
-            <p>Наша фирма ищет человека, который...</p>
-            <p>Найдено {usersCount} профилей</p>
-          </div>
-          <Input
-            inputProps={{
-              type: 'search',
-              color: 'white',
-              value: searchData,
-              onChange: e => setSearchData(e.target.value)
-            }}
-            onButtonClick={handleSearch}
-          />
-        </div>
-        <div className="body">
-          {isUsersLoading ? (
-            <Preloader/>
-          ) : (
-            <UsersList users={users}/> 
-          )}
-        </div>
-        <Pagination
-          page={currentPage}
-          pageSize={DEFAULT_PAGE_SIZE}
-          totalSize={usersCount}
-          affectUrl
-        />
+        {isUsersLoading ? (
+          <Preloader/>
+        ) : (
+          <>
+            <div className="head">
+              <div className="hints">
+                <p>Наша фирма ищет человека, который...</p>
+                <p>Найдено {usersCount} профилей</p>
+              </div>
+              <Input
+                inputProps={{
+                  type: 'search',
+                  color: 'white',
+                  value: searchData,
+                  onChange: e => setSearchData(e.target.value)
+                }}
+                onButtonClick={handleSearch}
+              />
+            </div>
+            <div className="body">
+              <UsersList users={users}/>
+            </div>
+            <Pagination
+              page={currentPage}
+              pageSize={DEFAULT_PAGE_SIZE}
+              totalSize={usersCount}
+              affectUrl
+            />
+          </>
+        )}
       </div>
     </div>
   );

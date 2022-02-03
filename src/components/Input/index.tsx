@@ -4,13 +4,14 @@ import cn from 'classnames';
 import { IInputProps } from 'components/Input/types';
 import { SearchInput } from 'components/Input/components/SearchInput';
 
-const Input = ({
-  error,
-  label,
-  inputProps,
-  isTouched,
-  onButtonClick
-}: IInputProps): JSX.Element => {
+const Input = (props: IInputProps): JSX.Element => {
+  const {
+    error,
+    label,
+    inputProps,
+    isTouched,
+    onButtonClick
+  } = props;
   const { className, type, value, placeholder, onChange, onFocus, onBlur, disabled } = inputProps;
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [fieldType, setFieldType] = useState<string>(type || 'text');

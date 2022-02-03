@@ -50,8 +50,9 @@ const ForgotPassword = (): JSX.Element => {
         style={{ backgroundColor: isStudent ? EColors.MOST_GREEN : EColors.MOST_BLUE }}
         disabled={!!forgotPasswordFetching}
         onClick={getPassword}
-        text="Get password to Email"
-      />
+      >
+        Get password to Email
+      </Button>
     </AuthLayout>
   );
 };

@@ -2,29 +2,37 @@ import CalendarWithPen from 'components/Icons/CalendarWithPen';
 import VideoChat from 'components/Icons/VideoChat';
 import Heart from 'components/Icons/Heart';
 import RightArrows from 'components/Icons/RightArrows';
-import { IUserCardTitle } from 'components/UserCard/types';
 
+interface IUserCardTitle {
+  text?: string;
+  isMobile?: boolean;
+  onArrowsClick?: () => void
+  withIcons?: boolean;
+  likesCount?: number;
+  onCalendarClick?: () => void;
+  onVideoChatClick?: () => void;
+}
 
-
-export const Title = (props: IUserCardTitle): JSX.Element => {
+const Title = (props: IUserCardTitle): JSX.Element => {
   const {
     text,
     likesCount,
     isMobile,
     onVideoChatClick,
     onCalendarClick,
-    onArrowsClick
+    onArrowsClick,
+    withIcons
   } = props;
 
   return (
     <div className="user-card-title">
       <p className="title">{text}</p>
       <div className="icons">
-        {!isMobile && (
+        {!isMobile && withIcons && (
           <span onClick={onCalendarClick}>
             <CalendarWithPen/>
           </span>)}
-        {!isMobile && (
+        {!isMobile && withIcons && (
           <span onClick={onVideoChatClick}>
             <VideoChat/>
           </span>
@@ -42,3 +50,5 @@ export const Title = (props: IUserCardTitle): JSX.Element => {
     </div>
   );
 };
+
+export default Title;
