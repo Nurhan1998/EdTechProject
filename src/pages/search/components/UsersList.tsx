@@ -1,12 +1,11 @@
-import UserCard from 'components/UserCard';
-
 import { IUsersListResponseData } from 'store/users/types';
 
-
+import UserCard from './UserCard';
 
 interface ICardProps {
   users: Partial<IUsersListResponseData>[] | null
 }
+
 
 export const UsersList = ({ users }: ICardProps): JSX.Element => (
   <div className="list">

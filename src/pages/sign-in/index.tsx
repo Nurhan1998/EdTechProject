@@ -53,8 +53,9 @@ const SignIn = (): JSX.Element => {
         style={{ backgroundColor: isStudent ? EColors.MOST_GREEN : EColors.MOST_BLUE }}
         disabled={signInFetching}
         onClick={signIn}
-        text="Sign in"
-      />
+      >
+        Sign in
+      </Button>
     </AuthLayout>
   );
 };

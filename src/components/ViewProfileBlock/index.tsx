@@ -1,9 +1,8 @@
 import RightArrows from 'components/Icons/RightArrows';
-import { IViewProfile } from 'components/UserCard/types';
+import { IViewProfile } from 'components/types';
 
-export const ViewProfileBlock = (props: IViewProfile): JSX.Element => {
+const ViewProfileBlock = (props: IViewProfile): JSX.Element => {
   const { text, onArrowsClick, isMobile } = props;
-
 
   return isMobile ? (
     <RightArrows color="#49A057"/>
@@ -14,3 +13,5 @@ export const ViewProfileBlock = (props: IViewProfile): JSX.Element => {
     </div>
   );
 };
+
+export default ViewProfileBlock;

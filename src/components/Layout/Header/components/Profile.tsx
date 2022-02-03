@@ -1,53 +1,12 @@
-// import { useRef, useState } from 'react';
-// import Link from 'next/link';
-// import cn from 'classnames';
 import { photos } from 'mocks/photos';
-
-// import { HOME_PAGE } from 'configuration/urls';
 
 import MostBell from 'components/Icons/Header/MostBell';
 
 
 const Profile = (): JSX.Element => {
-  // const dropdownRef = useRef<HTMLDivElement>(null);
-  // const [visible, setVisible] = useState<boolean>(false);
-
   const name = 'Super';
   const surName = 'Investor';
   const imagePath = photos[0].src;
-
-  // const handleClickOutside = (e: MouseEvent) => {
-  //   if (dropdownRef.current && dropdownRef.current.contains(e.target)) {
-  //     setVisible(false);
-  //   }
-  // };
-  //
-  // useEffect(() => {
-  //   if (visible) {
-  //     document.addEventListener('mousedown', handleClickOutside);
-  //   }
-  //   return () => {
-  //     if (visible) {
-  //       document.removeEventListener('mousedown', handleClickOutside);
-  //     }
-  //   };
-  // });
-
-  // const dropdownMenu = (
-  //   <div className={cn('dropdown-menu_wrapper', { visible: visible })} ref={dropdownRef}>
-  //     <div className="dropdown-menu_item">
-  //       <Link href={HOME_PAGE}>
-  //         <a>Company Profile</a>
-  //       </Link>
-  //     </div>
-  //     <div className="dropdown-menu_item">
-  //       <Link href={HOME_PAGE}>
-  //         <a>Logout</a>
-  //       </Link>
-  //     </div>
-  //   </div>
-  // );
-
   return (
     <div className="header_profile__inner-wrapper" >
       <div className="d-flex-centered">
