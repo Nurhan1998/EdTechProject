@@ -9,7 +9,7 @@ interface ISkillWithProgress {
 const SkillWithProgress = (props: ISkillWithProgress): JSX.Element => {
   const { text, max, current } = props;
   return (
-    <div className="user-card-skillWithProgress">
+    <div className="skillWithProgress">
       <p className="text">{text}</p>
       <ProgressBar current={current} max={max}/>
     </div>

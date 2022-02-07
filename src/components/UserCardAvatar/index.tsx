@@ -13,7 +13,7 @@ export interface IAvatarProps {
 const UserCardAvatar = (props: IAvatarProps): JSX.Element => {
   const { withIcons, rightIconAction, leftIconAction, photoUrl } = props;
   return (
-    <div className="user-card-avatar">
+    <div className="userAvatar">
       <span className="img-wrapper">
         <img
           src={photoUrl || DEFAULT_AVATAR}

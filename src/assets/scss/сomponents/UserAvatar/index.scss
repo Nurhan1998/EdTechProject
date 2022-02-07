@@ -1,0 +1,52 @@
+.userAvatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+
+  .img-wrapper {
+    display: inline-block;
+    border-radius: $border-radius-circle;
+    border: 1px solid $superLightGrey;
+    overflow: hidden;
+    width: 69px;
+    height: 69px;
+    margin-bottom: 6px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .avatar-footer {
+    width: 60%;
+    margin: 0 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      width: 17px;
+      height: 17px;
+    }
+  }
+}
+
+@media screen and (max-width: $md-xs-media) {
+  .userAvatar {
+    margin-right: 10px;
+
+    .avatar-footer {
+      width: 44px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+@media screen and (min-width: $tablet-media)  and (max-width: $lg-media){
+  .userAvatar {
+    &__footer {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}

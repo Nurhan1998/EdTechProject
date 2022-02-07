@@ -67,7 +67,7 @@ const SearchStudent = (): JSX.Element => {
             <div className="head">
               <div className="hints">
                 <p>Наша фирма ищет человека, который...</p>
-                <p>Найдено {usersCount} профилей</p>
+                <p>Найдено профилей {usersCount || '...'}</p>
               </div>
               <Input
                 inputProps={{
