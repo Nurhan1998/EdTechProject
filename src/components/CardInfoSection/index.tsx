@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 
 const CardInfoSection: FC<{ className?: string }> = ({ children, className }) => (
-  <div className={cn('data', className)}>{children}</div>
+  <div className={cn('userCardSection', className)}>{children}</div>
 );
 
 export default CardInfoSection;

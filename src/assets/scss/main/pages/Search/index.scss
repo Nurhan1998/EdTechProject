@@ -67,7 +67,7 @@
       height: 100%;
 
       .list {
-        .user-card_wrapper {
+        .userCardWrapper {
           padding: 21px 20px 20px 20px;
           height: 152px;
           border: 1px solid $superLightGrey;
@@ -77,11 +77,10 @@
             padding: 0;
           }
 
-          .user-card {
-            &_info {
-              padding-left: 16px;
+          .userCardInfo {
+            padding-left: 16px;
 
-              .data {
+            .userCardSection {
                 position: relative;
                 width: 48%;
                 height: 100%;
@@ -100,13 +99,12 @@
                   }
                 }
 
-                .user-card-viewProfile {
+                .viewProfileBlock {
                   margin: 25px 0 0 0;
                 }
               }
-            }
 
-            &_avatar {
+            .userAvatar {
               height: 80%;
             }
           }
@@ -135,15 +133,15 @@
 
       .body {
         .list {
-          .user-card_wrapper {
+          .userCardWrapper {
             height: 110px;
             align-items: flex-start;
             padding: 11px 10px 10px 11px;
 
-            .user-card_info {
+            .userCardInfo {
               padding-left: 0;
 
-              .data {
+              .userCardSection {
                 width: 100%;
 
                 &:nth-child(2) {

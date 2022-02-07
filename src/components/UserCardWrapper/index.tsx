@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 
 const UserCardWrapper: FC<{ className?: string }> = ({ children, className }) => (
-  <div className={cn('user-card_wrapper', className)}>
+  <div className={cn('userCardWrapper', className)}>
     {children}
   </div>
 );

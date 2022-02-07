@@ -1,0 +1,13 @@
+.viewProfileBlock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 14px;
+  cursor: pointer;
+
+  .title {
+    color: #49A057;
+    font-weight: $semiBold;
+    margin: 0 10px 0 0;
+  }
+}

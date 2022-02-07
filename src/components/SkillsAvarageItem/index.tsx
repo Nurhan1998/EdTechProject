@@ -11,7 +11,7 @@ const SkillsAverageItem = (props: ISkillsAverage): JSX.Element => {
   const value = isPercent ? `${current / max * 100}%` : `${current}/${max}`;
 
   return (
-    <div className="user-card-skillsAverage">
+    <div className="skillsAverageItem">
       <p className="text">{text}</p>
       {!isMobile && (
         <>

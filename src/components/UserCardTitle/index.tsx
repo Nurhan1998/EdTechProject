@@ -25,7 +25,7 @@ const Title = (props: IUserCardTitle): JSX.Element => {
   } = props;
 
   return (
-    <div className="user-card-title">
+    <div className="userCardTitle">
       <p className="title">{text}</p>
       <div className="icons">
         {!isMobile && withIcons && (

@@ -38,7 +38,6 @@ const UserCard = ({
             text="Facebook"
             current={7}
             max={10}
-            isMobile={isMobile}
           />
         </CardInfoSection>
         <CardInfoSection>
@@ -59,7 +58,6 @@ const UserCard = ({
             text="Facebook"
             current={9}
             max={10}
-            isMobile={isMobile}
           />
         </CardInfoSection>
       </UserCardInfo>
