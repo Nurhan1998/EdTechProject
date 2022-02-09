@@ -77,9 +77,10 @@ const SettingsPage = (): JSX.Element => {
           <div className="body">
             <Form
               className="personal-settings_form"
-              isFormDisabled={isFormDisabled}
+              disabled={isFormDisabled}
               name={PERSONAL_SETTINGS_FORM}
-              config={personalConfig}/>
+              config={personalConfig}
+            />
           </div>
         </div>
         <div className="right-side">

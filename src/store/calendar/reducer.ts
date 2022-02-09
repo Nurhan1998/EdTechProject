@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { createReducer } from 'most-ui-kit';
 
 import { IPayloadAction } from 'store/types';
 import { ICourse, TRecordOfCalendar } from 'store/calendar/types';
@@ -8,7 +9,6 @@ import {
 
 } from 'store/calendar/actions';
 
-import createReducer from 'utils/createReducer';
 import getRequestState from 'utils/requestState';
 
 

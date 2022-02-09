@@ -1,7 +1,5 @@
 import { TSelectItem } from 'components/Select/types';
 
-import { IUserCard } from 'pages/HomePage/types';
-
 
 export const langBaseExample: TSelectItem[] = [
   {
@@ -57,94 +55,4 @@ export const locationBaseExample: TSelectItem[] = [
     value: 'Germany',
     label: 'Germany',
   }
-];
-
-
-export const userListBaseExample: IUserCard[] = [
-  {
-    id: '1',
-    avatar: 'https://i.pravatar.cc/300?img=11',
-    name: 'Lorem',
-    surName: 'Random',
-    hardSkill: 7,
-    softSkill: 7,
-    likesCount: 2,
-    skillName: 'confidence',
-  },
-  {
-    id: '2',
-    avatar: 'https://i.pravatar.cc/300?img=12',
-    name: 'aafLorem123',
-    surName: 'fefeRandom',
-    hardSkill: 6,
-    softSkill: 3,
-    likesCount: 2,
-    skillName: 'Creative thinking',
-    progressbarColor: '#FFCD54'
-  },
-  {
-    id: '3',
-    avatar: 'https://i.pravatar.cc/300?img=13',
-    name: 'aefaefLorem',
-    surName: 'aefaefRandom',
-    hardSkill: 8,
-    softSkill: 8,
-    likesCount: 23,
-    skillName: 'Stress tolerance',
-    progressbarColor: '#FFCD54'
-  },
-  {
-    id: '4',
-    avatar: 'https://i.pravatar.cc/300?img=14',
-    name: 'aefafLorem',
-    surName: 'aefRandom',
-    hardSkill: 10,
-    softSkill: 10,
-    likesCount: 12,
-    skillName: 'Stress tolerance',
-    progressbarColor: '#8DC152'
-  },
-  {
-    id: '5',
-    avatar: 'https://i.pravatar.cc/300?img=11',
-    name: 'Lorem',
-    surName: 'Random',
-    hardSkill: 7,
-    softSkill: 7,
-    likesCount: 2,
-    skillName: 'confidence',
-  },
-  {
-    id: '6',
-    avatar: 'https://i.pravatar.cc/300?img=12',
-    name: 'aafLorem123',
-    surName: 'fefeRandom',
-    hardSkill: 6,
-    softSkill: 3,
-    likesCount: 2,
-    skillName: 'Creative thinking',
-    progressbarColor: '#FFCD54'
-  },
-  {
-    id: '7',
-    avatar: 'https://i.pravatar.cc/300?img=13',
-    name: 'aefaefLorem',
-    surName: 'aefaefRandom',
-    hardSkill: 8,
-    softSkill: 8,
-    likesCount: 23,
-    skillName: 'Stress tolerance',
-    progressbarColor: '#FFCD54'
-  },
-  {
-    id: '8',
-    avatar: 'https://i.pravatar.cc/300?img=14',
-    name: 'aefafLorem',
-    surName: 'aefRandom',
-    hardSkill: 10,
-    softSkill: 10,
-    likesCount: 12,
-    skillName: 'Stress tolerance',
-    progressbarColor: '#8DC152'
-  },
 ];

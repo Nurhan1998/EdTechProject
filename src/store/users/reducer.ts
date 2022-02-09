@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 import { AxiosError } from 'axios';
+import { createReducer } from 'most-ui-kit';
 
 import {
   FORGOT_PASSWORD_FAILURE,
@@ -7,11 +8,14 @@ import {
   FORGOT_PASSWORD_SUCCESS,
   GET_PROFILE_FAILURE,
   GET_PROFILE_REQUEST,
-  GET_PROFILE_SUCCESS, GET_USERS_BY_SEARCH_FAILURE,
-  GET_USERS_BY_SEARCH_REQUEST, GET_USERS_BY_SEARCH_SUCCESS,
+  GET_PROFILE_SUCCESS,
+  GET_USERS_BY_SEARCH_FAILURE,
+  GET_USERS_BY_SEARCH_REQUEST,
+  GET_USERS_BY_SEARCH_SUCCESS,
   GET_USERS_LIST_FAILURE,
   GET_USERS_LIST_REQUEST,
-  GET_USERS_LIST_SUCCESS, SET_USERS_COUNT,
+  GET_USERS_LIST_SUCCESS,
+  SET_USERS_COUNT,
   SIGN_IN_FAILURE,
   SIGN_IN_REQUEST,
   SIGN_IN_SUCCESS,
@@ -21,7 +25,7 @@ import {
 } from 'store/users/actions';
 import { IPayloadAction } from 'store/types';
 
-import createReducer from 'utils/createReducer';
+// import createReducer from 'utils/createReducer';
 import { EStorageKeys, getStorageData } from 'utils/storageHelpers';
 import getRequestState from 'utils/requestState';
 

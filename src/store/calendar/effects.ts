@@ -8,7 +8,7 @@ import { TCalendarResponse } from 'store/calendar/types';
 
 
 function* GetUpcomingCourses(): Generator {
-  try{
+  try {
     const response = yield call(
       request.get,
       '/course/'
@@ -16,7 +16,7 @@ function* GetUpcomingCourses(): Generator {
     const { data } = response as TCalendarResponse;
     yield put(getCalendarSuccess(data));
 
-  }catch (e) {
+  } catch (e) {
     yield put(getCalendarFailure(e as AxiosError));
   }
 }

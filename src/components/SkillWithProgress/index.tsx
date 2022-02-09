@@ -4,6 +4,7 @@ interface ISkillWithProgress {
   text?: string;
   current: number;
   max: number
+  isMobile?: boolean;
 }
 
 const SkillWithProgress = (props: ISkillWithProgress): JSX.Element => {

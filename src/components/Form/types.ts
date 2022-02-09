@@ -34,7 +34,7 @@ export interface IConfig {
 }
 
 export interface IFormProps {
-  isFormDisabled?: boolean;
+  disabled?: boolean;
   name: string;
   config: Array<IConfig>;
   className?: string;
