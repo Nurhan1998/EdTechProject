@@ -8009,9 +8009,9 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-"most-ui-kit@git+ssh://git@gitlab.com:erldev312/most-ui-kit.git#v0.1.3":
+"most-ui-kit@git+ssh://git@gitlab.com:erldev312/most-ui-kit.git#v0.1.4":
   version "0.1.3"
-  resolved "git+ssh://git@gitlab.com:erldev312/most-ui-kit.git#bc7c59bae114940c101fab971a01ee9a428e0e25"
+  resolved "git+ssh://git@gitlab.com:erldev312/most-ui-kit.git#c20ead61c15d6f600fe0164c09f74449fbb5307f"
   dependencies:
     classnames "^2.3.1"
 

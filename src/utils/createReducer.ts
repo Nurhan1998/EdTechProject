@@ -1,4 +1,4 @@
-import { IPayloadAction, THandlers, THandler } from 'store/types';
+import { IPayloadAction, THandlers, THandler } from 'most-ui-kit';
 
 import combineChanges from './combineChanges';
 
