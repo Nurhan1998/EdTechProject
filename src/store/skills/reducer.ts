@@ -18,18 +18,18 @@ const initialState:TSkillsRecordOf = fromJS({
   softSkills: getRequestState<ISoftSkillModel[]>(),
 });
 
-const setHardSkillsFetching = (value: boolean):TSkillsStoreHandler<void> =>
+const setHardSkillsFetching = (value: boolean): TSkillsStoreHandler<void> =>
   (state: TSkillsRecordOf): TSkillsRecordOf => state.setIn(['hardSkills', 'fetching'], value);
-const setHardSkillsData:TSkillsStoreHandler<IHardSkillModel[]> = (state, action): TSkillsRecordOf =>
+const setHardSkillsData: TSkillsStoreHandler<IHardSkillModel[]> = (state, action): TSkillsRecordOf =>
   state.setIn(['hardSkills', 'data'], fromJS(action.payload));
-const setHardSkillsFailure:TSkillsStoreHandler<AxiosError> = (state, action): TSkillsRecordOf =>
+const setHardSkillsFailure: TSkillsStoreHandler<AxiosError> = (state, action): TSkillsRecordOf =>
   state.setIn(['hardSkills', 'error'], action.payload);
 
 const setSoftSkillsFetching = (value: boolean):TSkillsStoreHandler<void> =>
   (state: TSkillsRecordOf): TSkillsRecordOf => state.setIn(['softSkills', 'fetching'], value);
-const setSoftSkillsData:TSkillsStoreHandler<ISoftSkillModel[]> = (state, action): TSkillsRecordOf =>
+const setSoftSkillsData: TSkillsStoreHandler<ISoftSkillModel[]> = (state, action): TSkillsRecordOf =>
   state.setIn(['softSkills', 'data'], fromJS(action.payload));
-const setSoftSkillsFailure:TSkillsStoreHandler<AxiosError> = (state, action): TSkillsRecordOf =>
+const setSoftSkillsFailure: TSkillsStoreHandler<AxiosError> = (state, action): TSkillsRecordOf =>
   state.setIn(['softSkills', 'error'], action.payload);
 
 export default createReducer<TSkillsRecordOf>(initialState, {

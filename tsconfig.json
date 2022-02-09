@@ -30,7 +30,7 @@
       "components/*": [
         "./src/components/*"
       ],
-      "configuration/*": [
+      "common/*": [
         "./src/common/*"
       ],
       "store/*": [

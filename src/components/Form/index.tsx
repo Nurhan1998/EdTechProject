@@ -13,7 +13,7 @@ import Field from './Field';
 
 const Form = (props: IFormProps): JSX.Element => {
   const {
-    isFormDisabled,
+    disabled,
     name,
     loading,
     config,
@@ -52,8 +52,8 @@ const Form = (props: IFormProps): JSX.Element => {
     >
       {fields.map((item, idx) => {
         const key = `FORM_${name}_${item.name}_FIELD_${idx}`;
-        const value  = formValues[item.name];
-        const disabled = typeof item.disabledIf === 'function'
+        const value = formValues[item.name];
+        const fieldDisabled = typeof item.disabledIf === 'function'
           ? item.disabledIf(formValues)
           : false;
         return (
@@ -63,7 +63,7 @@ const Form = (props: IFormProps): JSX.Element => {
             field={item}
             onChange={handleFieldChange(item.name)}
             value={value}
-            disabled={loading || disabled || isFormDisabled}
+            disabled={loading || fieldDisabled || disabled}
           />
         );
       })}

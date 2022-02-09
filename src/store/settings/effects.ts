@@ -1,7 +1,7 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
+import omit from 'lodash/omit';
 
 import request from 'api/index';
-
 
 import { SAVE_SETTINGS_REQUEST } from 'store/settings/actions';
 import { showError, showSuccess } from 'store/notification/actions';
@@ -10,20 +10,23 @@ import { IPayloadAction } from 'store/types';
 import { TSettingsRequestPayload } from 'store/settings/types';
 
 import removeArraysFromObject from 'utils/removeArraysFromObject';
+import buildFormData from 'utils/formData';
 
 
 function* saveSettings(action: IPayloadAction<TSettingsRequestPayload>): Generator {
-  const { payload } = action;
-
-  if (!payload.password) {
-    delete payload.password;
-  }
+  const data = buildFormData(
+    removeArraysFromObject(
+      !action.payload.password
+        ? omit(action.payload, 'password')
+        : action.payload,
+    ) as Record<string, string | File | undefined>
+  );
 
   try {
-    yield call(request.put, '/user/1', removeArraysFromObject(payload));
+    yield call(request.put, '/user/1', data);
     yield put(getProfileRequest());
     yield put(showSuccess({ message: 'Настройки успешно изменены' }));
-  }catch (e) {
+  } catch (e) {
     yield put(showError({ message: 'Не удалось завершить оперцию' }));
   }
 }

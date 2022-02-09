@@ -6,7 +6,9 @@ import request from 'api/index';
 import { THardSkillsResponse, TSoftSkillsResponse } from 'store/skills/types';
 import {
   GET_HARD_SKILLS_REQUEST,
-  GET_SOFT_SKILLS_REQUEST, getHardSkillsFailure, getHardSkillsSuccess,
+  GET_SOFT_SKILLS_REQUEST,
+  getHardSkillsFailure,
+  getHardSkillsSuccess,
   getSoftSkillsFailure,
   getSoftSkillsSuccess
 } from 'store/skills/actions';

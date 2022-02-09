@@ -20,7 +20,7 @@ export const personalConfig: Array<IConfig> = [
     type: EFieldType.SELECT,
     label: 'Country',
     placeholder: 'Select country',
-    className: 'left-side_input'
+    className: 'left-side_input',
   },
   {
     name: 'postautomat',

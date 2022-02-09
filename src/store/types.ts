@@ -70,5 +70,5 @@ export type TSelectorReturnType<T, D> = OutputSelector<
   T,
   (...args: SelectorResultArray<[((state: IApplicationState) => D)]>) => T,
   GetParamsFromSelectors<[((state: IApplicationState) => D)]>
-  >;
+>;
 
