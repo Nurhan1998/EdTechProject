@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
+import { safeGet } from 'most-ui-kit';
 
 import { IApplicationState } from 'store/types';
 import { TFormattedFormValues, TFormSelectorReturnType, TFormState, TFormValues } from 'store/form/types';
 
-import safeGet from 'utils/safeGet';
 
 
 const selectState = (state: IApplicationState): TFormState | undefined => state.form;

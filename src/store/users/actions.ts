@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios';
+import { createAction } from 'most-ui-kit';
 
 import {
   IPagination,
@@ -8,8 +9,6 @@ import {
   TSignUp,
   TSignUpResponseData
 } from 'store/users/types';
-
-import createAction from 'utils/createAction';
 
 export const STATE_KEY = '@users';
 

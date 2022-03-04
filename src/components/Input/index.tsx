@@ -33,7 +33,7 @@ const Input = (props: IInputProps): JSX.Element => {
       ) : type === 'password' ? (
         <>
           <input
-            type={type}
+            type={fieldType}
             placeholder={placeholder}
             onChange={onChange}
             onFocus={onFocus}

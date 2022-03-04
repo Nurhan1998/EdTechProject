@@ -1,6 +1,7 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { AxiosError, AxiosResponse } from 'axios';
 import Router from 'next/router';
+import { buildFormData } from 'most-ui-kit';
 
 import request from 'api/index';
 
@@ -38,7 +39,6 @@ import {
 } from 'store/users/types';
 import { IPayloadAction } from 'store/types';
 
-import buildFormData from 'utils/formData';
 import { EStorageKeys, setStorageData } from 'utils/storageHelpers';
 
 

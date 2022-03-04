@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { createReducer } from 'most-ui-kit';
 
 import { IConfig } from 'components/Form/types';
 
@@ -11,7 +12,6 @@ import {
   SET_FORM_VALUE
 } from 'store/form/actions';
 
-import createReducer from 'utils/createReducer';
 import normalizeFormFields from 'utils/normalizeFormFields';
 
 import {

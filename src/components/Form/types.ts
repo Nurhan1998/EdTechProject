@@ -7,7 +7,9 @@ export enum EFieldType {
   TEXT,
   TEXTAREA,
   SELECT,
-  CHECKBOX
+  CHECKBOX,
+  SEARCH,
+  PASSWORD
 }
 
 export enum ESelectType {

@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 import { AxiosError } from 'axios';
+import { createReducer } from 'most-ui-kit';
 
 import { IHardSkillModel, ISoftSkillModel, TSkillsRecordOf, TSkillsStoreHandler } from 'store/skills/types';
 import {
@@ -10,7 +11,6 @@ import {
 } from 'store/skills/actions';
 
 import getRequestState from 'utils/requestState';
-import createReducer from 'utils/createReducer';
 
 
 const initialState:TSkillsRecordOf = fromJS({

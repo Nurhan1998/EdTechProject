@@ -1,8 +1,9 @@
+import { safeGet } from 'most-ui-kit';
+
 import { IConfig } from 'components/Form/types';
 
 import { TFormattedFormValues } from 'store/form/types';
 
-import safeGet from 'utils/safeGet';
 
 const normalizeDataToForm = <T = TFormattedFormValues>(
   instance: T,

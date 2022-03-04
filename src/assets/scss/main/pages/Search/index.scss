@@ -67,50 +67,52 @@
       height: 100%;
 
       .list {
-        .userCardWrapper {
-          padding: 21px 20px 20px 20px;
-          height: 152px;
-          border: 1px solid $superLightGrey;
-          border-radius: $border-radius-bs;
+        .search-page {
+          &_userCard {
+            padding: 21px 19px 20px 20px;
+            height: 152px;
 
-          & > * {
-            padding: 0;
+            &:not(last-child) {
+              margin-bottom: 6px
+            }
+
+            border: 1px solid $superLightGrey;
+            border-radius: $border-radius-bs;
+
+            & > * {
+              padding: 0;
+            }
           }
 
-          .userCardInfo {
+          &_userCardInfo {
             padding-left: 16px;
-
-            .userCardSection {
-                position: relative;
-                width: 48%;
-                height: 100%;
-
-                &:nth-child(2) {
-                  padding-top: 32px;
-
-                  &::before {
-                    content: "";
-                    position: absolute;
-                    width: 1px;
-                    height: 84px;
-                    background-color: $superLightGrey;
-                    top: 30px;
-                    left: -10px;
-                  }
-                }
-
-                .viewProfileBlock {
-                  margin: 25px 0 0 0;
-                }
-              }
-
             .userAvatar {
               height: 80%;
             }
           }
 
-          &:not(last-child) {
-            margin-bottom: 6px;
+          &_userCardSection {
+            position: relative;
+            width: 48%;
+            height: 100%;
+
+            &:nth-child(2) {
+              padding-top: 32px;
+
+              &::before {
+                content: "";
+                position: absolute;
+                width: 1px;
+                height: 84px;
+                background-color: $superLightGrey;
+                top: 30px;
+                left: -10px;
+              }
+            }
+
+            .viewProfileBlock {
+              margin: 25px 0 0 0;
+            }
           }
         }
       }

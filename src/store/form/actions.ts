@@ -1,3 +1,5 @@
+import { createAction } from 'most-ui-kit';
+
 import {
   IFormPayload,
   IInitFormAction,
@@ -6,7 +8,6 @@ import {
   ISetIsTouchedAction
 } from 'store/form/types';
 
-import createAction from 'utils/createAction';
 
 export const STATE_KEY = 'FORMS';
 

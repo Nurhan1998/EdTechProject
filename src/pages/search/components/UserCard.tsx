@@ -1,13 +1,15 @@
 import { useMediaQuery } from 'react-responsive';
+import {
+  UserCardWrapper,
+  UserCardInfo,
+  UserCardInfoSection,
+  SkillWithProgress,
+  SkillsAverageItem
+} from 'most-ui-kit';
 
-import UserCardWrapper from 'components/UserCardWrapper';
-import UserCardInfo from 'components/UserCardInfo';
-import CardInfoSection from 'components/CardInfoSection';
 import Title from 'components/UserCardTitle';
-import SkillWithProgress from 'components/SkillWithProgress';
 import ViewProfileBlock from 'components/ViewProfileBlock';
 import UserCardAvatar from 'components/UserCardAvatar';
-import SkillsAverageItem from 'components/SkillsAvarageItem';
 
 import { IUsersListResponseData } from 'store/users/types';
 
@@ -22,10 +24,10 @@ const UserCard = ({
   const hardSkills = isMobile ? hskills?.slice(0,1) : hskills?.slice(0,3);
   const softSkills = isMobile ? skills?.slice(0,1) : skills?.slice(0,1);
   return (
-    <UserCardWrapper>
+    <UserCardWrapper className="search-page_userCard">
       <UserCardAvatar withIcons photoUrl={photo}/>
-      <UserCardInfo>
-        <CardInfoSection>
+      <UserCardInfo className="search-page_userCardInfo">
+        <UserCardInfoSection className="search-page_userCardSection">
           <Title
             isMobile={isMobile}
             text={firstname}
@@ -40,6 +42,7 @@ const UserCard = ({
           />
           {hardSkills?.map(({ hskill_id, value,name }) => (
             <SkillWithProgress
+
               key={`${hskill_id}_${firstname}`}
               text={name}
               current={Number(value)}
@@ -47,8 +50,8 @@ const UserCard = ({
               isMobile={isMobile}
             />
           ))}
-        </CardInfoSection>
-        <CardInfoSection>
+        </UserCardInfoSection>
+        <UserCardInfoSection className="search-page_userCardSection">
           <SkillsAverageItem
             isMobile={isMobile}
             text="Hard skills"
@@ -70,7 +73,7 @@ const UserCard = ({
               text="View Profile"
             />
           )}
-        </CardInfoSection>
+        </UserCardInfoSection>
       </UserCardInfo>
     </UserCardWrapper>
   );

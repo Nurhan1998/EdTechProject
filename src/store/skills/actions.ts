@@ -1,8 +1,7 @@
 import { AxiosError } from 'axios';
+import { createAction } from 'most-ui-kit';
 
 import { IHardSkillModel, ISoftSkillModel } from 'store/skills/types';
-
-import createAction from 'utils/createAction';
 
 export const STATE_KEY = '@skills';
 

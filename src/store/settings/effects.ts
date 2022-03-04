@@ -1,5 +1,6 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import omit from 'lodash/omit';
+import { buildFormData } from 'most-ui-kit';
 
 import request from 'api/index';
 
@@ -10,7 +11,6 @@ import { IPayloadAction } from 'store/types';
 import { TSettingsRequestPayload } from 'store/settings/types';
 
 import removeArraysFromObject from 'utils/removeArraysFromObject';
-import buildFormData from 'utils/formData';
 
 
 function* saveSettings(action: IPayloadAction<TSettingsRequestPayload>): Generator {

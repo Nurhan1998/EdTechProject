@@ -1,6 +1,6 @@
-import { TFormattedFormValues } from 'store/form/types';
+import { createAction } from 'most-ui-kit';
 
-import createAction from 'utils/createAction';
+import { TFormattedFormValues } from 'store/form/types';
 
 export const SAVE_SETTINGS_REQUEST = 'SAVE_SETTINGS_REQUEST';
 

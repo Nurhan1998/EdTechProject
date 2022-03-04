@@ -1,6 +1,7 @@
+import { createAction } from 'most-ui-kit';
+
 import { INotificationAction } from 'store/notification/types';
 
-import createAction from 'utils/createAction';
 
 export const NOTIFICATION_SUCCESS = 'NOTIFICATION_SUCCESS';
 export const NOTIFICATION_ERROR = 'NOTIFICATION_ERROR';

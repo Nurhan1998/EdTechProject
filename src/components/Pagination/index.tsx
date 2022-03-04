@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import cn from 'classnames';
+import { getPageRange, generatePaginationItems, IPageItem } from 'most-ui-kit';
 
-import { getPageRange, generatePaginationItems, IPageItem } from 'utils/pagination';
 import { setQuery } from 'utils/urlHelpers';
 
 

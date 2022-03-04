@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { isEmpty } from 'lodash';
+import { useRouter } from 'next/router';
 
 import { DEFAULT_PAGE_SIZE } from 'configuration/constants';
 
@@ -8,23 +9,21 @@ import Layout from 'components/Layout';
 import Preloader from 'components/Preloader';
 import Pagination from 'components/Pagination';
 
-import Banner from 'pages/HomePage/components/Banner';
 import TitleContent from 'pages/HomePage/components/TitleContent';
+import Banner from 'pages/HomePage/components/Banner';
 import { Favorites } from 'pages/HomePage/components/Favorites';
 
-import { getUsersListRequest } from 'store/users/actions';
 import { makeSelectUsersListCount, makeSelectUsersListData, makeSelectUsersListFetching } from 'store/users/selectors';
+import { getUsersListRequest } from 'store/users/actions';
 import { getHardSkillsRequest, getSoftSkillsRequest } from 'store/skills/actions';
-
-import { getQuery } from 'utils/urlHelpers';
 
 import Actions from './components/Actions';
 import List from './components/List';
 
 
 const HomePage = (): JSX.Element => {
-  const query = getQuery();
-  const { page } = query;
+  const router = useRouter();
+  const { page } = router.query;
   const dispatch = useDispatch();
   const users = useSelector(makeSelectUsersListData);
   const usersCount = useSelector(makeSelectUsersListCount);
@@ -32,18 +31,18 @@ const HomePage = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState<number>(Number(page) || 1);
 
   useEffect(() => {
-    if(query.page && !Array.isArray(query.page)) {
-      setCurrentPage(parseInt(query?.page));
+    if(page && !Array.isArray(page)) {
+      setCurrentPage(parseInt(page));
     }
-  }, [query]);
+  }, [page]);
 
   useEffect(() => {
     dispatch(getUsersListRequest({
-      page: isEmpty(query) ? 1 : currentPage,
+      page: isEmpty(page) ? 1 : currentPage,
     }));
     // dispatch
     // eslint-disable-next-line
-  },[currentPage, query]);
+  },[currentPage, page]);
 
   useEffect(() => {
     dispatch(getSoftSkillsRequest());

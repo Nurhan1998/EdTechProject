@@ -1,13 +1,15 @@
 import { useMediaQuery } from 'react-responsive';
+import {
+  UserCardWrapper,
+  UserCardInfo,
+  UserCardInfoSection,
+  SkillWithProgress,
+  SkillsAverageItem
+} from 'most-ui-kit';
 
-import UserCardWrapper from 'components/UserCardWrapper';
-import UserCardInfo from 'components/UserCardInfo';
-import CardInfoSection from 'components/CardInfoSection';
 import Title from 'components/UserCardTitle';
-import SkillWithProgress from 'components/SkillWithProgress';
 import ViewProfileBlock from 'components/ViewProfileBlock';
 import UserCardAvatar from 'components/UserCardAvatar';
-import SkillsAverageItem from 'components/SkillsAvarageItem';
 
 import { IUsersListResponseData } from 'store/users/types';
 
@@ -21,7 +23,7 @@ const UserCard = ({
     <UserCardWrapper>
       <UserCardAvatar withIcons={isMobile} photoUrl={photo}/>
       <UserCardInfo>
-        <CardInfoSection>
+        <UserCardInfoSection>
           <Title
             withIcons
             isMobile={isMobile}
@@ -39,8 +41,8 @@ const UserCard = ({
             current={7}
             max={10}
           />
-        </CardInfoSection>
-        <CardInfoSection>
+        </UserCardInfoSection>
+        <UserCardInfoSection>
           {!isMobile && (
             <ViewProfileBlock
               isMobile={isMobile}
@@ -59,7 +61,7 @@ const UserCard = ({
             current={9}
             max={10}
           />
-        </CardInfoSection>
+        </UserCardInfoSection>
       </UserCardInfo>
     </UserCardWrapper>
   );

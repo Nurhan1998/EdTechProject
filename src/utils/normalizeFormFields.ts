@@ -1,8 +1,8 @@
+import { safeGet } from 'most-ui-kit';
+
 import { IConfig, EFieldType } from 'components/Form/types';
 
 import { IFormItem } from 'store/form/types';
-
-import safeGet from 'utils/safeGet';
 
 
 const normalizeFormFields = (
