@@ -60,12 +60,30 @@
 
     }
 
-    &_close::after {
-      top: 15px;
-      right: 15px;
-      position: absolute;
-      content: "\00d7";
+    &_close {
       cursor: pointer;
+      position: absolute;
+      right: 21px;
+      top: 17px;
+      width: 15px;
+      height: 15px;
+
+      &::before {
+        background-color: $secondaryBlack;
+        width: 1px;
+        height: 15px;
+        position: absolute;
+        content: "";
+        transform: rotate(45deg);
+      }
+      &::after {
+        background-color: $secondaryBlack;
+        width: 1px;
+        height: 15px;
+        position: absolute;
+        content: "";
+        transform: rotate(-45deg);
+      }
     }
   }
 }

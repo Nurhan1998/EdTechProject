@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'most-ui-kit';
 
 import { EColors } from 'configuration/Colors';
 
-import { Button } from 'components/Button';
 import Form from 'components/Form';
 import AuthLayout from 'components/Layout/Auth';
 
@@ -54,8 +54,9 @@ const SignUp = (): JSX.Element => {
         style={{ backgroundColor: isStudent ? EColors.MOST_GREEN : EColors.MOST_BLUE }}
         disabled={signInFetching}
         onClick={signUp}
-        text="Sign up"
-      />
+      >
+        Sign up
+      </Button>
     </AuthLayout>
   );
 };

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import Layout from 'components/Layout';
@@ -19,6 +19,7 @@ const ProfilePage = (): JSX.Element => {
   const hardSkillsData = useSelector(makeSelectHardSkillsData);
   const softSkillsData = useSelector(makeSelectSoftSkillsData);
   const isMobile = useMediaQuery({ query: 'max-width(500px)' });
+  const progressBarWidth: number = useMemo(() => isMobile? 191 : 330,[isMobile]);
 
   useEffect(()=>{
     if(!profileData){
@@ -35,6 +36,7 @@ const ProfilePage = (): JSX.Element => {
     // Need to call this effect only once at render
     // eslint-disable-next-line
   },[]);
+
 
   return (
     <Layout pageClassName="profile-page" withoutRightSidebar>
@@ -67,7 +69,7 @@ const ProfilePage = (): JSX.Element => {
           <div className="skills-body">
             {hardSkills.map(item => (
               <ProgressBar
-                width={isMobile? 191 : 330}
+                width={progressBarWidth}
                 color={getRandomColor()}
                 className="grade"
                 title={item.name}
@@ -89,7 +91,7 @@ const ProfilePage = (): JSX.Element => {
           <div className="skills-body">
             {softSkillsData.map(item => (
               <ProgressBar
-                width={isMobile? 191 : 330}
+                width={progressBarWidth}
                 className="grade"
                 title={item.name}
                 key={item.id}

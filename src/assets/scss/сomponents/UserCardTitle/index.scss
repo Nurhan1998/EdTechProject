@@ -1,0 +1,57 @@
+.userCardTitle {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  p {
+    margin: 0;
+  }
+
+  .title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-weight: $semiBold;
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90px;
+    color: red;
+
+    span {
+      width: 17px;
+      height: 17px;
+    }
+
+    .text-red {
+      font-size: 14px;
+      margin-left: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: $md-xs-media) {
+  .userCardTitle {
+    width: 100%;
+    height: 17px;
+    margin-bottom: 6px;
+
+    .title {
+      font-size: 14px;
+      max-width: 140px;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100px;
+      color: red;
+      font-size: 12px;
+    }
+  }
+}

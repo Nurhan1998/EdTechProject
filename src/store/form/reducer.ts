@@ -1,4 +1,5 @@
 import { fromJS } from 'immutable';
+import { createReducer } from 'most-ui-kit';
 
 import { IConfig } from 'components/Form/types';
 
@@ -11,7 +12,6 @@ import {
   SET_FORM_VALUE
 } from 'store/form/actions';
 
-import createReducer from 'utils/createReducer';
 import normalizeFormFields from 'utils/normalizeFormFields';
 
 import {
@@ -59,7 +59,7 @@ const removeForm: TFormStateHandler<IFormPayload> = (state, action) => {
 const setFormInitialValues: TFormStateHandler<ISetInitValuesFormAction> = (state, action) => {
   const { form, instance } = action.payload;
   if (!state.has(form)) return state;
-  const config: IConfig[] = state.getIn([form, '_META', 'config']);
+  const config: IConfig[] = state.getIn([form, '_META', 'config']).toJS();
   return state.setIn(
     [form, 'values'],
     fromJS(normalizeFormFields(config, instance))

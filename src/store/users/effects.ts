@@ -1,18 +1,27 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { AxiosError, AxiosResponse } from 'axios';
 import Router from 'next/router';
+import { buildFormData } from 'most-ui-kit';
 
 import request from 'api/index';
 
 import { HOME_PAGE } from 'configuration/urls';
+import { DEFAULT_PAGE_SIZE } from 'configuration/constants';
 
 import {
   FORGOT_PASSWORD_REQUEST,
   forgotPasswordFailure,
   forgotPasswordSuccess,
-  GET_PROFILE_REQUEST, GET_USERS_LIST_REQUEST,
+  GET_PROFILE_REQUEST,
+  GET_USERS_BY_SEARCH_REQUEST,
+  GET_USERS_LIST_REQUEST,
   getProfileFailure,
-  getProfileSuccess, getUsersListFailure, getUsersListSuccess,
+  getProfileSuccess,
+  getUsersBySearchFailure,
+  getUsersBySearchSuccess,
+  getUsersListFailure,
+  getUsersListSuccess,
+  setUsersCount,
   SIGN_IN_REQUEST,
   SIGN_UP_REQUEST,
   signInFailure,
@@ -21,7 +30,7 @@ import {
   signUpSuccess,
 } from 'store/users/actions';
 import {
-  IForgotPassword,
+  IForgotPassword, IPagination,
   TSignIn,
   TSignInResponse,
   TSignUp,
@@ -30,7 +39,6 @@ import {
 } from 'store/users/types';
 import { IPayloadAction } from 'store/types';
 
-import buildFormData from 'utils/formData';
 import { EStorageKeys, setStorageData } from 'utils/storageHelpers';
 
 
@@ -102,17 +110,50 @@ function* ForgotPassword(action: IPayloadAction<IForgotPassword>): Generator {
   }
 }
 
-function* GetUsers(): Generator {
+function* GetUsers(action: IPayloadAction<IPagination>): Generator {
+  const { page } = action.payload;
+  const params = {
+    onpage: DEFAULT_PAGE_SIZE,
+    start: page === 1 ? 0 : (page * DEFAULT_PAGE_SIZE)
+  };
+
   try {
     const response = yield call(
       request.get,
       '/user/',
+      { params }
     );
-    const { data } = response as TUserListResponse;
+    const { data, total } = response as TUserListResponse ;
     yield put(getUsersListSuccess(data));
+    yield put(setUsersCount({ total }));
   } catch (error) {
     yield put(getUsersListFailure(error as AxiosError));
   }
+}
+
+function* GetUsersBySearch(action: IPayloadAction<IPagination & { name: string }>): Generator {
+
+  const { name, page } = action.payload;
+  const params = {
+    name,
+    onpage: DEFAULT_PAGE_SIZE,
+    start: page === 1 ? 0 : (page * DEFAULT_PAGE_SIZE)
+  };
+
+  try {
+    const response = yield call(
+      request.get,
+      '/user/search',
+      { params }
+    );
+
+    const { data, total } = response as TUserListResponse;
+    yield put(getUsersBySearchSuccess(data));
+    yield put(setUsersCount({ total }));
+  } catch (e) {
+    yield put(getUsersBySearchFailure(e as AxiosError));
+  }
+
 }
 
 function* Saga(): Generator {
@@ -121,7 +162,8 @@ function* Saga(): Generator {
     takeLatest(GET_PROFILE_REQUEST, GetProfile),
     takeLatest(SIGN_UP_REQUEST, SignUp),
     takeLatest(FORGOT_PASSWORD_REQUEST, ForgotPassword),
-    takeLatest(GET_USERS_LIST_REQUEST, GetUsers)
+    takeLatest(GET_USERS_LIST_REQUEST, GetUsers),
+    takeLatest(GET_USERS_BY_SEARCH_REQUEST, GetUsersBySearch)
   ]);
 }
 

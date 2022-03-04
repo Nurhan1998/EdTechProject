@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'most-ui-kit';
 
 import { EColors } from 'configuration/Colors';
 
 import AuthLayout from 'components/Layout/Auth';
 import Form from 'components/Form';
-import { Button } from 'components/Button';
 
 import { FORGOT_PASSWORD_FORM } from 'pages/forgot/form/constants';
 
@@ -48,10 +48,11 @@ const ForgotPassword = (): JSX.Element => {
       />
       <Button
         style={{ backgroundColor: isStudent ? EColors.MOST_GREEN : EColors.MOST_BLUE }}
-        disabled={!!forgotPasswordFetching}
+        disabled={forgotPasswordFetching}
         onClick={getPassword}
-        text="Get password to Email"
-      />
+      >
+        Get password to Email
+      </Button>
     </AuthLayout>
   );
 };

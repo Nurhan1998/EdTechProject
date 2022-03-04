@@ -8,6 +8,7 @@
   justify-content: center;
 
   &_inner {
+    border: 1px solid $superLightGrey;
     position: fixed;
     width: 320px;
     height: 100%;
@@ -115,7 +116,7 @@
   }
 }
 
-@media screen and (max-width: $md-xs-media) {
+@media screen and (max-width: $lg-media) {
   .right-sidebar {
     display: none;
   }

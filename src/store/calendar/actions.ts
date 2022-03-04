@@ -1,8 +1,7 @@
 import { AxiosError } from 'axios';
+import { createAction } from 'most-ui-kit';
 
 import { ICourse } from 'store/calendar/types';
-
-import createAction from 'utils/createAction';
 
 
 export const GET_CALENDAR_REQUEST = 'GET_CALENDAR_REQUEST';

@@ -1,8 +1,8 @@
+import { safeGet } from 'most-ui-kit';
+
 import { IConfig, EFieldType } from 'components/Form/types';
 
 import { IFormItem } from 'store/form/types';
-
-import safeGet from 'utils/safeGet';
 
 
 const normalizeFormFields = (
@@ -10,8 +10,6 @@ const normalizeFormFields = (
   initialValues?: Record<string, string | string[]>
 ): Record<string, IFormItem> => config.reduce(
   (memo, curr) => {
-    // On 14 line we create new object so no need to recreate object just mutate
-    // Avoid O(n2) loops in reduce body
     const value = safeGet(initialValues, curr.name, '');
     return {
       ...memo,

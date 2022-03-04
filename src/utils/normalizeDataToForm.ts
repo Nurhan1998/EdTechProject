@@ -1,18 +1,22 @@
+import { safeGet } from 'most-ui-kit';
+
 import { IConfig } from 'components/Form/types';
 
 import { TFormattedFormValues } from 'store/form/types';
 
-const normalizeDataToForm = (
-  instance: Record<string, string | string[] | unknown>,
+
+const normalizeDataToForm = <T = TFormattedFormValues>(
+  instance: T,
   config: IConfig[]
 ): TFormattedFormValues => config.reduce((memo, curr) => {
-  if(instance[curr.name]) {
-    return {
-      [curr.name] : instance[curr.name],
-      ...memo,
-    };
-  }
-  return memo;
-}, {});
+    const value = safeGet<T, string | string[]>(instance, curr.name, '');
+    if (value) {
+      return {
+        ...memo,
+        [curr.name]: value,
+      };
+    }
+    return memo;
+  }, {} as TFormattedFormValues);
 
 export default normalizeDataToForm;

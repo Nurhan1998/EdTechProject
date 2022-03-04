@@ -7,7 +7,9 @@ export enum EFieldType {
   TEXT,
   TEXTAREA,
   SELECT,
-  CHECKBOX
+  CHECKBOX,
+  SEARCH,
+  PASSWORD
 }
 
 export enum ESelectType {
@@ -34,7 +36,7 @@ export interface IConfig {
 }
 
 export interface IFormProps {
-  isFormDisabled?: boolean;
+  disabled?: boolean;
   name: string;
   config: Array<IConfig>;
   className?: string;

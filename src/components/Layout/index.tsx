@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
-import { useMediaQuery } from 'react-responsive';
 import { Languages } from 'mocks/languages';
 
 import RightSideBar from 'components/Layout/RightSideBar';
@@ -13,13 +12,14 @@ import Header from './Header';
 import { ILayout } from './types';
 
 
-const Layout: FC<ILayout> = ({
-  layoutClassName,
-  pageClassName,
-  children,
-  withoutRightSidebar= false
-}) => {
-  const isMobile = useMediaQuery({ query: '(max-width: 500px)' });
+const Layout: FC<ILayout> = props => {
+  const {
+    layoutClassName,
+    pageClassName,
+    children,
+    withoutRightSidebar= false
+  } = props;
+
   const [language, setLanguage] = useState<string>(Languages[0].name);
   const [visible, setVisible] = useState<boolean>(false);
 
@@ -36,7 +36,7 @@ const Layout: FC<ILayout> = ({
       <Sidebar />
       <div
         className={cn('layout_inner-wrapper', pageClassName)}
-        style={{ maxWidth: withoutRightSidebar ? '' : 820, marginRight: withoutRightSidebar && !isMobile ? 8 : '' }}
+        style={{ maxWidth: withoutRightSidebar ? '' : 820 }}
       >
         <Header
           handleClickMenu={handleClickMenu}

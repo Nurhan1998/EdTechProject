@@ -1,9 +1,6 @@
 /*eslint-disable max-len*/
-
-import { IIconProps } from 'components/Icons/types';
-
-const Chat = ({ width = 20, height = 20 }: IIconProps): JSX.Element => (
-  <svg width={width} height={height} viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Chat = (): JSX.Element => (
+  <svg width="20" height="20" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M12.0886 15.6615C12.1375 15.7103 12.1375 15.7895 12.0886 15.8383C12.0398 15.8872 11.9606 15.8872 11.9118 15.8383C11.8629 15.7895 11.8629 15.7103 11.9118 15.6615C11.9352 15.638 11.967 15.6249 12.0002 15.6249C12.0334 15.6249 12.0652 15.638 12.0886 15.6615"
       stroke="#85888B" strokeLinecap="round" strokeLinejoin="round"/>

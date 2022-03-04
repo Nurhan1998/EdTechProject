@@ -7,6 +7,9 @@ import { EFormOrientation } from 'components/Form/types';
 
 import { initForm, removeForm, setFormInitialValues } from 'store/form/actions';
 import { makeSelectProfileData } from 'store/users/selectors';
+import { IProfileModel } from 'store/users/types';
+import { saveSettingsRequest } from 'store/settings/actions';
+import { makeSelectFormValues } from 'store/form/selectors';
 
 import normalizeDataToForm from 'utils/normalizeDataToForm';
 
@@ -17,27 +20,8 @@ import { PERSONAL_SETTINGS_FORM, SYSTEM_SETTING_FORM } from './form/constants';
 const SettingsPage = (): JSX.Element => {
   const dispatch = useDispatch();
   const profileData = useSelector(makeSelectProfileData);
+  const changedData = useSelector(makeSelectFormValues(PERSONAL_SETTINGS_FORM));
   const [isFormDisabled, setIsFormDisabled] = useState<boolean>(true);
-
-  useEffect(() => {
-    if(profileData) {
-      dispatch(setFormInitialValues({
-        form: PERSONAL_SETTINGS_FORM,
-        instance: normalizeDataToForm(profileData, personalConfig)
-      }));
-      // dispatch(setFormInitialValues({ form: SYSTEM_SETTING_FORM, instance: {} }));
-    }
-    // dispatch
-    // eslint-disable-next-line
-  },[profileData]);
-
-  const handleDisable = (): void => {
-    setIsFormDisabled(false);
-  };
-
-  const handleEnable = (): void => {
-    setIsFormDisabled(true);
-  };
 
   useEffect(
     () => {
@@ -52,6 +36,31 @@ const SettingsPage = (): JSX.Element => {
     // eslint-disable-next-line
     []
   );
+
+  useEffect(() => {
+    if (profileData) {
+      dispatch(setFormInitialValues({
+        form: PERSONAL_SETTINGS_FORM,
+        instance: normalizeDataToForm<IProfileModel>(profileData, personalConfig)
+      }));
+      dispatch(setFormInitialValues({
+        form: SYSTEM_SETTING_FORM,
+        instance: normalizeDataToForm({}, systemConfig)
+      }));
+    }
+    // dispatch
+    // eslint-disable-next-line
+  },[profileData]);
+
+
+  const handleDisable = (): void => {
+    setIsFormDisabled(false);
+  };
+
+  const handleSaveChanges = (): void => {
+    setIsFormDisabled(true);
+    dispatch(saveSettingsRequest(changedData));
+  };
 
   return(
     <Layout pageClassName="settings-page" withoutRightSidebar>
@@ -68,9 +77,10 @@ const SettingsPage = (): JSX.Element => {
           <div className="body">
             <Form
               className="personal-settings_form"
-              isFormDisabled={isFormDisabled}
+              disabled={isFormDisabled}
               name={PERSONAL_SETTINGS_FORM}
-              config={personalConfig}/>
+              config={personalConfig}
+            />
           </div>
         </div>
         <div className="right-side">
@@ -86,7 +96,7 @@ const SettingsPage = (): JSX.Element => {
               name={SYSTEM_SETTING_FORM}
               config={systemConfig}
             />
-            <button onClick={handleEnable}>Save Changes</button>
+            <button onClick={handleSaveChanges}>Save Changes</button>
           </div>
         </div>
       </div>

@@ -4,8 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url("../../../../img/png/auth-student-bg.png") no-repeat 0 0;
   background-size: cover;
-  background: url("../../../../img/png/auth-student-bg.png") no-repeat;
 
   &-container {
     overflow-y: auto;
@@ -68,7 +68,7 @@
   justify-content: center;
   align-items: center;
   background-size: cover;
-  background: url("../../../../img/png/auth-business-bg.png") no-repeat;
+  background: url("../../../../img/png/auth-business-bg.png") no-repeat 0 0;
 
   &-container {
     overflow-y: auto;

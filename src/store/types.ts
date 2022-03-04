@@ -48,8 +48,11 @@ export type ResponseGenericType<T, E = Record<string, unknown>> = {
 export type TResponseType<T> = {
   code: number;
   data: T;
-  success: boolean
+  success: boolean,
+  total: number
 }
+
+export type AxiosResponseWithTotal<T = unknown> = AxiosResponse<T> & { total: number }
 
 export type TRequestWithDataFunction<D = unknown, R = AxiosResponse> = (
   url: string,
@@ -67,4 +70,5 @@ export type TSelectorReturnType<T, D> = OutputSelector<
   T,
   (...args: SelectorResultArray<[((state: IApplicationState) => D)]>) => T,
   GetParamsFromSelectors<[((state: IApplicationState) => D)]>
-  >;
+>;
+

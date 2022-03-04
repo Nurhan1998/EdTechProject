@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable';
 import { AxiosError } from 'axios';
+import { createReducer } from 'most-ui-kit';
 
 import {
   FORGOT_PASSWORD_FAILURE,
@@ -7,7 +8,14 @@ import {
   FORGOT_PASSWORD_SUCCESS,
   GET_PROFILE_FAILURE,
   GET_PROFILE_REQUEST,
-  GET_PROFILE_SUCCESS, GET_USERS_LIST_FAILURE, GET_USERS_LIST_REQUEST, GET_USERS_LIST_SUCCESS,
+  GET_PROFILE_SUCCESS,
+  GET_USERS_BY_SEARCH_FAILURE,
+  GET_USERS_BY_SEARCH_REQUEST,
+  GET_USERS_BY_SEARCH_SUCCESS,
+  GET_USERS_LIST_FAILURE,
+  GET_USERS_LIST_REQUEST,
+  GET_USERS_LIST_SUCCESS,
+  SET_USERS_COUNT,
   SIGN_IN_FAILURE,
   SIGN_IN_REQUEST,
   SIGN_IN_SUCCESS,
@@ -17,7 +25,6 @@ import {
 } from 'store/users/actions';
 import { IPayloadAction } from 'store/types';
 
-import createReducer from 'utils/createReducer';
 import { EStorageKeys, getStorageData } from 'utils/storageHelpers';
 import getRequestState from 'utils/requestState';
 
@@ -30,7 +37,8 @@ const initialState: TRecordOfUser = fromJS({
   profile: getRequestState(),
   signUp: getRequestState(),
   forgotPassword: getRequestState(),
-  usersList: getRequestState()
+  usersList: getRequestState(),
+  usersCount: null
 });
 
 const setSignInFetching = (value: boolean) =>
@@ -63,10 +71,14 @@ const setForgotPasswordError: TUserStoreHandler<AxiosError> = (state, action) =>
 
 const setUsersListFetching = (value: boolean): TUserStoreHandler<void> => state =>
   state.setIn(['usersList', 'fetching'], value);
-const setUsersListData: TUserStoreHandler<IUsersListResponseData> = (state, action) =>
+const setUsersListData: TUserStoreHandler<IUsersListResponseData[]> = (state, action) =>
   state.setIn(['usersList', 'data'], fromJS(action.payload));
 const setUsersListError: TUserStoreHandler<AxiosError> = (state, action) =>
   state.setIn(['usersList', 'error'], action.payload);
+
+const setUsersCount: TUserStoreHandler<{total: number}> = (state, action) =>
+  state.setIn(['usersCount'], action.payload.total);
+
 
 export default createReducer<TRecordOfUser>(initialState, {
   [SIGN_IN_REQUEST]: setSignInFetching(true),
@@ -87,5 +99,11 @@ export default createReducer<TRecordOfUser>(initialState, {
 
   [GET_USERS_LIST_REQUEST]: setUsersListFetching(true),
   [GET_USERS_LIST_SUCCESS]: [setUsersListFetching(false), setUsersListData],
-  [GET_USERS_LIST_FAILURE]: [setUsersListFetching(false), setUsersListError]
+  [GET_USERS_LIST_FAILURE]: [setUsersListFetching(false), setUsersListError],
+
+  [GET_USERS_BY_SEARCH_REQUEST]: setUsersListFetching(true),
+  [GET_USERS_BY_SEARCH_SUCCESS]: [setUsersListFetching(false), setUsersListData],
+  [GET_USERS_BY_SEARCH_FAILURE]: [setUsersListFetching(false), setUsersListError],
+
+  [SET_USERS_COUNT]: setUsersCount,
 });

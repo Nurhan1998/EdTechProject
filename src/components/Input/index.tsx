@@ -4,12 +4,14 @@ import cn from 'classnames';
 import { IInputProps } from 'components/Input/types';
 import { SearchInput } from 'components/Input/components/SearchInput';
 
-const Input = ({
-  error,
-  label,
-  inputProps,
-  isTouched
-}: IInputProps): JSX.Element => {
+const Input = (props: IInputProps): JSX.Element => {
+  const {
+    error,
+    label,
+    inputProps,
+    isTouched,
+    onButtonClick
+  } = props;
   const { className, type, value, placeholder, onChange, onFocus, onBlur, disabled } = inputProps;
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [fieldType, setFieldType] = useState<string>(type || 'text');
@@ -27,11 +29,11 @@ const Input = ({
     <div className={cn(className, 'input-wrapper')}>
       <p className="label">{label}</p>
       {type === 'search' ? (
-        <SearchInput {...inputProps}/>
+        <SearchInput inputProps={inputProps} onButtonClick={onButtonClick}/>
       ) : type === 'password' ? (
         <>
           <input
-            type={type}
+            type={fieldType}
             placeholder={placeholder}
             onChange={onChange}
             onFocus={onFocus}

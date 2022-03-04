@@ -1,8 +1,6 @@
 /*eslint-disable max-len*/
-import { IIconProps } from 'components/Icons/types';
-
-const Calendar = ({ width = 20, height = 20 }: IIconProps): JSX.Element => (
-  <svg width={width} height={height} viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Calendar = (): JSX.Element => (
+  <svg width="20" height="20" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M16 6V10" stroke="#85888B" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M8 6V10" stroke="#85888B" strokeLinecap="round" strokeLinejoin="round"/>
     <path d="M3 13H21" stroke="#85888B" strokeLinecap="round" strokeLinejoin="round"/>

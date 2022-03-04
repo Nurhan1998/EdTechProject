@@ -1,8 +1,6 @@
 /*eslint-disable max-len*/
-import { IIconProps } from 'components/Icons/types';
-
-const Settings = ({ width = 20, height = 20 }: IIconProps): JSX.Element => (
-  <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+const Settings = (): JSX.Element => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M3 5.5H6.07" stroke="#85888B" strokeLinecap="round" strokeLinejoin="round"/>
     <path
       d="M10.3239 3.73223C11.3002 4.70854 11.3002 6.29145 10.3239 7.26776C9.3476 8.24407 7.7647 8.24407 6.78839 7.26776C5.81207 6.29145 5.81207 4.70854 6.78839 3.73223C7.7647 2.75592 9.34761 2.75592 10.3239 3.73223"
@@ -22,7 +20,5 @@ const Settings = ({ width = 20, height = 20 }: IIconProps): JSX.Element => (
       d="M10.3239 16.7322C11.3002 17.7085 11.3002 19.2914 10.3239 20.2677C9.3476 21.244 7.7647 21.244 6.78839 20.2677C5.81207 19.2914 5.81207 17.7085 6.78839 16.7322C7.7647 15.7559 9.34761 15.7559 10.3239 16.7322"
       stroke="#85888B" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
-
-
 );
 export default Settings;

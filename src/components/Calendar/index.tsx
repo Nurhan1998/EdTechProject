@@ -31,7 +31,7 @@ const Calendar = ({ upComingCourses, handleClick }: IUpcomingCourses): JSX.Eleme
 
   const eventContent =(arg: TEventContentArg) =>  (
     <div className="event-content">
-      <p className="event-content_time">18: 00</p>
+      <p className="event-content_time">18:00</p>
       <div className="event-content_theme"><p>{arg.event._def.title}</p></div>
       <p className="event-content_curator">
         {arg.event.extendedProps.curator?.firstname || 'Meelia Muld'}
@@ -42,7 +42,6 @@ const Calendar = ({ upComingCourses, handleClick }: IUpcomingCourses): JSX.Eleme
 
   const handleDateClick = (): void => {
     if(handleClick) handleClick();
-    //some logic
   };
 
   return (

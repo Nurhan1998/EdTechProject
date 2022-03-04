@@ -13,10 +13,10 @@
 @import './main/pages/CalendarPage';
 @import './main/pages/ProfilePage';
 @import './main/pages/SettingsPage';
+@import './main/pages/Search';
 
 // components
 @import 'сomponents/Select';
-@import 'сomponents/UserCard';
 @import 'сomponents/Input';
 @import 'сomponents/Button';
 @import 'сomponents/Form';
@@ -26,3 +26,11 @@
 @import 'сomponents/SkillRoundIndicator';
 @import 'сomponents/Notifications';
 @import 'сomponents/Dialog';
+@import 'сomponents/Pagination';
+@import 'сomponents/UserCardLayout';
+@import 'сomponents/SkillAvarageItem';
+@import 'сomponents/SkillWithProgress';
+@import 'сomponents/UserAvatar';
+@import 'сomponents/UserCardTitle';
+@import 'сomponents/ViewProfileBlock';
+

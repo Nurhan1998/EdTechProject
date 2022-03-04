@@ -4,13 +4,13 @@ import cn from 'classnames';
 import { IButtonProps } from 'components/Button/types';
 
 export const Button: FC<IButtonProps> = props => {
-  const { text, className } = props;
+  const { children, className, ...rest } = props;
   return (
     <button
-      {...props}
+      {...rest}
       className={cn('most-button', className)}
     >
-      {text}
+      {children}
     </button>
   );
 };

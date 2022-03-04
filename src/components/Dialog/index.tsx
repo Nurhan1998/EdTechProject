@@ -2,8 +2,8 @@ import cn from 'classnames';
 
 export interface IDialog {
   text: string;
-  confirmText: string;
-  rejectText: string;
+  confirmText?: string;
+  rejectText?: string;
   isOpen: boolean;
   close: () => void;
   onConfirmAction?: () => void;
@@ -12,8 +12,8 @@ export interface IDialog {
 
 const Dialog = ({
   text,
-  confirmText,
-  rejectText,
+  confirmText = 'accept',
+  rejectText = 'decline',
   isOpen,
   close
 }: IDialog): JSX.Element => (

@@ -34,7 +34,7 @@ const Sidebar = (): JSX.Element => {
               key={`${path}_${idx}`}
               path={path}
               isActive={IsMenuActive(path, router)}
-              icon={icon}
+              icon={icon(IsMenuActive(path, router))}
               name={name}
             />
           ))}
