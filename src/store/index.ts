@@ -3,8 +3,9 @@ import { createStore, applyMiddleware, compose, CombinedState, Store } from 'red
 import createSagaMiddleware from 'redux-saga';
 import { fromJS } from 'immutable';
 import assign from 'lodash/assign';
+import { IPayloadAction } from 'most-ui-kit';
 
-import { IWithSagaTaskStore, IApplicationState, IPayloadAction } from './types';
+import { IWithSagaTaskStore, IApplicationState } from './types';
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
 

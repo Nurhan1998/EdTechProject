@@ -1,7 +1,8 @@
 import { RecordOf } from 'immutable';
 import { AxiosResponse } from 'axios';
+import { THandler } from 'most-ui-kit';
 
-import { AxiosResponseWithTotal, ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
+import { AxiosResponseWithTotal, ResponseGenericType, TSelectorReturnType } from 'store/types';
 
 export type TSignIn = {
   email: string;

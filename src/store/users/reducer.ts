@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
 import { AxiosError } from 'axios';
 import { createReducer } from 'most-ui-kit';
+import { IPayloadAction } from 'most-ui-kit';
 
 import {
   FORGOT_PASSWORD_FAILURE,
@@ -23,7 +24,6 @@ import {
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
 } from 'store/users/actions';
-import { IPayloadAction } from 'store/types';
 
 import { EStorageKeys, getStorageData } from 'utils/storageHelpers';
 import getRequestState from 'utils/requestState';

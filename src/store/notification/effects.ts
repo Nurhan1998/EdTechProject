@@ -1,6 +1,6 @@
 import { all, takeEvery, call } from 'redux-saga/effects';
+import { IPayloadAction } from 'most-ui-kit';
 
-import { IPayloadAction } from 'store/types';
 import { INotificationAction } from 'store/notification/types';
 
 import createNotification from 'utils/createNotification';

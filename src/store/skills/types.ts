@@ -1,7 +1,8 @@
 import { RecordOf } from 'immutable';
 import { AxiosResponse } from 'axios';
+import { THandler } from 'most-ui-kit';
 
-import { ResponseGenericType, THandler, TSelectorReturnType } from 'store/types';
+import { ResponseGenericType, TSelectorReturnType } from 'store/types';
 
 export interface ISoftSkillModel {
   id: string;

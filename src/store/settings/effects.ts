@@ -1,13 +1,13 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 import omit from 'lodash/omit';
 import { buildFormData } from 'most-ui-kit';
+import { IPayloadAction } from 'most-ui-kit';
 
 import request from 'api/index';
 
 import { SAVE_SETTINGS_REQUEST } from 'store/settings/actions';
 import { showError, showSuccess } from 'store/notification/actions';
 import { getProfileRequest } from 'store/users/actions';
-import { IPayloadAction } from 'store/types';
 import { TSettingsRequestPayload } from 'store/settings/types';
 
 import removeArraysFromObject from 'utils/removeArraysFromObject';

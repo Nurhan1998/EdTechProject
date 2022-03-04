@@ -1,7 +1,6 @@
 import { fromJS } from 'immutable';
-import { createReducer } from 'most-ui-kit';
+import { createReducer, IPayloadAction } from 'most-ui-kit';
 
-import { IPayloadAction } from 'store/types';
 import { ICourse, TRecordOfCalendar } from 'store/calendar/types';
 import {
   GET_CALENDAR_FAILURE,

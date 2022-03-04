@@ -1,7 +1,6 @@
 import { all, takeLatest, call, put, select } from 'redux-saga/effects';
 import { ValidationError } from 'yup';
-
-import { IPayloadAction } from 'store/types';
+import { IPayloadAction } from 'most-ui-kit';
 
 import { executeValidation } from 'utils/validation';
 import { getValidationErrors } from 'utils/getValidationErrors';

@@ -1,9 +1,10 @@
 import { RecordOf } from 'immutable';
 import { ObjectShape } from 'yup/lib/object';
+import { THandler } from 'most-ui-kit';
 
 import { IConfig } from 'components/Form/types';
 
-import { THandler, TSelectorReturnType } from 'store/types';
+import { TSelectorReturnType } from 'store/types';
 
 
 export type TFieldValue<T = string> = T | Array<T>;
