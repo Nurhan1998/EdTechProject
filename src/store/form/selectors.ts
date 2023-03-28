@@ -18,7 +18,7 @@ export const makeSelectFormValues = (form: string): TFormSelectorReturnType<TFor
           ...memo,
           [curr]: safeGet(values, `${curr}.value`, ''),
         }),
-        {} as TFormattedFormValues,
+        {},
       );
     }
   );

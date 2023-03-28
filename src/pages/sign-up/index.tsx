@@ -27,7 +27,7 @@ const SignUp = (): JSX.Element => {
 
   const signUp = (): void => {
     delete formValues.confirm_password;
-    dispatch(signUpRequest(formValues as unknown as TSignUp));
+    dispatch(signUpRequest(formValues));
   };
 
   useEffect(
